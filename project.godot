@@ -15,12 +15,24 @@ run/main_scene="uid://cf46qwvblh547"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Constant="*uid://dsu3sa808htg2"
+Recipe="*uid://bno3y1a6qhh4u"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
+Event="*uid://8nmjy3iv4nit"
+Utility="*uid://dehgpxgkrwqkk"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
 [physics]
 
