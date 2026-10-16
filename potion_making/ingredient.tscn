@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dwvgd1ceya2ff"]
+
+[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="1_x67pw"]
+[ext_resource type="Script" uid="uid://cwg5qq4kfmcqn" path="res://potion_making/ingredient.gd" id="2_c1ve6"]
+
+[node name="Ingredient" type="Area2D" unique_id=980166366]
+monitorable = false
+
+[node name="Sprite" type="TextureRect" parent="." unique_id=83227316 groups=["ingredient"]]
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_x67pw")
+script = ExtResource("2_c1ve6")
