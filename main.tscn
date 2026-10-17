@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cwdg41cb3c5sy" path="res://textures/background.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b4a1c2d50cjdd" path="res://potion_making/cauldron.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bf47lyj853ja" path="res://ui/almanac_control.tscn" id="4_4c57u"]
+[ext_resource type="Texture2D" uid="uid://c44y8o6fmokw4" path="res://textures/backgroundx2dragon.png" id="5_yaehf"]
 [ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cryb0mo88h5oc" path="res://textures/gnome_hair.png" id="7_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://d33d5rnlivlhp" path="res://potion_making/spoon.tscn" id="7_272bh"]
@@ -26,6 +27,40 @@ font_size = 32
 font_color = Color(1, 0.8235294, 0.24705882, 1)
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_fern3"]
+_data = [Vector2(0, 0.80381477), 0.0, -1.1035422, 0, 0, Vector2(1, 0.34332424), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gw35a"]
+curve = SubResource("Curve_fern3")
+
+[sub_resource type="Gradient" id="Gradient_yaehf"]
+offsets = PackedFloat32Array(0, 0.17948718, 0.74358976)
+colors = PackedColorArray(0.85, 0.6516667, 0, 1, 0.79, 0.4192267, 0.0948, 1, 0.54, 0.54, 0.54, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fh2at"]
+gradient = SubResource("Gradient_yaehf")
+
+[sub_resource type="Curve" id="Curve_yaehf"]
+_data = [Vector2(0, 0.48773843), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_074og"]
+curve = SubResource("Curve_yaehf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eifb7"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 64.0
+angle_min = -179.99998
+angle_max = 180.00002
+gravity = Vector3(280, -200, 0)
+scale_min = 12.0
+scale_max = 16.0
+scale_curve = SubResource("CurveTexture_074og")
+color_ramp = SubResource("GradientTexture1D_fh2at")
+alpha_curve = SubResource("CurveTexture_gw35a")
 
 [node name="Main" type="Node2D" unique_id=1236197917]
 script = ExtResource("1_lquwl")
@@ -74,8 +109,20 @@ offset_right = 1216.0
 offset_bottom = 740.0
 scale = Vector2(0.8, 0.8)
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1861596065]
-position = Vector2(961.44446, 542.5)
+[node name="BackBackground" type="TextureRect" parent="." unique_id=1143501225]
+offset_top = -1.0
+offset_right = 1920.0
+offset_bottom = 1079.0
+texture = ExtResource("5_yaehf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BackBackground" unique_id=1206361972]
+position = Vector2(1185, 213)
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_eifb7")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1954090797]
+offset_right = 1920.0
+offset_bottom = 1080.0
 scale = Vector2(0.9990741, 0.9990741)
 texture = ExtResource("3_7mycd")
 
@@ -129,6 +176,7 @@ texture = ExtResource("12_getpj")
 type = 5
 
 [node name="Cauldron" parent="." unique_id=400390485 instance=ExtResource("3_lquwl")]
+z_index = 1
 offset_left = 964.0
 offset_top = 778.0
 offset_right = 964.0

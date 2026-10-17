@@ -52,6 +52,7 @@ offset_right = 428.0
 offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_jokxh")
 
 [node name="Dial" type="TextureRect" parent="." unique_id=680366212]
@@ -70,6 +71,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.07, 0.07)
 pivot_offset_ratio = Vector2(0.5, 0.9)
+mouse_filter = 2
 texture = ExtResource("4_bn7tg")
 
 [node name="DialLeft" type="Button" parent="." unique_id=1123118483]

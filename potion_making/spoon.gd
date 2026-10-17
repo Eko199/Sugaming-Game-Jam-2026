@@ -6,11 +6,23 @@ const drag_preview = preload("res://potion_making/drag_preview.gd")
 
 var saved_texture: Texture2D
 var is_dragging: bool = false
+var has_ingredients: bool = false
 
 func _ready() -> void:
 	saved_texture = texture
+	outline.texture = texture
+	Event.ingredient_added.connect(_on_ingredient_added)
+	Event.potion_served.connect(_on_cauldron_cleared)
+	Event.cauldron_emptied.connect(_on_cauldron_cleared)
+
+func _on_ingredient_added(_ing = null) -> void:
+	has_ingredients = true
+
+func _on_cauldron_cleared(_result = null) -> void:
+	has_ingredients = false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
+	if not has_ingredients: return null
 	var item: TextureRect = duplicate()
 	var item_holder: Control = drag_preview.new()
 	item_holder.add_child(item)
@@ -33,7 +45,7 @@ func _notification(what: int) -> void:
 			_return_to_shelf()
 
 func _on_mouse_entered() -> void:
-	if is_dragging: return
+	if is_dragging or not has_ingredients: return
 	outline.show()
 
 func _on_mouse_exited() -> void:

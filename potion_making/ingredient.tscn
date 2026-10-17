@@ -20,7 +20,7 @@ script = ExtResource("2_c1ve6")
 
 [node name="Outline" type="TextureRect" parent="." unique_id=2079944666]
 visible = false
-z_index = -1
+show_behind_parent = true
 material = SubResource("ShaderMaterial_x67pw")
 layout_mode = 1
 anchors_preset = 15

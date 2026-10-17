@@ -19,7 +19,8 @@ stretch_mode = 5
 script = ExtResource("2_yeann")
 
 [node name="Outline" type="TextureRect" parent="." unique_id=1103725472]
-z_index = -1
+visible = false
+show_behind_parent = true
 material = SubResource("ShaderMaterial_e40xq")
 custom_minimum_size = Vector2(82, 0)
 layout_mode = 1
