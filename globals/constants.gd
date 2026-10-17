@@ -18,6 +18,17 @@ enum DEBUFF {
 	COLOR_BLINDNESS, SPEECH_MISUNDERSTANDING, ITEM_SHUFFLE, SOUND_MUFFLING
 }
 
+const SPOON_UPGRADES_PRICE: PackedInt32Array = [
+	100,
+	200
+]
+
+const SPOON_LEVEL_MULT: PackedFloat32Array = [
+	1.0,
+	1.5,
+	2.0
+]
+
 # General information
 const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://textures/gnome_hair.png',

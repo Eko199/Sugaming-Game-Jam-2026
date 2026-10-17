@@ -8,6 +8,7 @@ const drag_preview = preload("res://potion_making/drag_preview.gd")
 var saved_texture: Texture2D
 var is_dragging: bool = false
 var has_ingredients: bool = false
+var level: int = 1
 
 func _ready() -> void:
 	saved_texture = texture
@@ -61,3 +62,17 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	outline.hide()
+
+func _on_spoon_upgrade_pressed() -> void:
+	var price: int = Cons.SPOON_UPGRADES_PRICE[level - 1]
+	if Utility.scene.money < price:
+		return
+	
+	level += 1
+	Utility.scene.money -= price
+	Event.money_changed.emit(Utility.scene.money)
+
+	if level == 3:
+		$"../Spoon Upgrade".visible = false
+	else:
+		$"../Spoon Upgrade".get_child(0).text = Cons.SPOON_UPGRADES_PRICE[level - 1]

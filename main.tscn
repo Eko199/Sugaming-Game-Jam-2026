@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://kje8aykg3aw8" path="res://textures/expanding_beans.png" id="11_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="12_getpj"]
 [ext_resource type="Material" uid="uid://dfb8bhaighxkb" path="res://shaders/outline_almanac.tres" id="17_074og"]
+[ext_resource type="Texture2D" uid="uid://c0n0xcuycsire" path="res://textures/spoon.png" id="20_82xsv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
 font_size = 32
@@ -63,6 +64,9 @@ scale_max = 16.0
 scale_curve = SubResource("CurveTexture_074og")
 color_ramp = SubResource("GradientTexture1D_fh2at")
 alpha_curve = SubResource("CurveTexture_gw35a")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
+font_size = 30
 
 [node name="Main" type="Node2D" unique_id=1236197917]
 script = ExtResource("1_lquwl")
@@ -221,6 +225,30 @@ offset_bottom = 1123.1819
 rotation = -0.46949357
 mouse_default_cursor_shape = 2
 
+[node name="Spoon Upgrade" type="Button" parent="." unique_id=1166500515]
+custom_minimum_size = Vector2(80, 0)
+offset_left = 1752.0
+offset_top = 717.00006
+offset_right = 1839.2328
+offset_bottom = 1115.4617
+rotation = -0.16192257
+pivot_offset_ratio = Vector2(0.5, 0.5)
+focus_mode = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+icon = ExtResource("20_82xsv")
+expand_icon = true
+
+[node name="Price" type="Label" parent="Spoon Upgrade" unique_id=1098402380]
+layout_mode = 0
+offset_left = 99.16648
+offset_top = 115.86501
+offset_right = 150.16647
+offset_bottom = 157.86502
+text = "100"
+label_settings = SubResource("LabelSettings_7upsp")
+
 [connection signal="mouse_entered" from="Almanac" to="Almanac/Outline" method="show"]
 [connection signal="mouse_exited" from="Almanac" to="Almanac/Outline" method="hide"]
 [connection signal="pressed" from="Almanac" to="UI/ColorRect/AlmanacControl" method="_on_almanac_pressed"]
+[connection signal="pressed" from="Spoon Upgrade" to="Spoon" method="_on_spoon_upgrade_pressed"]
