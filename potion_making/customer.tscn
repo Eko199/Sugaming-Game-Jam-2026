@@ -1,7 +1,24 @@
 [gd_scene format=3 uid="uid://ddyr3a0jetguo"]
 
+[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="1_ot4or"]
+[ext_resource type="Script" uid="uid://bfjgopvcextfi" path="res://potion_making/customer.gd" id="2_4sc2f"]
+
 [node name="Customer" type="TextureRect" unique_id=637699539]
-offset_left = 670.0
-offset_top = 104.0
-offset_right = 956.0
-offset_bottom = 485.0
+offset_right = 286.0
+offset_bottom = 381.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_ot4or")
+script = ExtResource("2_4sc2f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1172895856]
+layout_mode = 0
+offset_left = 361.0
+offset_top = -70.0
+offset_right = 628.0
+offset_bottom = 28.0
+bbcode_enabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1589425296]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

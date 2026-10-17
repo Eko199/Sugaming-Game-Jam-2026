@@ -48,30 +48,35 @@ offset_left = 214.0
 offset_top = 575.0
 offset_right = 342.0
 offset_bottom = 703.0
+type = 1
 
 [node name="Ing3" parent="Shelf" unique_id=608215484 instance=ExtResource("2_1bvp3")]
 offset_left = 364.0
 offset_top = 575.0
 offset_right = 492.0
 offset_bottom = 703.0
+type = 2
 
 [node name="Ing4" parent="Shelf" unique_id=139729822 instance=ExtResource("2_1bvp3")]
 offset_left = 1391.0
 offset_top = 575.0
 offset_right = 1519.0
 offset_bottom = 703.0
+type = 3
 
 [node name="Ing5" parent="Shelf" unique_id=1162163949 instance=ExtResource("2_1bvp3")]
 offset_left = 1556.0
 offset_top = 575.0
 offset_right = 1684.0
 offset_bottom = 703.0
+type = 4
 
 [node name="Ing6" parent="Shelf" unique_id=596765486 instance=ExtResource("2_1bvp3")]
 offset_left = 1716.0
 offset_top = 575.0
 offset_right = 1844.0
 offset_bottom = 703.0
+type = 5
 
 [node name="Cauldron" parent="." unique_id=1067954735 instance=ExtResource("3_lquwl")]
 offset_left = 579.0

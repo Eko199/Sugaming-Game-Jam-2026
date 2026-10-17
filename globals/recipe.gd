@@ -5,9 +5,11 @@ const HEAT: int = 1
 const STIR: int = 2
 const PRICE: int = 3
 
-const HEAT_GRACE: int = 15
 var RECIPE: Dictionary[Array, Array] = {
-	[Ingredient.TYPE.FIRE_WORM, Ingredient.TYPE.FROSTY_MINT] : [Cons.RECIPE.REC1, Vector2i(30, 70), Cons.STIR_PATTERN.NONE, 10]
+	[Ingredient.TYPE.FIRE_WORM] : [
+		Cons.RECIPE.FIRE_RESISTANCE, Vector2i(30, 70),
+		Cons.STIR_PATTERN.ANY, 10
+	]
 }
 
 func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Cons.STIR_PATTERN):
@@ -20,7 +22,7 @@ func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Cons.STIR_PATTERN):
 		Cons.QUALITY.POOR + int(
 			properties[HEAT].y > heat and properties[HEAT].x < heat
 		) + int(
-			stir == properties[STIR] or properties[STIR] == Cons.STIR_PATTERN.NONE
+			stir == properties[STIR] or properties[STIR] == Cons.STIR_PATTERN.ANY
 		)
 	) as Cons.QUALITY
 	

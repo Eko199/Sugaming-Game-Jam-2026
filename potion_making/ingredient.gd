@@ -10,10 +10,17 @@ enum TYPE {
 
 var saved_texture: Texture2D
 var is_currently_used: bool = false
+var is_dragging: bool = false
 
 func _ready() -> void:
 	texture = load(Cons.INGRIDIENT_TEXTURE[type])
 	saved_texture = texture
+	Event.potion_served.connect(_return_to_shelf)
+	Event.cauldron_emptied.connect(_return_to_shelf)
+
+func _return_to_shelf(_result = null) -> void:
+	texture = saved_texture
+	is_currently_used = false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if is_currently_used: return null
@@ -25,9 +32,12 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	set_drag_preview(item_holder)
 	texture = null
 	is_currently_used = true
+	is_dragging = true
 	return self
-	
+
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_DRAG_END:
+	# DRAG_END is sent to every Control, so only react if this item was the one dragged
+	if what == NOTIFICATION_DRAG_END and is_dragging:
+		is_dragging = false
 		if not is_drag_successful():
-			texture = saved_texture
+			_return_to_shelf()

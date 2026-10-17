@@ -38,6 +38,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
+[global_group]
+
+cauldron=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
