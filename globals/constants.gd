@@ -4,10 +4,6 @@ enum STIR_PATTERN {
 	LEFT, RIGHT, ZIG_ZAG, NONE
 }
 
-enum INGREDIENT {
-	FIRE_WORM, COLD_MINTLEAF,
-}
-
 const DESCRIPTIONS: PackedStringArray = [
 	'blah', 'blah'
 ]
@@ -22,4 +18,11 @@ enum RECIPE {
 
 enum DEBUFF {
 	
+}
+
+const MAX_INGREDIENTS: int = 3
+
+const INGRIDIENT_TEXTURE: Dictionary[Ingredient.TYPE, String] = {
+	Ingredient.TYPE.FIRE_WORM : 'res://icon.svg',
+	Ingredient.TYPE.COLD_MINTLEAF : 'res://icon.svg',
 }

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cf46qwvblh547"]
 
 [ext_resource type="Script" uid="uid://bwiwxpgus0hl4" path="res://ui/general.gd" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://dukht7q1xvq1d" path="res://background_sketch.jpg" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://0830dg36o4ho" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dukht7q1xvq1d" path="res://textures/background_sketch.jpg" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dwvgd1ceya2ff" path="res://potion_making/ingredient.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b4a1c2d50cjdd" path="res://potion_making/cauldron.tscn" id="3_lquwl"]
 
@@ -10,17 +11,56 @@ font_size = 32
 font_color = Color(1.1949118, 0, 0, 1)
 
 [node name="Main" type="Node2D" unique_id=1236197917]
+script = ExtResource("1_lquwl")
 
-[node name="BackgroundSketch" type="Sprite2D" parent="." unique_id=1861596065]
+[node name="Background" type="Sprite2D" parent="." unique_id=1861596065]
 position = Vector2(961.44446, 542.5)
 scale = Vector2(0.9990741, 0.9990741)
 texture = ExtResource("2_0xm2m")
 
-[node name="Ingredient" parent="." unique_id=980166366 instance=ExtResource("2_1bvp3")]
-position = Vector2(61, 575)
+[node name="Shelf" type="Node2D" parent="." unique_id=25351675]
+
+[node name="Ing1" parent="Shelf" unique_id=980166366 instance=ExtResource("2_1bvp3")]
+offset_left = 61.0
+offset_top = 575.0
+offset_right = 189.0
+offset_bottom = 703.0
+
+[node name="Ing2" parent="Shelf" unique_id=83227316 instance=ExtResource("2_1bvp3")]
+offset_left = 214.0
+offset_top = 575.0
+offset_right = 342.0
+offset_bottom = 703.0
+
+[node name="Ing3" parent="Shelf" unique_id=608215484 instance=ExtResource("2_1bvp3")]
+offset_left = 364.0
+offset_top = 575.0
+offset_right = 492.0
+offset_bottom = 703.0
+
+[node name="Ing4" parent="Shelf" unique_id=139729822 instance=ExtResource("2_1bvp3")]
+offset_left = 1391.0
+offset_top = 575.0
+offset_right = 1519.0
+offset_bottom = 703.0
+
+[node name="Ing5" parent="Shelf" unique_id=1162163949 instance=ExtResource("2_1bvp3")]
+offset_left = 1556.0
+offset_top = 575.0
+offset_right = 1684.0
+offset_bottom = 703.0
+
+[node name="Ing6" parent="Shelf" unique_id=596765486 instance=ExtResource("2_1bvp3")]
+offset_left = 1716.0
+offset_top = 575.0
+offset_right = 1844.0
+offset_bottom = 703.0
 
 [node name="Cauldron" parent="." unique_id=1067954735 instance=ExtResource("3_lquwl")]
-position = Vector2(952, 741)
+offset_left = 579.0
+offset_top = 618.0
+offset_right = 1331.0
+offset_bottom = 907.0
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=308339996]
 script = ExtResource("1_ig7tw")

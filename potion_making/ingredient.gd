@@ -1,19 +1,29 @@
 extends TextureRect
+class_name Ingredient
+
+enum TYPE {
+	FIRE_WORM, COLD_MINTLEAF,
+}
+
+@export var type: TYPE
 
 var saved_texture: Texture2D
-@onready var area: Area2D = get_parent() as Area2D
+var is_currently_used: bool = false
 
 func _ready() -> void:
+	texture = load(Constant.INGRIDIENT_TEXTURE[type])
 	saved_texture = texture
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
+	if is_currently_used: return null
 	var item: TextureRect = duplicate()
-	var item_holder := Control.new()
+	var item_holder: Control = Control.new()
 	item_holder.add_child(item)
 
 	item.position = -0.5 * size
 	set_drag_preview(item_holder)
 	texture = null
+	is_currently_used = true
 	return self
 	
 func _notification(what: int) -> void:

@@ -6,11 +6,11 @@ const STIR: int = 2
 const PRICE: int = 3
 
 const HEAT_GRACE: int = 15
-const RECIPE: Dictionary[Array, Array] = {
-	[Constant.INGREDIENT.FIRE_WORM, Constant.INGREDIENT.COLD_MINTLEAF] : [Constant.RECIPE.REC1, Vector2i(30, 70), Constant.STIR_PATTERN.NONE, 10]
+var RECIPE: Dictionary[Array, Array] = {
+	[Ingredient.TYPE.FIRE_WORM, Ingredient.TYPE.COLD_MINTLEAF] : [Constant.RECIPE.REC1, Vector2i(30, 70), Constant.STIR_PATTERN.NONE, 10]
 }
 
-func evaluate(ing: Array[Constant.INGREDIENT], heat: int, stir: Constant.STIR_PATTERN):
+func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Constant.STIR_PATTERN):
 	ing.sort()
 	var properties: Array = RECIPE.get(ing, [])
 	if properties.is_empty(): return {
