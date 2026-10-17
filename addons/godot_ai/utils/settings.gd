@@ -2,7 +2,7 @@
 class_name McpSettings
 extends RefCounted
 
-## Shared EditorSettings key constants for the godot_ai/* namespace.
+## Shared EditorSettings key Conss for the godot_ai/* namespace.
 ##
 ## Centralised here so lightweight files (e.g. telemetry.gd) can reference
 ## settings keys without pulling in the full client_configurator.gd dep tree.

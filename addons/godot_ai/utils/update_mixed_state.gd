@@ -22,7 +22,7 @@ const BACKUP_SUFFIX := ".update_backup"
 ## `editor_state` payload size or freeze the editor on first paint.
 const MAX_BACKUP_RESULTS := 200
 ## TTL for the `diagnose()` cache. `editor_state` is one of the highest-
-## traffic MCP tools (agents poll it constantly) and a recursive
+## traffic MCP tools (agents poll it Consly) and a recursive
 ## `DirAccess` walk on every call would put I/O on the 4ms `_process()`
 ## budget. Mixed-state is rare and persistent across editor restarts, so
 ## a few seconds of staleness is acceptable; the dock's Re-scan button

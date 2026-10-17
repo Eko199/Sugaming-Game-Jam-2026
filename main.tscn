@@ -1,6 +1,91 @@
 [gd_scene format=3 uid="uid://cf46qwvblh547"]
 
-[ext_resource type="Script" uid="uid://0830dg36o4ho" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bwiwxpgus0hl4" path="res://ui/gui.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://0830dg36o4ho" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dukht7q1xvq1d" path="res://textures/background_sketch.jpg" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dwvgd1ceya2ff" path="res://potion_making/ingredient.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://b4a1c2d50cjdd" path="res://potion_making/cauldron.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
+font_size = 32
+font_color = Color(1.1949118, 0, 0, 1)
 
 [node name="Main" type="Node2D" unique_id=1236197917]
+script = ExtResource("1_lquwl")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=308339996]
 script = ExtResource("1_ig7tw")
+
+[node name="Timer" type="Timer" parent="UI" unique_id=968744429]
+wait_time = 70.0
+one_shot = true
+autostart = true
+
+[node name="Label" type="Label" parent="UI" unique_id=405726089]
+offset_left = 75.0
+offset_top = 58.0
+offset_right = 175.0
+offset_bottom = 103.0
+text = "5:00"
+label_settings = SubResource("LabelSettings_0xm2m")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1861596065]
+position = Vector2(961.44446, 542.5)
+scale = Vector2(0.9990741, 0.9990741)
+texture = ExtResource("2_0xm2m")
+
+[node name="Shelf" type="Node2D" parent="." unique_id=25351675]
+
+[node name="Ing1" parent="Shelf" unique_id=980166366 instance=ExtResource("2_1bvp3")]
+offset_left = 61.0
+offset_top = 575.0
+offset_right = 189.0
+offset_bottom = 703.0
+
+[node name="Ing2" parent="Shelf" unique_id=83227316 instance=ExtResource("2_1bvp3")]
+offset_left = 214.0
+offset_top = 575.0
+offset_right = 342.0
+offset_bottom = 703.0
+type = 1
+
+[node name="Ing3" parent="Shelf" unique_id=608215484 instance=ExtResource("2_1bvp3")]
+offset_left = 364.0
+offset_top = 575.0
+offset_right = 492.0
+offset_bottom = 703.0
+type = 2
+
+[node name="Ing4" parent="Shelf" unique_id=139729822 instance=ExtResource("2_1bvp3")]
+offset_left = 1391.0
+offset_top = 575.0
+offset_right = 1519.0
+offset_bottom = 703.0
+type = 3
+
+[node name="Ing5" parent="Shelf" unique_id=1162163949 instance=ExtResource("2_1bvp3")]
+offset_left = 1556.0
+offset_top = 575.0
+offset_right = 1684.0
+offset_bottom = 703.0
+type = 4
+
+[node name="Ing6" parent="Shelf" unique_id=596765486 instance=ExtResource("2_1bvp3")]
+offset_left = 1716.0
+offset_top = 575.0
+offset_right = 1844.0
+offset_bottom = 703.0
+type = 5
+
+[node name="Cauldron" parent="." unique_id=1067954735 instance=ExtResource("3_lquwl")]
+offset_left = 579.0
+offset_top = 618.0
+offset_right = 1331.0
+offset_bottom = 907.0
+
+[node name="Customer" parent="." unique_id=637699539 instance=ExtResource("6_7mycd")]
+offset_left = 650.0
+offset_top = 101.0
+offset_right = 936.0
+offset_bottom = 482.0

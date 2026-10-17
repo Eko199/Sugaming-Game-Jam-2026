@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="potion-chaos"
@@ -17,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Constant="*uid://dsu3sa808htg2"
+Cons="*uid://dsu3sa808htg2"
 Recipe="*uid://bno3y1a6qhh4u"
 _mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 Event="*uid://8nmjy3iv4nit"
@@ -33,6 +37,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
+
+[global_group]
+
+cauldron=""
 
 [physics]
 

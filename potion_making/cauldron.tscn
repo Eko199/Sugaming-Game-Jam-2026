@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://b4a1c2d50cjdd"]
+
+[ext_resource type="Script" uid="uid://8ohgtxd7ilg0" path="res://potion_making/cauldron.gd" id="1_6bp5d"]
+[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="2_s5f67"]
+
+[node name="Cauldron" type="Control" unique_id=400390485 groups=["cauldron"]]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -381.0
+offset_top = -176.0
+offset_right = 382.0
+offset_bottom = 166.0
+script = ExtResource("1_6bp5d")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1009677442]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ingredient1" type="TextureRect" parent="." unique_id=873615250]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 119.0
+offset_right = 356.0
+offset_bottom = 247.0
+texture = ExtResource("2_s5f67")
+
+[node name="Ingredient2" type="TextureRect" parent="." unique_id=508372883]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 119.0
+offset_right = 356.0
+offset_bottom = 247.0
+texture = ExtResource("2_s5f67")
+
+[node name="Ingredient3" type="TextureRect" parent="." unique_id=1380123413]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 119.0
+offset_right = 356.0
+offset_bottom = 247.0
+texture = ExtResource("2_s5f67")
+
+[node name="HSlider" type="HSlider" parent="." unique_id=632833902]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 353.0
+offset_right = 702.0
+offset_bottom = 375.0
+value = 50.0
+
+[node name="StirButtons" type="HBoxContainer" parent="." unique_id=2003139960]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 410.0
+offset_right = 570.0
+offset_bottom = 450.0
+theme_override_constants/separation = 16
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Left" type="Button" parent="StirButtons" unique_id=1795247537]
+layout_mode = 2
+text = "Left"
+
+[node name="ZigZag" type="Button" parent="StirButtons" unique_id=1277703947]
+layout_mode = 2
+text = "Zig Zag"
+
+[node name="Right" type="Button" parent="StirButtons" unique_id=254810291]
+layout_mode = 2
+text = "Right"
+
+[connection signal="value_changed" from="HSlider" to="." method="_temperature_value_changed"]
+[connection signal="button_up" from="StirButtons/Left" to="." method="_on_stir_left_button_up"]
+[connection signal="button_up" from="StirButtons/ZigZag" to="." method="_on_stir_zig_zag_button_up"]
+[connection signal="button_up" from="StirButtons/Right" to="." method="_on_stir_right_button_up"]

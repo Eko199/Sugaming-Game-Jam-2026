@@ -782,7 +782,7 @@ func _derive_key(tag: String) -> PackedByteArray:
 
 func _encrypt(plain: String) -> String:
 	if OS.get_unique_id().is_empty():
-		## Without a machine id the key would be near-constant across users
+		## Without a machine id the key would be near-Cons across users
 		## on the same machine - refuse, and let callers fall back to the
 		## provider's environment variable.
 		return ""
@@ -845,7 +845,7 @@ func _decrypt(blob: String) -> String:
 ## controls from Editor Settings each time the window opens.
 func build_section(parent: VBoxContainer) -> void:
 	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 8)
+	box.add_theme_Cons_override("separation", 8)
 	parent.add_child(box)
 
 	var header := Label.new()
