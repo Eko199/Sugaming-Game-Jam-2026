@@ -43,7 +43,7 @@ const MAX_INGREDIENTS: int = 3
 const ROUND_TIME: int = 300
 const PATIENCE_MIN: int = 20
 const PATIENCE_MAX: int = 50
-## Seconds between one customer leaving and the next arriving
-const CUSTOMER_GAP: float = 1.5
-## Higher = recipes far from the current difficulty are rarer
+const CUSTOMER_GAP: float = 1.0
 const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
+## Minimum weight for recipes easier than the current difficulty (the current one has weight 1.0)
+const EASY_RECIPE_MIN_WEIGHT: float = 0.35

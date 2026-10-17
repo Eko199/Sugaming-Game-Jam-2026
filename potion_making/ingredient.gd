@@ -36,7 +36,6 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	return self
 
 func _notification(what: int) -> void:
-	# DRAG_END is sent to every Control, so only react if this item was the one dragged
 	if what == NOTIFICATION_DRAG_END and is_dragging:
 		is_dragging = false
 		if not is_drag_successful():

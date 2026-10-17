@@ -6,12 +6,12 @@ class_name Customer
 
 @onready var timer: Timer = $Timer
 @onready var request_label: RichTextLabel = $RichTextLabel
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 func _ready() -> void:
 	Event.potion_served.connect(_on_potion_served)
 	hide()
 
-## Called by the spawner in main.gd
 func arrive(recipe: Cons.RECIPE, patience_time: float) -> void:
 	wanted = recipe
 	patience = patience_time
@@ -24,6 +24,10 @@ func leave(served: bool) -> void:
 	timer.stop()
 	hide()
 	Event.customer_left.emit(self, served)
+
+func _process(_delta: float) -> void:
+	progress_bar.max_value = patience
+	progress_bar.value = timer.time_left
 
 func _on_potion_served(result: Dictionary) -> void:
 	if not visible: return

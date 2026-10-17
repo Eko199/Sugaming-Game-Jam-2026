@@ -85,3 +85,7 @@ offset_right = 1331.0
 offset_bottom = 907.0
 
 [node name="Customer" parent="." unique_id=637699539 instance=ExtResource("6_7mycd")]
+offset_left = 650.0
+offset_top = 101.0
+offset_right = 936.0
+offset_bottom = 482.0
