@@ -2,6 +2,7 @@ extends TextureRect
 class_name Spoon
 
 @onready var outline: TextureRect = $Outline
+@onready var upgrade: Button = $"../Spoon Upgrade"
 
 const drag_preview = preload("res://potion_making/drag_preview.gd")
 
@@ -16,6 +17,8 @@ func _ready() -> void:
 	Event.ingredient_added.connect(_on_ingredient_added)
 	Event.potion_served.connect(_on_cauldron_cleared)
 	Event.cauldron_emptied.connect(_on_cauldron_cleared)
+	Event.money_changed.connect(_update_spoon_upgrade)
+	_update_spoon_upgrade()
 	_update_cursor()
 
 func _on_ingredient_added(_ing = null) -> void:
@@ -32,10 +35,16 @@ func _on_cauldron_cleared(_result = null) -> void:
 
 func _update_cursor() -> void:
 	mouse_default_cursor_shape = CURSOR_POINTING_HAND if has_ingredients else CURSOR_FORBIDDEN
+	
+func _update_spoon_upgrade(_money = null) -> void:
+	var price: int = Cons.SPOON_UPGRADES_PRICE[level - 1]
+	upgrade.disabled = Utility.scene.money < price
+	upgrade.mouse_default_cursor_shape = CURSOR_POINTING_HAND if not upgrade.disabled else CURSOR_FORBIDDEN
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if not has_ingredients: return null
 	var item: TextureRect = duplicate()
+	item.set_script(null)
 	var item_holder: Control = drag_preview.new()
 	item_holder.add_child(item)
 	item.position = -0.5 * size
@@ -73,6 +82,6 @@ func _on_spoon_upgrade_pressed() -> void:
 	Event.money_changed.emit(Utility.scene.money)
 
 	if level == 3:
-		$"../Spoon Upgrade".visible = false
+		upgrade.visible = false
 	else:
-		$"../Spoon Upgrade".get_child(0).text = Cons.SPOON_UPGRADES_PRICE[level - 1]
+		upgrade.get_child(0).text = "%s" % Cons.SPOON_UPGRADES_PRICE[level - 1]
