@@ -1,9 +1,9 @@
 extends Control
 
-@onready var water_mask: TextureRect = $WaterMask
+@onready var water_mask: TextureRect = $Control/WaterMask
 @onready var water: TextureRect = %Water
-@onready var front: TextureRect = $Cauldron
-@onready var dial: TextureRect = $Dial
+@onready var front: TextureRect = $Control/Cauldron
+@onready var dial: TextureRect = $Control/Dial
 
 var current_items: Array[Ingredient.TYPE] = []
 var current_temp: float = 50.0

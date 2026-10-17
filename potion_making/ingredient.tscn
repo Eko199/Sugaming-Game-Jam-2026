@@ -9,11 +9,13 @@ shader = ExtResource("3_c1ve6")
 shader_parameter/target_color = Color(0.8, 0.6, 0.4, 1)
 
 [node name="Ingridient" type="TextureRect" unique_id=83227316 groups=["ingredient"]]
-z_index = 1
-offset_right = 128.0
-offset_bottom = 128.0
+custom_minimum_size = Vector2(196, 196)
+offset_right = 224.0
+offset_bottom = 224.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_x67pw")
+expand_mode = 3
+stretch_mode = 5
 script = ExtResource("2_c1ve6")
 
 [node name="Outline" type="TextureRect" parent="." unique_id=2079944666]
@@ -24,13 +26,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 3.0
-offset_bottom = 3.0
+offset_left = -10.0
+offset_top = -11.0
+offset_right = 10.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_x67pw")
+expand_mode = 3
+stretch_mode = 5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

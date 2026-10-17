@@ -17,6 +17,7 @@ const drag_preview = preload("res://potion_making/drag_preview.gd")
 
 func _ready() -> void:
 	texture = load(Cons.INGRIDIENT_TEXTURE[type])
+	outline.texture = texture
 	saved_texture = texture
 	Event.potion_served.connect(_return_to_shelf)
 	Event.cauldron_emptied.connect(_return_to_shelf)

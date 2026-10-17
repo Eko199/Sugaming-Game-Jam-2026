@@ -21,12 +21,12 @@ enum DEBUFF {
 # General information
 ## TODO: Add actual sprites
 const INGRIDIENT_TEXTURE: PackedStringArray = [
-	'res://icon.svg',
-	'res://icon.svg',
-	'res://icon.svg',
-	'res://icon.svg',
-	'res://icon.svg',
-	'res://icon.svg',
+	'res://textures/gnome_hair.png',
+	'res://textures/fireworm.png',
+	'res://textures/frosty_mint.png',
+	'res://textures/unicorn_tears.png',
+	'res://textures/expanding_beans.png',
+	'res://textures/star_flower.png',
 ]
 
 const DESCRIPTIONS: PackedStringArray = [
@@ -39,10 +39,10 @@ const DESCRIPTIONS: PackedStringArray = [
 ]
 
 const INGREDIENT_COLOR: PackedColorArray = [
-	Color(0.72, 0.42, 0.18),
-	Color(0.95, 0.22, 0.08),
-	Color(0.45, 0.95, 0.80),
-	Color(0.92, 0.55, 0.95),
+	Color(0.47, 0.454, 0.442, 1.0),
+	Color(0.95, 0.498, 0.076, 1.0),
+	Color(0.4, 0.85, 0.715, 1.0),
+	Color(0.578, 0.551, 0.95, 1.0),
 	Color(0.40, 0.78, 0.15),
 	Color(1.00, 0.82, 0.15),
 ]

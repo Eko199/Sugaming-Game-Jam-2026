@@ -9,7 +9,6 @@ shader = ExtResource("3_e40xq")
 shader_parameter/target_color = Color(1, 1, 1, 1)
 
 [node name="Spoon" type="TextureRect" unique_id=863515842]
-z_index = 1
 offset_right = 102.0
 offset_bottom = 345.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
