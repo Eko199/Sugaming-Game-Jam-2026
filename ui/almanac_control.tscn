@@ -3,11 +3,17 @@
 [ext_resource type="Script" uid="uid://dgm1huqnuwkma" path="res://ui/almanac.gd" id="1_j4527"]
 [ext_resource type="Texture2D" uid="uid://bd5i8llst35wu" path="res://textures/open-book.png" id="2_8llnm"]
 [ext_resource type="Texture2D" uid="uid://ciykwiaxdcmhi" path="res://textures/red-tab.png" id="2_boy4e"]
-[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="2_ytkxx"]
 [ext_resource type="Texture2D" uid="uid://2ti3mwqk8hai" path="res://textures/green-tab.png" id="3_bgjhh"]
 [ext_resource type="PackedScene" uid="uid://de1kknukqhl5m" path="res://ui/recipe.tscn" id="3_kyb6q"]
+[ext_resource type="Texture2D" uid="uid://cryb0mo88h5oc" path="res://textures/gnome_hair.png" id="4_bgjhh"]
 [ext_resource type="Texture2D" uid="uid://dnq0pllbw3rji" path="res://textures/blue-tab.png" id="4_p800m"]
 [ext_resource type="Texture2D" uid="uid://cicush4i4a3xs" path="res://textures/yellow-tab.png" id="5_iu7ow"]
+[ext_resource type="Texture2D" uid="uid://ydmnt67wtj55" path="res://textures/fireworm.png" id="5_p800m"]
+[ext_resource type="Texture2D" uid="uid://ng1l3tj37mb3" path="res://textures/frosty_mint.png" id="6_1nn8c"]
+[ext_resource type="Texture2D" uid="uid://ct0th50y6133g" path="res://textures/unicorn_tears.png" id="7_e6w12"]
+[ext_resource type="Texture2D" uid="uid://cmpqm8s8u7u0q" path="res://textures/cross.png" id="8_boy4e"]
+[ext_resource type="Texture2D" uid="uid://kje8aykg3aw8" path="res://textures/expanding_beans.png" id="8_k85eg"]
+[ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="9_0qg1a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3ftik"]
 font_size = 67
@@ -83,36 +89,49 @@ fit_content = true
 [node name="Recipes" type="MarginContainer" parent="." unique_id=1057927573]
 z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 150
+theme_override_constants/margin_left = 130
 theme_override_constants/margin_top = 180
-theme_override_constants/margin_right = 150
+theme_override_constants/margin_right = 130
 theme_override_constants/margin_bottom = 70
 
-[node name="VFlowContainer" type="VFlowContainer" parent="Recipes" unique_id=1683986501]
+[node name="Control" type="Control" parent="Recipes" unique_id=1386001590]
 layout_mode = 2
-theme_override_constants/h_separation = 250
-theme_override_constants/v_separation = 90
+
+[node name="VFlowContainer" type="VBoxContainer" parent="Recipes/Control" unique_id=974088749]
+layout_mode = 0
+offset_left = -25.0
+offset_right = 648.0
+offset_bottom = 891.0
+theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Recipe1" parent="Recipes/VFlowContainer" unique_id=1410940039 instance=ExtResource("3_kyb6q")]
+[node name="Recipe1" parent="Recipes/Control/VFlowContainer" unique_id=1410940039 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe2" parent="Recipes/VFlowContainer" unique_id=1652881450 instance=ExtResource("3_kyb6q")]
+[node name="Recipe2" parent="Recipes/Control/VFlowContainer" unique_id=1652881450 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe3" parent="Recipes/VFlowContainer" unique_id=1659612402 instance=ExtResource("3_kyb6q")]
+[node name="Recipe3" parent="Recipes/Control/VFlowContainer" unique_id=1659612402 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe4" parent="Recipes/VFlowContainer" unique_id=1538374553 instance=ExtResource("3_kyb6q")]
+[node name="Recipe4" parent="Recipes/Control/VFlowContainer" unique_id=1538374553 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe5" parent="Recipes/VFlowContainer" unique_id=1926209624 instance=ExtResource("3_kyb6q")]
+[node name="VFlowContainer2" type="VBoxContainer" parent="Recipes/Control" unique_id=1480028058]
+layout_mode = 0
+offset_left = 883.0
+offset_right = 1556.0
+offset_bottom = 891.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Recipe5" parent="Recipes/Control/VFlowContainer2" unique_id=771960630 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe6" parent="Recipes/VFlowContainer" unique_id=1209565737 instance=ExtResource("3_kyb6q")]
+[node name="Recipe6" parent="Recipes/Control/VFlowContainer2" unique_id=1481005615 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe7" parent="Recipes/VFlowContainer" unique_id=1070182856 instance=ExtResource("3_kyb6q")]
+[node name="Recipe7" parent="Recipes/Control/VFlowContainer2" unique_id=648447641 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
 [node name="Title" type="Control" parent="Recipes" unique_id=2136623018]
@@ -131,10 +150,10 @@ label_settings = SubResource("LabelSettings_3ftik")
 visible = false
 z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 180
-theme_override_constants/margin_right = 150
-theme_override_constants/margin_bottom = 70
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 170
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
 
 [node name="Title" type="Control" parent="Ingredients" unique_id=2061743193]
 layout_mode = 2
@@ -145,29 +164,123 @@ offset_left = -9.0
 offset_top = -87.5
 offset_right = 250.0
 offset_bottom = 4.5
-text = "INGREDIENTS"
+text = "  INGREDIENTS"
 label_settings = SubResource("LabelSettings_3ftik")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Ingredients" unique_id=1240819687]
 layout_mode = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 40
 
-[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer" unique_id=356395603]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ingredients/HBoxContainer" unique_id=784980776]
+custom_maximum_size = Vector2(800, -1)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Ingredient" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer" unique_id=1190100045]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient" unique_id=1173117977]
+layout_mode = 2
+texture = ExtResource("4_bgjhh")
+stretch_mode = 3
+
+[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient" unique_id=356395603]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "
-[color=black]LOREM IPSUM"
+[color=black]Gnome Hair: \"A coarse, springy strand taken from a tiny garden gnome.\""
 fit_content = true
 
-[node name="Label2" type="RichTextLabel" parent="Ingredients/HBoxContainer" unique_id=2048181357]
-custom_minimum_size = Vector2(650, 0)
+[node name="Ingredient2" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer" unique_id=1844817639]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient2" unique_id=424180424]
+layout_mode = 2
+texture = ExtResource("5_p800m")
+stretch_mode = 3
+
+[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient2" unique_id=967755770]
+custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "
-[color=black]LOREM IPSUM"
+[color=black]Fireworms: \"Wiggly creatures that generate heat like crazy. Never leave them on their own or there will be a fire.\""
+fit_content = true
+
+[node name="Ingredient3" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer" unique_id=1312275912]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient3" unique_id=782137113]
+layout_mode = 2
+texture = ExtResource("6_1nn8c")
+stretch_mode = 3
+
+[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient3" unique_id=1855132578]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]Frosty Mint: \"Ice-cold leaves that can put you in an eternal slumber.\""
+fit_content = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Ingredients/HBoxContainer" unique_id=176320194]
+custom_maximum_size = Vector2(800, -1)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Ingredient" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer2" unique_id=1623791771]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient" unique_id=2135636698]
+layout_mode = 2
+texture = ExtResource("7_e6w12")
+stretch_mode = 3
+
+[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient" unique_id=969047085]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]Unicorn Tears: \"Pure, holographic liquid magic. Bends light, reality, and customer patience.\""
+fit_content = true
+
+[node name="Ingredient2" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer2" unique_id=868862054]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient2" unique_id=1093996724]
+layout_mode = 2
+texture = ExtResource("8_k85eg")
+stretch_mode = 3
+
+[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient2" unique_id=580207619]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]Expanding Beans: \"Highly unstable magical legumes. Warning: Do not swallow unless you want to grow.\""
+fit_content = true
+
+[node name="Ingredient3" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer2" unique_id=1093127016]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient3" unique_id=1920004185]
+layout_mode = 2
+texture = ExtResource("9_0qg1a")
+stretch_mode = 3
+
+[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient3" unique_id=1405017862]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]Star Flower: \"A glowing celestial blossom that only blooms at midnight. Hums with pure energy.\""
 fit_content = true
 
 [node name="Cooking" type="MarginContainer" parent="." unique_id=307865024]
@@ -268,14 +381,16 @@ mouse_filter = 2
 
 [node name="Exit" type="Button" parent="ExitControl" unique_id=1318284532]
 layout_mode = 0
-offset_left = 1695.0
+offset_left = 1738.0
 offset_top = 117.5
 offset_right = 1831.0
-offset_bottom = 253.5
+offset_bottom = 210.5
 size_flags_horizontal = 8
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
-icon = ExtResource("2_ytkxx")
+icon = ExtResource("8_boy4e")
+flat = true
+expand_icon = true
 
 [connection signal="pressed" from="Bookmarks/CookingBtn" to="." method="_on_cooking_btn_pressed"]
 [connection signal="pressed" from="Bookmarks/IngredientsBtn" to="." method="_on_ingredients_btn_pressed"]
