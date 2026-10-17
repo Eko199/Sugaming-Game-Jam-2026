@@ -89,36 +89,49 @@ fit_content = true
 [node name="Recipes" type="MarginContainer" parent="." unique_id=1057927573]
 z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 150
+theme_override_constants/margin_left = 130
 theme_override_constants/margin_top = 180
-theme_override_constants/margin_right = 150
+theme_override_constants/margin_right = 130
 theme_override_constants/margin_bottom = 70
 
-[node name="VFlowContainer" type="VFlowContainer" parent="Recipes" unique_id=1683986501]
+[node name="Control" type="Control" parent="Recipes" unique_id=1386001590]
 layout_mode = 2
-theme_override_constants/h_separation = 250
-theme_override_constants/v_separation = 90
+
+[node name="VFlowContainer" type="VBoxContainer" parent="Recipes/Control" unique_id=974088749]
+layout_mode = 0
+offset_left = -25.0
+offset_right = 648.0
+offset_bottom = 891.0
+theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Recipe1" parent="Recipes/VFlowContainer" unique_id=1410940039 instance=ExtResource("3_kyb6q")]
+[node name="Recipe1" parent="Recipes/Control/VFlowContainer" unique_id=1410940039 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe2" parent="Recipes/VFlowContainer" unique_id=1652881450 instance=ExtResource("3_kyb6q")]
+[node name="Recipe2" parent="Recipes/Control/VFlowContainer" unique_id=1652881450 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe3" parent="Recipes/VFlowContainer" unique_id=1659612402 instance=ExtResource("3_kyb6q")]
+[node name="Recipe3" parent="Recipes/Control/VFlowContainer" unique_id=1659612402 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe4" parent="Recipes/VFlowContainer" unique_id=1538374553 instance=ExtResource("3_kyb6q")]
+[node name="Recipe4" parent="Recipes/Control/VFlowContainer" unique_id=1538374553 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe5" parent="Recipes/VFlowContainer" unique_id=1926209624 instance=ExtResource("3_kyb6q")]
+[node name="VFlowContainer2" type="VBoxContainer" parent="Recipes/Control" unique_id=1480028058]
+layout_mode = 0
+offset_left = 883.0
+offset_right = 1556.0
+offset_bottom = 891.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Recipe5" parent="Recipes/Control/VFlowContainer2" unique_id=771960630 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe6" parent="Recipes/VFlowContainer" unique_id=1209565737 instance=ExtResource("3_kyb6q")]
+[node name="Recipe6" parent="Recipes/Control/VFlowContainer2" unique_id=1481005615 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Recipe7" parent="Recipes/VFlowContainer" unique_id=1070182856 instance=ExtResource("3_kyb6q")]
+[node name="Recipe7" parent="Recipes/Control/VFlowContainer2" unique_id=648447641 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
 [node name="Title" type="Control" parent="Recipes" unique_id=2136623018]
@@ -151,7 +164,7 @@ offset_left = -9.0
 offset_top = -87.5
 offset_right = 250.0
 offset_bottom = 4.5
-text = "   INGREDIENTS"
+text = "  INGREDIENTS"
 label_settings = SubResource("LabelSettings_3ftik")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Ingredients" unique_id=1240819687]

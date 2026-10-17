@@ -41,25 +41,31 @@ func switch_page(page: Control) -> void:
 	current_page.visible = true
 	page_to_btn[current_page].position.y = -100
 
+func get_recipe_row(i: int) -> HBoxContainer:
+	var recipe_rows = recipes.get_child(0).get_child(0).get_children() \
+		+ recipes.get_child(0).get_child(1).get_children()
+	return recipe_rows[i]
+
 func unlock_knowledge(
 	potion: Cons.RECIPE,
-	ingredient: bool,
 	temperature: bool,
 	strir_pattern: bool
 ) -> void:
-	var recipe_row: Control = recipes.get_child(0).get_child(potion)
+	var recipe_row: HBoxContainer = get_recipe_row(potion)
 	var unlocked_recipe: RecipeKnowledge = unlocked_recipes[potion]
 
-	if ingredient:
-		unlocked_recipe.ingredients = true
-		var ingredients_container = recipe_row.get_node("Ingredients")
-		for i in range(unlocked_recipe.ingredients_count):
-			var ingredient_container = ingredients_container.get_child(i)
-			var ingredient_num = recipes_dict[potion][0][i]
-			ingredient_container.texture = load(Cons.INGRIDIENT_TEXTURE[ingredient_num])
+	unlocked_recipe.ingredients = true
+	var ingredients_container = recipe_row.get_node("Ingredients")
+	for i in range(unlocked_recipe.ingredients_count):
+		var ingredient_container = ingredients_container.get_child(i)
+		var ingredient = recipes_dict[potion][0][i]
+		ingredient_container.texture = load(Cons.INGRIDIENT_TEXTURE[ingredient])
 			
 	if temperature:
 		unlocked_recipe.temperature = true
+		var temp_label: Label = recipe_row.get_node("Temperature")
+		var temp_interval: Vector2i = recipes_dict[potion][1]
+		temp_label.text = "+ %s-%s °C +" % [temp_interval.x, temp_interval.y]
 	if strir_pattern:
 		unlocked_recipe.strir_pattern = true
 
@@ -70,7 +76,7 @@ func process_potion_result(result: Dictionary) -> void:
 	if not result.success:
 		return
 		
-	unlock_knowledge(result["recipe_id"], true, result["correct_temperature"], result["correct_stir"])
+	unlock_knowledge(result["recipe_id"], result["correct_temperature"], result["correct_stir"])
 
 func _ready() -> void:
 	for rcp_ingredients: Array in Recipe.RECIPE:
@@ -79,12 +85,15 @@ func _ready() -> void:
 		var potion = Recipe.RECIPE[rcp_ingredients][0]
 		unlocked_recipes[potion] = knowledge
 		
-		var recipe_row = recipes.get_child(0).get_child(potion)
+		var recipe_row: HBoxContainer = get_recipe_row(potion)
 		var ingredients_container = recipe_row.get_node("Ingredients")
-		for i in range(ingredients_count, ingredients_container.get_child_count()):
-			ingredients_container.get_child(i).queue_free()
+		for i in range(ingredients_container.get_child_count() - 1, ingredients_count - 1, -1):
+			var child = ingredients_container.get_child(i)
+			ingredients_container.remove_child(child)
+			child.queue_free()
 		
 		recipes_dict[potion] = [rcp_ingredients, Recipe.RECIPE[rcp_ingredients][1], Recipe.RECIPE[rcp_ingredients][2]]
+		recipe_row.setup()
 	
 	Event.potion_served.connect(process_potion_result)
 		
