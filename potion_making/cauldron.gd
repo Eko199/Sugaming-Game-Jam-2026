@@ -8,11 +8,12 @@ class_name Cauldron
 
 var current_items: Array[Ingredient.TYPE] = []
 var current_temp: float = 50.0
-var current_stirring: Cons.STIR_PATTERN
+var current_stirring: Cons.STIR_PATTERN = Cons.STIR_PATTERN.NONE
 
 func _ready() -> void:
 	Event.potion_served.connect(_potion_served)
 	Event.cauldron_emptied.connect(_potion_served)
+	Event.stirred.connect(_stirred)
 	water_mask.z_index = Cons.Z_WATER
 	front.z_index = Cons.Z_CAULDRON_FRONT
 	dial.z_index = Cons.Z_CAULDRON_FRONT
@@ -32,6 +33,11 @@ func add_ingredient(ing: Ingredient.TYPE) -> void:
 func _potion_served(_pot = null) -> void:
 	current_items.clear()
 	_update_water_color()
+	current_stirring = Cons.STIR_PATTERN.NONE
+
+func _stirred(pattern: Cons.STIR_PATTERN) -> void:
+	current_stirring = pattern
+	brew()
 
 func _update_water_color() -> void:
 	var tween: Tween = create_tween()

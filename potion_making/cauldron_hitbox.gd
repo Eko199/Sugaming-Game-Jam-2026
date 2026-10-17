@@ -3,6 +3,40 @@ class_name CauldronHitbox
 
 @onready var cauldron: Cauldron = owner
 
+var accumulated: float = 0.0
+var last_angle: float = NAN
+
+func _process(_delta: float) -> void:
+	var viewport: Viewport = get_viewport()
+	if not (viewport.gui_is_dragging() and viewport.gui_get_drag_data() is Spoon):
+		return
+	var radius: Vector2 = size * 0.5
+	if radius.x <= 0 or radius.y <= 0:
+		_reset_stir()
+		return
+	
+	var mouse_pos: Vector2 = (get_local_mouse_position() - radius) / radius
+	var dist: float = mouse_pos.length()
+	if dist < Cons.STIR_DEAD_ZONE or dist > Cons.STIR_OUTER_LIMIT:
+		last_angle = NAN
+		return
+	var angle: float = mouse_pos.angle()
+	if not is_nan(last_angle):
+		var step: float = angle_difference(last_angle, angle)
+		if absf(step) <= Cons.STIR_MAX_STEP:
+			accumulated += step
+	last_angle = angle
+	if absf(accumulated) < TAU * Cons.STIR_AMOUNTS[cauldron.current_items.size()]: return
+	
+	var stir_dir: Cons.STIR_PATTERN = \
+		Cons.STIR_PATTERN.CLOCKWISE if accumulated > 0 else Cons.STIR_PATTERN.COUNTERCLOCKWISE
+	accumulated = 0
+	Event.stirred.emit(stir_dir)
+
+func _reset_stir() -> void:
+	accumulated = 0
+	last_angle = NAN
+
 func _has_point(point: Vector2) -> bool:
 	var radius: Vector2 = size * 0.5
 	if radius.x <= 0.0 or radius.y <= 0.0: return false

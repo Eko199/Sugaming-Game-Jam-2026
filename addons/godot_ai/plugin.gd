@@ -94,7 +94,7 @@ const STARTUP_TRACE_COUNTER_NAMES := [
 ##       `ClientConfigurator`, `WindowsPortReservation`, ...), which keeps
 ##       this entry script's load surface explicit and reviewable.
 ##
-## Constructors, Conss, and static methods on `Mcp*` classes are not the
+## Constructors, constants, and static methods on `Mcp*` classes are not the
 ## self-update safety metric. The installer swaps one exact, re-hashed tree
 ## before the resource scan, so the root never observes an extracted-over-live
 ## mixture. In short: preload aliases are not the self-update safety metric.
@@ -464,7 +464,7 @@ func _continue_enter_tree_after_update_barrier() -> void:
 	_dispatcher.register_lazy("build_layout", "ui", &"build_layout")
 	_dispatcher.register_lazy("create_theme", "theme", &"create_theme")
 	_dispatcher.register_lazy("theme_set_color", "theme", &"set_color")
-	_dispatcher.register_lazy("theme_set_Cons", "theme", &"set_Cons")
+	_dispatcher.register_lazy("theme_set_constant", "theme", &"set_constant")
 	_dispatcher.register_lazy("theme_set_font_size", "theme", &"set_font_size")
 	_dispatcher.register_lazy("theme_set_stylebox_flat", "theme", &"set_stylebox_flat")
 	_dispatcher.register_lazy("theme_set_stylebox_texture", "theme", &"set_stylebox_texture")
@@ -1566,7 +1566,7 @@ func _on_lifecycle_transport_cleared(reason: String) -> void:
 
 ## Snapshot of the server-spawn outcome for the dock.
 ##
-## `state` is one of the `McpServerState.*` int Conss; the dock owns
+## `state` is one of the `McpServerState.*` int constants; the dock owns
 ## the UI copy per state via its own `_crash_body_for_state`. `exit_ms`
 ## is only meaningful for `CRASHED`.
 func get_server_status() -> Dictionary:

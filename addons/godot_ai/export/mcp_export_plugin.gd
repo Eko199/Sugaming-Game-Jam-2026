@@ -29,7 +29,7 @@ extends EditorExportPlugin
 ## Must equal "autoload/" + plugin.gd's GAME_HELPER_AUTOLOAD_NAME.
 ## Duplicated (not preloaded from plugin.gd) to avoid a cyclic preload —
 ## plugin.gd preloads this script. The pairing is locked by
-## test_export_strip.gd's Conss-contract test.
+## test_export_strip.gd's constants-contract test.
 const AUTOLOAD_KEY := "autoload/_mcp_game_helper"
 
 var _saved_value: Variant = null

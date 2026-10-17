@@ -1,4 +1,5 @@
 extends TextureRect
+class_name Spoon
 
 @onready var outline: TextureRect = $Outline
 
@@ -14,12 +15,18 @@ func _ready() -> void:
 	Event.ingredient_added.connect(_on_ingredient_added)
 	Event.potion_served.connect(_on_cauldron_cleared)
 	Event.cauldron_emptied.connect(_on_cauldron_cleared)
+	_update_cursor()
 
 func _on_ingredient_added(_ing = null) -> void:
 	has_ingredients = true
+	_update_cursor()
 
 func _on_cauldron_cleared(_result = null) -> void:
 	has_ingredients = false
+	_update_cursor()
+
+func _update_cursor() -> void:
+	mouse_default_cursor_shape = CURSOR_POINTING_HAND if has_ingredients else CURSOR_FORBIDDEN
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if not has_ingredients: return null

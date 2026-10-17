@@ -2,7 +2,7 @@
 class_name McpErrorCodes
 extends RefCounted
 
-## Error code Conss shared across handlers. Mirrors protocol/errors.py.
+## Error code constants shared across handlers. Mirrors protocol/errors.py.
 ##
 ## This `class_name` shipped in v2.3.2 and earlier and must stay reachable
 ## through self-update. v2.4.1 dropped it and triggered a "Could not resolve

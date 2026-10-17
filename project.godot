@@ -23,9 +23,9 @@ config/icon="res://icon.svg"
 
 Cons="*uid://dsu3sa808htg2"
 Recipe="*uid://bno3y1a6qhh4u"
-_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 Event="*uid://8nmjy3iv4nit"
 Utility="*uid://dehgpxgkrwqkk"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [display]
 

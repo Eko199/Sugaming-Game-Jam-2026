@@ -2,7 +2,7 @@ extends Node
 
 # Enums
 enum STIR_PATTERN {
-	CLOCKWISE, COUNTERCLOCKWISE, ANY
+	CLOCKWISE, COUNTERCLOCKWISE, ANY, NONE
 }
 
 enum QUALITY {
@@ -39,29 +39,30 @@ const DESCRIPTIONS: PackedStringArray = [
 ]
 
 const INGREDIENT_COLOR: PackedColorArray = [
-	Color(0.47, 0.454, 0.442, 1.0),
+	Color(0.683, 0.555, 0.485, 1.0),
 	Color(0.95, 0.498, 0.076, 1.0),
 	Color(0.4, 0.85, 0.715, 1.0),
 	Color(0.578, 0.551, 0.95, 1.0),
 	Color(0.40, 0.78, 0.15),
 	Color(1.00, 0.82, 0.15),
 ]
-const WATER_COLOR: Color = Color(0.40, 0.62, 0.85)
-const WATER_TINT_STRENGTH: PackedFloat32Array = [0.0, 0.65, 0.85, 1.0]
-const WATER_TINT_TIME: float = 0.4
 
+const QUALITY_MULT: PackedFloat32Array = [0.0, 1.0, 1.5, 2.0]
+const WATER_TINT_STRENGTH: PackedFloat32Array = [0.0, 0.65, 0.85, 1.0]
+const STIR_AMOUNTS: PackedFloat32Array = [2.0, 2.5, 3.0]
+
+# Gameplay constants
+const WATER_COLOR: Color = Color(0.40, 0.62, 0.85)
+const WATER_TINT_TIME: float = 0.4
 const Z_WATER: int = 1
 const Z_IN_CAULDRON: int = 2
 const Z_CAULDRON_FRONT: int = 3
 const Z_HELD: int = 4
 const SINK_TIME: float = 0.45
 const SINK_DEPTH: float = 70.0
-
-const QUALITY_MULT: PackedFloat32Array = [
-	0.0, 1.0, 1.5, 2.0
-]
-
-# Gameplay constants
+const STIR_DEAD_ZONE: float = 0.2
+const STIR_OUTER_LIMIT: float = 1.2
+const STIR_MAX_STEP: float = PI / 2
 const MAX_INGREDIENTS: int = 3
 const ROUND_TIME: int = 300
 const PATIENCE_MIN: int = 10

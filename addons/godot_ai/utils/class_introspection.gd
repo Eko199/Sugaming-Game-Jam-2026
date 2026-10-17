@@ -13,14 +13,14 @@ const VariantSerializer := preload("res://addons/godot_ai/utils/variant_serializ
 const DEFAULT_SECTIONS: Array[String] = ["properties"]
 ## The full documentation-shaped section set (excludes the heavier, separately
 ## gated "inheritors"). Expanded from the "all" keyword.
-const ALL_SECTIONS: Array[String] = ["properties", "methods", "signals", "enums", "Conss"]
-const KNOWN_SECTIONS: Array[String] = ["properties", "methods", "signals", "enums", "Conss", "inheritors"]
+const ALL_SECTIONS: Array[String] = ["properties", "methods", "signals", "enums", "constants"]
+const KNOWN_SECTIONS: Array[String] = ["properties", "methods", "signals", "enums", "constants", "inheritors"]
 ## Tokens a caller may legitimately pass in `sections` — the known sections plus
 ## the "all" meta-keyword. Used for error suggestions so a typo like "al" can
 ## resolve to "all"; "all" is NOT a section (it expands in `_sections`), so it
 ## stays out of KNOWN_SECTIONS which gates validity.
 const SUGGESTABLE_SECTION_TOKENS: Array[String] = [
-	"properties", "methods", "signals", "enums", "Conss", "inheritors", "all"
+	"properties", "methods", "signals", "enums", "constants", "inheritors", "all"
 ]
 const MAX_DEFAULT_ITEMS := 100
 
@@ -64,12 +64,12 @@ static func build(type_name: String, options: Dictionary = {}) -> Dictionary:
 		_add_paged(data, "signal", "signals", _signals(type_name, include_inherited), offset, limit)
 	if sections.has("enums"):
 		_add_paged(data, "enum", "enums", _enums(type_name, include_inherited), offset, limit)
-	if sections.has("Conss"):
+	if sections.has("constants"):
 		_add_paged(
 			data,
-			"Cons",
-			"Conss",
-			_unscoped_Conss(type_name, include_inherited),
+			"constant",
+			"constants",
+			_unscoped_constants(type_name, include_inherited),
 			offset,
 			limit
 		)
@@ -229,10 +229,10 @@ static func _enums(type_name: String, include_inherited: bool) -> Array[Dictiona
 	enum_names.sort()
 	for enum_name in enum_names:
 		var values: Array[Dictionary] = []
-		for Cons_name in ClassDB.class_get_enum_Conss(type_name, enum_name, not include_inherited):
+		for constant_name in ClassDB.class_get_enum_constants(type_name, enum_name, not include_inherited):
 			values.append({
-				"name": str(Cons_name),
-				"value": ClassDB.class_get_integer_Cons(type_name, Cons_name),
+				"name": str(constant_name),
+				"value": ClassDB.class_get_integer_constant(type_name, constant_name),
 			})
 		values.sort_custom(func(a, b): return a.name < b.name)
 		result.append({
@@ -243,17 +243,17 @@ static func _enums(type_name: String, include_inherited: bool) -> Array[Dictiona
 	return result
 
 
-static func _unscoped_Conss(type_name: String, include_inherited: bool) -> Array[Dictionary]:
+static func _unscoped_constants(type_name: String, include_inherited: bool) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
-	for Cons_name in ClassDB.class_get_integer_Cons_list(type_name, not include_inherited):
+	for constant_name in ClassDB.class_get_integer_constant_list(type_name, not include_inherited):
 		var enum_name := str(
-			ClassDB.class_get_integer_Cons_enum(type_name, Cons_name, not include_inherited)
+			ClassDB.class_get_integer_constant_enum(type_name, constant_name, not include_inherited)
 		)
 		if not enum_name.is_empty():
 			continue
 		result.append({
-			"name": str(Cons_name),
-			"value": ClassDB.class_get_integer_Cons(type_name, Cons_name),
+			"name": str(constant_name),
+			"value": ClassDB.class_get_integer_constant(type_name, constant_name),
 		})
 	result.sort_custom(func(a, b): return a.name < b.name)
 	return result

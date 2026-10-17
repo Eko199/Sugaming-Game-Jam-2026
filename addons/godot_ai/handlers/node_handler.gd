@@ -747,7 +747,7 @@ static func _check_coerced(value: Variant, target_type: int, prefix: String = ""
 	return ErrorCodes.prefix_message(err, prefix)
 
 
-## Build a "{\"x\":1,...}" hint string from the canonical key Conss
+## Build a "{\"x\":1,...}" hint string from the canonical key constants
 ## so adding a key (e.g. Vector4) only touches VECTORN_KEYS. Packed*Array
 ## targets short-circuit to a literal list-shaped hint.
 static func _shape_hint(target_type: int) -> String:

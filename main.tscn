@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ct0th50y6133g" path="res://textures/unicorn_tears.png" id="10_cegan"]
 [ext_resource type="Texture2D" uid="uid://kje8aykg3aw8" path="res://textures/expanding_beans.png" id="11_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="12_getpj"]
+[ext_resource type="Material" uid="uid://dfb8bhaighxkb" path="res://shaders/outline_almanac.tres" id="17_074og"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
 font_size = 32
@@ -123,7 +124,6 @@ process_material = SubResource("ParticleProcessMaterial_eifb7")
 [node name="Background" type="TextureRect" parent="." unique_id=1954090797]
 offset_right = 1920.0
 offset_bottom = 1080.0
-scale = Vector2(0.9990741, 0.9990741)
 texture = ExtResource("3_7mycd")
 
 [node name="Shelf" type="Node2D" parent="." unique_id=25351675]
@@ -198,6 +198,18 @@ icon = ExtResource("8_kek77")
 flat = true
 expand_icon = true
 
+[node name="Outline" type="TextureRect" parent="Almanac" unique_id=1619935378]
+visible = false
+show_behind_parent = true
+material = ExtResource("17_074og")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("8_kek77")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Spoon" parent="." unique_id=389561872 instance=ExtResource("7_272bh")]
 offset_left = 1592.0
 offset_top = 737.0
@@ -206,4 +218,6 @@ offset_bottom = 1123.1819
 rotation = -0.46949357
 mouse_default_cursor_shape = 2
 
+[connection signal="mouse_entered" from="Almanac" to="Almanac/Outline" method="show"]
+[connection signal="mouse_exited" from="Almanac" to="Almanac/Outline" method="hide"]
 [connection signal="pressed" from="Almanac" to="UI/ColorRect/AlmanacControl" method="_on_almanac_pressed"]
