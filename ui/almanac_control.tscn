@@ -1,18 +1,20 @@
 [gd_scene format=3 uid="uid://bf47lyj853ja"]
 
 [ext_resource type="Script" uid="uid://dgm1huqnuwkma" path="res://ui/almanac.gd" id="1_j4527"]
+[ext_resource type="Texture2D" uid="uid://bd5i8llst35wu" path="res://textures/open-book.png" id="2_8llnm"]
+[ext_resource type="Texture2D" uid="uid://ciykwiaxdcmhi" path="res://textures/red-tab.png" id="2_boy4e"]
 [ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="2_ytkxx"]
+[ext_resource type="Texture2D" uid="uid://2ti3mwqk8hai" path="res://textures/green-tab.png" id="3_bgjhh"]
 [ext_resource type="PackedScene" uid="uid://de1kknukqhl5m" path="res://ui/recipe.tscn" id="3_kyb6q"]
-
-[sub_resource type="Gradient" id="Gradient_5vw27"]
-offsets = PackedFloat32Array(0.004, 0.996, 1)
-colors = PackedColorArray(0.37162217, 0.3716222, 0.37162215, 1, 0.4220943, 0.42209432, 0.42209426, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_p7tx1"]
-gradient = SubResource("Gradient_5vw27")
+[ext_resource type="Texture2D" uid="uid://dnq0pllbw3rji" path="res://textures/blue-tab.png" id="4_p800m"]
+[ext_resource type="Texture2D" uid="uid://cicush4i4a3xs" path="res://textures/yellow-tab.png" id="5_iu7ow"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ov5wf"]
 font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ftik"]
+font_size = 67
+font_color = Color(0, 0, 0, 1)
 
 [node name="AlmanacControl" type="MarginContainer" unique_id=1700512780]
 anchors_preset = 8
@@ -32,44 +34,15 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_j4527")
 
-[node name="Bookmarks" type="Control" parent="." unique_id=722244083]
+[node name="Book" type="TextureRect" parent="." unique_id=705706127]
+z_index = 1
 layout_mode = 2
 mouse_filter = 2
-
-[node name="CookingBtn" type="Button" parent="Bookmarks" unique_id=702234793]
-layout_mode = 0
-offset_left = 1691.0
-offset_top = -120.0
-offset_right = 1809.0
-offset_bottom = 127.0
-
-[node name="IngredientsBtn" type="Button" parent="Bookmarks" unique_id=353100691]
-layout_mode = 0
-offset_left = 1521.0
-offset_top = -120.0
-offset_right = 1639.0
-offset_bottom = 127.0
-
-[node name="RecipesBtn" type="Button" parent="Bookmarks" unique_id=974889372]
-layout_mode = 0
-offset_left = 1329.0
-offset_top = -120.0
-offset_right = 1447.0
-offset_bottom = 127.0
-
-[node name="TutorialBtn" type="Button" parent="Bookmarks" unique_id=1085961713]
-layout_mode = 0
-offset_left = 98.0
-offset_top = -120.0
-offset_right = 216.0
-offset_bottom = 127.0
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=705706127]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_p7tx1")
+texture = ExtResource("2_8llnm")
 
 [node name="Tutorial" type="MarginContainer" parent="." unique_id=1424209766]
 visible = false
+z_index = 2
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 150
@@ -87,16 +60,17 @@ text = "LOREM IPSUM"
 label_settings = SubResource("LabelSettings_ov5wf")
 
 [node name="Recipes" type="MarginContainer" parent="." unique_id=1057927573]
+z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 70
 
 [node name="VFlowContainer" type="VFlowContainer" parent="Recipes" unique_id=1683986501]
 layout_mode = 2
-theme_override_constants/h_separation = 300
-theme_override_constants/v_separation = 120
+theme_override_constants/h_separation = 250
+theme_override_constants/v_separation = 90
 alignment = 1
 
 [node name="Recipe1" parent="Recipes/VFlowContainer" unique_id=1410940039 instance=ExtResource("3_kyb6q")]
@@ -120,20 +94,21 @@ layout_mode = 2
 [node name="Recipe7" parent="Recipes/VFlowContainer" unique_id=1070182856 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Recipes" unique_id=2136623018]
+[node name="Title" type="Control" parent="Recipes" unique_id=2136623018]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Recipes/Control" unique_id=2002414573]
+[node name="Label" type="Label" parent="Recipes/Title" unique_id=2002414573]
 layout_mode = 0
-offset_left = 6.0
-offset_top = -68.0
-offset_right = 1806.0
-offset_bottom = -13.0
+offset_left = -9.0
+offset_top = -87.5
+offset_right = 250.0
+offset_bottom = 4.5
 text = "RECIPES"
-label_settings = SubResource("LabelSettings_ov5wf")
+label_settings = SubResource("LabelSettings_3ftik")
 
 [node name="Ingredients" type="MarginContainer" parent="." unique_id=1353418424]
 visible = false
+z_index = 2
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 150
@@ -152,6 +127,7 @@ label_settings = SubResource("LabelSettings_ov5wf")
 
 [node name="Cooking" type="MarginContainer" parent="." unique_id=307865024]
 visible = false
+z_index = 2
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 150
@@ -168,17 +144,68 @@ layout_mode = 2
 text = "LOREM IPSUM"
 label_settings = SubResource("LabelSettings_ov5wf")
 
-[node name="ExitControl" type="Control" parent="." unique_id=634802143]
+[node name="Bookmarks" type="Control" parent="." unique_id=722244083]
 layout_mode = 2
+mouse_filter = 2
+
+[node name="CookingBtn" type="Button" parent="Bookmarks" unique_id=702234793]
+layout_mode = 0
+offset_left = 1696.0
+offset_top = -40.0
+offset_right = 1814.0
+offset_bottom = 207.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("2_boy4e")
+flat = true
+expand_icon = true
+
+[node name="IngredientsBtn" type="Button" parent="Bookmarks" unique_id=353100691]
+layout_mode = 0
+offset_left = 1540.0
+offset_top = -40.0
+offset_right = 1658.0
+offset_bottom = 207.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_bgjhh")
+flat = true
+expand_icon = true
+
+[node name="RecipesBtn" type="Button" parent="Bookmarks" unique_id=974889372]
+layout_mode = 0
+offset_left = 1382.0
+offset_top = -40.0
+offset_right = 1500.0
+offset_bottom = 207.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("4_p800m")
+flat = true
+expand_icon = true
+
+[node name="TutorialBtn" type="Button" parent="Bookmarks" unique_id=1085961713]
+layout_mode = 0
+offset_left = 98.0
+offset_top = -40.0
+offset_right = 216.0
+offset_bottom = 207.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("5_iu7ow")
+flat = true
+expand_icon = true
+
+[node name="ExitControl" type="Control" parent="." unique_id=634802143]
+z_index = 3
+layout_mode = 2
+mouse_filter = 2
 
 [node name="Exit" type="Button" parent="ExitControl" unique_id=1318284532]
 layout_mode = 0
-offset_left = 1672.0
-offset_top = 58.0
-offset_right = 1808.0
-offset_bottom = 194.0
+offset_left = 1695.0
+offset_top = 117.5
+offset_right = 1831.0
+offset_bottom = 253.5
 size_flags_horizontal = 8
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 icon = ExtResource("2_ytkxx")
 
 [connection signal="pressed" from="Bookmarks/CookingBtn" to="." method="_on_cooking_btn_pressed"]

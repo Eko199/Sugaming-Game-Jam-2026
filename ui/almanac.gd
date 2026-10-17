@@ -14,10 +14,10 @@ func open() -> void:
 
 	current_page = recipes
 	current_page.visible = true
-	visible = true
+	get_parent().visible = true
 
 func close() -> void:
-	visible = false
+	get_parent().visible = false
 	
 func switch_page(page: Control) -> void:
 	current_page.visible = false
@@ -59,6 +59,9 @@ func _on_exit_pressed() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and visible == true:
 		close()
+	if event is InputEventKey and event.pressed and not event.echo \
+		and event.keycode == KEY_SPACE and visible == false:
+			open()
 
 func _on_cooking_btn_pressed() -> void:
 	switch_page(cooking)
