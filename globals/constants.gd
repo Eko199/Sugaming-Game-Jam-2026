@@ -2,7 +2,7 @@ extends Node
 
 # Enums
 enum STIR_PATTERN {
-	LEFT, RIGHT, ZIG_ZAG, ANY
+	CLOCKWISE, COUNTERCLOCKWISE, ANY
 }
 
 enum QUALITY {
@@ -10,7 +10,8 @@ enum QUALITY {
 }
 
 enum RECIPE {
-	FIRE_RESISTANCE, STRENGTH, SHRINKING, WATER_CONTROL,
+	SHRINKING, STRENGTH, HEALING, FIRE_RESISTANCE, WATER_CONTROL,
+	NIGHT_VISION, JUMPING_POWER, CLONING
 }
 
 enum DEBUFF {
@@ -38,15 +39,6 @@ const DESCRIPTIONS: PackedStringArray = [
 	'blah',
 ]
 
-# Gameplay constants
-const MAX_INGREDIENTS: int = 3
-const ROUND_TIME: int = 300
-const PATIENCE_MIN: int = 10
-const PATIENCE_MAX: int = 30
-const CUSTOMER_GAP: float = 1.0
-const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
-const EASY_RECIPE_MIN_WEIGHT: float = 0.35
-
 const REQUEST_LINES: Array = [
 	[
 		"QUICK! A %s potion, NOW!",
@@ -67,3 +59,16 @@ const REQUEST_LINES: Array = [
 		"Ah, a %s potion would be lovely.",
 	],
 ]
+
+const QUALITY_MULT: PackedFloat32Array = [
+	0.0, 1.0, 1.5, 2.0
+]
+
+# Gameplay constants
+const MAX_INGREDIENTS: int = 3
+const ROUND_TIME: int = 300
+const PATIENCE_MIN: int = 10
+const PATIENCE_MAX: int = 30
+const CUSTOMER_GAP: float = 1.0
+const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
+const EASY_RECIPE_MIN_WEIGHT: float = 0.35

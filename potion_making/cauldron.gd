@@ -47,17 +47,13 @@ func _temperature_value_changed(value: float) -> void:
 
 func _on_stir_left_button_up() -> void:
 	if current_items.is_empty(): return
-	current_stirring = Cons.STIR_PATTERN.LEFT
+	current_stirring = Cons.STIR_PATTERN.CLOCKWISE
 	brew()
 
-func _on_stir_zig_zag_button_up() -> void:
-	if current_items.is_empty(): return
-	current_stirring = Cons.STIR_PATTERN.ZIG_ZAG
-	brew()
 
 func _on_stir_right_button_up() -> void:
 	if current_items.is_empty(): return
-	current_stirring = Cons.STIR_PATTERN.RIGHT
+	current_stirring = Cons.STIR_PATTERN.COUNTERCLOCKWISE
 	brew()
 
 #endregion

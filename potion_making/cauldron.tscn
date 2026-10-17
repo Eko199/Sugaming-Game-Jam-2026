@@ -68,17 +68,12 @@ metadata/_edit_group_ = true
 
 [node name="Left" type="Button" parent="StirButtons" unique_id=1795247537]
 layout_mode = 2
-text = "Left"
-
-[node name="ZigZag" type="Button" parent="StirButtons" unique_id=1277703947]
-layout_mode = 2
-text = "Zig Zag"
+text = "Clockwise"
 
 [node name="Right" type="Button" parent="StirButtons" unique_id=254810291]
 layout_mode = 2
-text = "Right"
+text = "Counterclockwise"
 
 [connection signal="value_changed" from="HSlider" to="." method="_temperature_value_changed"]
 [connection signal="button_up" from="StirButtons/Left" to="." method="_on_stir_left_button_up"]
-[connection signal="button_up" from="StirButtons/ZigZag" to="." method="_on_stir_zig_zag_button_up"]
 [connection signal="button_up" from="StirButtons/Right" to="." method="_on_stir_right_button_up"]

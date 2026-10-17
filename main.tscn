@@ -11,6 +11,12 @@
 font_size = 32
 font_color = Color(1.1949118, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font_size = 32
+font_color = Color(1, 0.8235294, 0.24705882, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D" unique_id=1236197917]
 script = ExtResource("1_lquwl")
 
@@ -29,6 +35,14 @@ offset_right = 175.0
 offset_bottom = 103.0
 text = "5:00"
 label_settings = SubResource("LabelSettings_0xm2m")
+
+[node name="MoneyLabel" type="Label" parent="UI" unique_id=141992439]
+offset_left = 75.0
+offset_top = 108.0
+offset_right = 76.0
+offset_bottom = 131.0
+text = "0 coins"
+label_settings = SubResource("LabelSettings_7mycd")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1861596065]
 position = Vector2(961.44446, 542.5)

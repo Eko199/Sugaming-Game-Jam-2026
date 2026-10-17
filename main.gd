@@ -6,10 +6,13 @@ class_name MainScene
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var customers_spawned: int = 0
+var money: int = 0
+var potions_served: int = 0
 
 func _ready() -> void:
 	rng.randomize()
 	Event.customer_left.connect(_on_customer_left)
+	Event.customer_paid.connect(_on_customer_paid)
 	_spawn_customer()
 
 ## 0.0 at the start of the round, 1.0 at the end
@@ -37,3 +40,7 @@ func _on_customer_left(_customer: Customer, _served: bool) -> void:
 	await get_tree().create_timer(Cons.CUSTOMER_GAP).timeout
 	if round_timer.is_stopped(): return
 	_spawn_customer()
+	
+func _on_customer_paid(amount: int, quality: Cons.QUALITY) -> void:
+	money += roundi(amount * Cons.QUALITY_MULT[quality])
+	Event.money_changed.emit(money)

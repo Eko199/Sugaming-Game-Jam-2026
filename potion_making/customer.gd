@@ -28,8 +28,8 @@ func _make_request_text() -> String:
 
 func leave(served: bool) -> void:
 	timer.stop()
-	hide()
 	Event.customer_left.emit(self, served)
+	hide()
 
 func _process(_delta: float) -> void:
 	progress_bar.max_value = patience
@@ -37,7 +37,9 @@ func _process(_delta: float) -> void:
 
 func _on_potion_served(result: Dictionary) -> void:
 	if not visible: return
-	leave(result.success and result.recipe_id == wanted)
+	var served: bool = result.success and result.recipe_id == wanted
+	if served: Event.customer_paid.emit(result.money, result.quality)
+	leave(served)
 
 func _on_timer_timeout() -> void:
 	leave(false)

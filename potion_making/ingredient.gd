@@ -2,8 +2,8 @@ extends TextureRect
 class_name Ingredient
 
 enum TYPE {
-	FIRE_WORM, FROSTY_MINT, UNICORN_TEARS,
-	EXPANDING_BEANS, STAR_FLOWER, GNOME_HAIR,
+	GNOME_HAIR, FIRE_WORM, FROSTY_MINT,
+	UNICORN_TEARS, EXPANDING_BEANS, STAR_FLOWER,
 }
 
 @export var type: TYPE
@@ -19,6 +19,8 @@ func _ready() -> void:
 	Event.cauldron_emptied.connect(_return_to_shelf)
 
 func _return_to_shelf(_result = null) -> void:
+	# A held item resolves itself on drag end (dropped or returned), resetting it now would duplicate it
+	if is_dragging: return
 	texture = saved_texture
 	is_currently_used = false
 
