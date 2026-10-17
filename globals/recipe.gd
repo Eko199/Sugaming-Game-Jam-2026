@@ -41,7 +41,12 @@ func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Cons.STIR_PATTERN):
 	ing.sort()
 	var properties: Array = RECIPE.get(ing, [])
 	if properties.is_empty(): return {
-		success = false, recipe_id = 0, money = 0, quality = Cons.QUALITY.FAIL,
+		success = false,
+		recipe_id = 0,
+		money = 0,
+		quality = Cons.QUALITY.FAIL,
+		correct_temperature = false,
+		correct_stir = false
 	}
 	var quality: Cons.QUALITY = (
 		Cons.QUALITY.POOR + int(

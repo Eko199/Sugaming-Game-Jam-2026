@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://de1kknukqhl5m"]
 
 [ext_resource type="Script" uid="uid://blmdf5hqryry8" path="res://ui/recipe_equation.gd" id="1_0eddh"]
-[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="1_h2ud4"]
+[ext_resource type="Texture2D" uid="uid://di1if4q4s2snp" path="res://textures/question.png" id="2_d3ljq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
 font_size = 40
@@ -20,10 +20,24 @@ script = ExtResource("1_0eddh")
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "??"
 label_settings = SubResource("LabelSettings_7upsp")
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Potion" unique_id=813344059]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.80472
+offset_right = 30.80472
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d3ljq")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="." unique_id=1142717900]
 custom_minimum_size = Vector2(40, 0)
@@ -40,30 +54,33 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Ingredients" unique_id=1833869229]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_h2ud4")
+texture = ExtResource("2_d3ljq")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="Ingredients" unique_id=934899504]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_h2ud4")
+texture = ExtResource("2_d3ljq")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="Ingredients" unique_id=780383086]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("1_h2ud4")
+texture = ExtResource("2_d3ljq")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Temperature" type="Label" parent="." unique_id=989610774]
 layout_mode = 2
-text = "+ ?? °C +"
+text = "+ ??? °C +"
 label_settings = SubResource("LabelSettings_7upsp")
 
 [node name="Stir" type="TextureRect" parent="." unique_id=2102165612]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("1_h2ud4")
+size_flags_vertical = 4
+texture = ExtResource("2_d3ljq")
 expand_mode = 2

@@ -59,6 +59,7 @@ func unlock_knowledge(
 
 	unlocked_recipe.ingredients = true
 	var ingredients_container = recipe_row.get_node("Ingredients")
+
 	for i in range(unlocked_recipe.ingredients_count):
 		var ingredient_container = ingredients_container.get_child(i)
 		var ingredient = recipes_dict[potion][0][i]
@@ -71,9 +72,12 @@ func unlock_knowledge(
 		temp_label.text = "+ %s-%s °C +" % [temp_interval.x, temp_interval.y]
 	if strir_pattern:
 		unlocked_recipe.strir_pattern = true
+		var stirring_pattern: Cons.STIR_PATTERN = recipes_dict[potion][2]
+		recipe_row.get_node("Stir").texture = load(Cons.STIRRING_TEXTURES[stirring_pattern])
 
 	var label: Label = recipe_row.get_node("Potion")
 	label.text = Utility.get_keyname(potion, Cons.RECIPE)
+	label.get_child(0).visible = false
 	
 func process_potion_result(result: Dictionary) -> void:
 	if not result.success:

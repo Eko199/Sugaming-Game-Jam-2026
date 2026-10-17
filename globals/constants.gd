@@ -28,6 +28,12 @@ const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://textures/star_flower.png',
 ]
 
+const STIRRING_TEXTURES: PackedStringArray = [
+	"res://textures/rotation_cw.png",
+	"res://textures/rotation_ccw.png",
+	"res://textures/rotations_both.png"
+]
+
 const DESCRIPTIONS: PackedStringArray = [
 	'A coarse, springy strand taken from a tiny garden gnome.',
 	'Wiggly creatures that generate heat like crazy.',
@@ -65,8 +71,8 @@ const STIR_DEAD_ZONE: float = 0.2
 const STIR_OUTER_LIMIT: float = 1.2
 const STIR_MAX_STEP: float = PI / 2
 const MAX_INGREDIENTS: int = 3
-const ROUND_TIME: int = 300
-const PATIENCE_MIN: int = 10
+const ROUND_TIME: int = 180
+const PATIENCE_MIN: int = 5
 const PATIENCE_MAX: int = 30
 const CUSTOMER_GAP: float = 2.0
 const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
@@ -75,3 +81,5 @@ const TEMP_DIAL_CHANGE: int = 5
 const PERFECT_TIME_BONUS: float = 5.0
 const DEBUFF_FAILS: int = 2
 const DEBUFF_TIME: int = 20
+const REQUEST_REPEAT_PENALTY_RECENT: float = 0.5
+const REQUEST_REPEAT_PENALTY_OLDER: float = 0.8
