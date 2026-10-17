@@ -33,6 +33,7 @@ func add_time(seconds: float) -> void:
 func _end_game() -> void:
 	if is_over: return
 	is_over = true
+	almanac.close()
 	get_tree().paused = true
 	Event.game_over.emit()
 

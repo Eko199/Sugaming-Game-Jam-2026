@@ -129,10 +129,10 @@ texture = ExtResource("12_getpj")
 type = 5
 
 [node name="Cauldron" parent="." unique_id=400390485 instance=ExtResource("3_lquwl")]
-offset_left = 649.0
-offset_top = 635.0
-offset_right = 1280.0
-offset_bottom = 848.0
+offset_left = 964.0
+offset_top = 778.0
+offset_right = 964.0
+offset_bottom = 778.0
 
 [node name="Customer" parent="." unique_id=637699539 instance=ExtResource("6_7mycd")]
 offset_left = 650.0
@@ -151,11 +151,11 @@ flat = true
 expand_icon = true
 
 [node name="Spoon" parent="." unique_id=389561872 instance=ExtResource("7_272bh")]
-offset_left = 1470.0
-offset_top = 723.0
-offset_right = 1572.0
-offset_bottom = 1068.0
-rotation = -0.2617994
+offset_left = 1592.0
+offset_top = 737.0
+offset_right = 1672.0
+offset_bottom = 1123.1819
+rotation = -0.46949357
 mouse_default_cursor_shape = 2
 
 [connection signal="pressed" from="Almanac" to="UI/ColorRect/AlmanacControl" method="_on_almanac_pressed"]

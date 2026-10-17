@@ -15,6 +15,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	var item_holder: Control = drag_preview.new()
 	item_holder.add_child(item)
 	item.position = -0.5 * size
+	item.rotation = PI
 	set_drag_preview(item_holder)
 	texture = null
 	is_dragging = true

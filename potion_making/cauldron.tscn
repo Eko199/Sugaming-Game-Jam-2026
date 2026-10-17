@@ -5,49 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://b88hhynfokj3a" path="res://textures/cauldron_opening_mask.png" id="2_r6ss7"]
 [ext_resource type="Texture2D" uid="uid://bv32u4fx1mo6" path="res://textures/water.png" id="2_s5f67"]
 [ext_resource type="Texture2D" uid="uid://bvmp4mxx3f3mi" path="res://textures/dial.png" id="4_bn7tg"]
+[ext_resource type="Script" uid="uid://dtb8h8mfq0a2r" path="res://potion_making/cauldron_hitbox.gd" id="6_w3ram"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_s5f67"]
-device = -1
-keycode = 74
-unicode = 106
-
-[sub_resource type="Shortcut" id="Shortcut_s5f67"]
-events = [SubResource("InputEventKey_s5f67")]
-
-[sub_resource type="InputEventKey" id="InputEventKey_jokxh"]
-device = -1
-keycode = 76
-unicode = 108
-
-[sub_resource type="Shortcut" id="Shortcut_r6ss7"]
-events = [SubResource("InputEventKey_jokxh")]
-
-[node name="Cauldron" type="Control" unique_id=400390485 groups=["cauldron"]]
-z_index = 2
+[node name="Control" type="Control" unique_id=279629869]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -315.0
-offset_top = -244.0
-offset_right = 316.0
-offset_bottom = -31.0
+mouse_filter = 1
 script = ExtResource("1_6bp5d")
 
-[node name="Control" type="Control" parent="." unique_id=279629869]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 14.0
-offset_right = 20.0
-offset_bottom = 54.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="WaterMask" type="TextureRect" parent="Control" unique_id=1457116373]
+[node name="WaterMask" type="TextureRect" parent="." unique_id=1457116373]
 clip_children = 1
 z_index = 1
 layout_mode = 1
@@ -63,7 +29,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_r6ss7")
 
-[node name="Water" type="TextureRect" parent="Control/WaterMask" unique_id=756609593]
+[node name="Water" type="TextureRect" parent="WaterMask" unique_id=756609593]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -74,7 +40,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_s5f67")
 
-[node name="Cauldron" type="TextureRect" parent="Control" unique_id=2134596718]
+[node name="Front" type="TextureRect" parent="." unique_id=2134596718]
 z_index = 3
 layout_mode = 1
 anchors_preset = 15
@@ -88,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_jokxh")
 
-[node name="Dial" type="TextureRect" parent="Control" unique_id=680366212]
+[node name="Dial" type="TextureRect" parent="." unique_id=680366212]
 z_index = 3
 layout_mode = 1
 anchors_preset = 8
@@ -106,28 +72,7 @@ scale = Vector2(0.07, 0.07)
 pivot_offset_ratio = Vector2(0.5, 0.9)
 texture = ExtResource("4_bn7tg")
 
-[node name="StirButtons" type="HBoxContainer" parent="Control" unique_id=2003139960]
-z_index = 3
-layout_mode = 0
-offset_left = -165.5
-offset_top = 216.0
-offset_right = 208.5
-offset_bottom = 299.0
-theme_override_constants/separation = 16
-alignment = 1
-metadata/_edit_group_ = true
-
-[node name="Left" type="Button" parent="Control/StirButtons" unique_id=1795247537]
-layout_mode = 2
-shortcut = SubResource("Shortcut_s5f67")
-text = "Clockwise"
-
-[node name="Right" type="Button" parent="Control/StirButtons" unique_id=254810291]
-layout_mode = 2
-shortcut = SubResource("Shortcut_r6ss7")
-text = "Counterclockwise"
-
-[node name="DialLeft" type="Button" parent="Control" unique_id=1123118483]
+[node name="DialLeft" type="Button" parent="." unique_id=1123118483]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,7 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="DialRight" type="Button" parent="Control" unique_id=2000768040]
+[node name="DialRight" type="Button" parent="." unique_id=2000768040]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -157,7 +102,14 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[connection signal="pressed" from="Control/StirButtons/Left" to="." method="_on_stir_left_button_up"]
-[connection signal="pressed" from="Control/StirButtons/Right" to="." method="_on_stir_right_button_up"]
-[connection signal="button_up" from="Control/DialLeft" to="." method="_on_dial_left_button_up"]
-[connection signal="button_up" from="Control/DialRight" to="." method="_on_dial_right_button_up"]
+[node name="Hitbox" type="Control" parent="." unique_id=400390485 groups=["cauldron"]]
+z_index = 2
+anchors_preset = 0
+offset_left = -305.0
+offset_top = -115.0
+offset_right = 326.0
+offset_bottom = 98.0
+script = ExtResource("6_w3ram")
+
+[connection signal="button_up" from="DialLeft" to="." method="_on_dial_left_button_up"]
+[connection signal="button_up" from="DialRight" to="." method="_on_dial_right_button_up"]

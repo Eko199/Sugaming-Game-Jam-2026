@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d33d5rnlivlhp"]
 
-[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="1_58bj4"]
+[ext_resource type="Texture2D" uid="uid://c0n0xcuycsire" path="res://textures/spoon.png" id="1_udf28"]
 [ext_resource type="Script" uid="uid://dp7gcy621ti35" path="res://potion_making/spoon.gd" id="2_yeann"]
 [ext_resource type="Shader" uid="uid://bi3mjspidxgua" path="res://shaders/outline.gdshader" id="3_e40xq"]
 
@@ -9,29 +9,31 @@ shader = ExtResource("3_e40xq")
 shader_parameter/target_color = Color(1, 1, 1, 1)
 
 [node name="Spoon" type="TextureRect" unique_id=863515842]
-offset_right = 102.0
-offset_bottom = 345.0
+custom_minimum_size = Vector2(80, 0)
+offset_right = 50.0
+offset_bottom = 241.36365
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("1_58bj4")
-expand_mode = 1
+texture = ExtResource("1_udf28")
+expand_mode = 5
+stretch_mode = 5
 script = ExtResource("2_yeann")
 
 [node name="Outline" type="TextureRect" parent="." unique_id=1103725472]
-visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_e40xq")
+custom_minimum_size = Vector2(82, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -6.0
+offset_left = -9.0
+offset_top = -3.0682068
 offset_right = 8.0
-offset_bottom = 6.0
+offset_bottom = 6.586334
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_58bj4")
-expand_mode = 1
+texture = ExtResource("1_udf28")
+expand_mode = 4
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
