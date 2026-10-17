@@ -9,6 +9,7 @@ custom_minimum_size = Vector2(196, 196)
 offset_right = 224.0
 offset_bottom = 224.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
 texture = ExtResource("1_x67pw")
 expand_mode = 3
 stretch_mode = 5

@@ -24,6 +24,10 @@ func _on_ingredient_added(_ing = null) -> void:
 func _on_cauldron_cleared(_result = null) -> void:
 	has_ingredients = false
 	_update_cursor()
+	if is_dragging:
+		get_viewport().gui_cancel_drag()
+	else:
+		_return_to_shelf()
 
 func _update_cursor() -> void:
 	mouse_default_cursor_shape = CURSOR_POINTING_HAND if has_ingredients else CURSOR_FORBIDDEN
@@ -48,8 +52,7 @@ func _return_to_shelf(_result = null) -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END and is_dragging:
 		is_dragging = false
-		if not is_drag_successful():
-			_return_to_shelf()
+		_return_to_shelf()
 
 func _on_mouse_entered() -> void:
 	if is_dragging or not has_ingredients: return

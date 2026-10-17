@@ -26,11 +26,12 @@ func _process(_delta: float) -> void:
 		if absf(step) <= Cons.STIR_MAX_STEP:
 			accumulated += step
 	last_angle = angle
-	if absf(accumulated) < TAU * Cons.STIR_AMOUNTS[cauldron.current_items.size()]: return
+	if absf(accumulated) < TAU * Cons.STIR_AMOUNTS[cauldron.current_items.size() - 1]: return
 	
 	var stir_dir: Cons.STIR_PATTERN = \
 		Cons.STIR_PATTERN.CLOCKWISE if accumulated > 0 else Cons.STIR_PATTERN.COUNTERCLOCKWISE
 	accumulated = 0
+	#print(Utility.get_keyname(stir_dir, Cons.STIR_PATTERN))
 	Event.stirred.emit(stir_dir)
 
 func _reset_stir() -> void:

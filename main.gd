@@ -5,6 +5,7 @@ class_name MainScene
 @onready var customer: Customer = $Customer
 @onready var spoon: TextureRect = $Spoon
 @onready var almanac: MarginContainer = $UI/ColorRect/AlmanacControl
+@onready var back_background: TextureRect = $BackBackground
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var customers_spawned: int = 0
@@ -24,6 +25,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	elapsed += delta
+	var radius: Vector2 = back_background.size / 2
+	var mouse_pos: Vector2 = (get_local_mouse_position() - radius) / radius
+	var dir: Vector2 = (get_local_mouse_position() - radius).normalized()
+	var length: float = mouse_pos.length()
+	back_background.position = length * dir * 4
 
 func add_time(seconds: float) -> void:
 	if is_over: return

@@ -111,9 +111,8 @@ offset_bottom = 740.0
 scale = Vector2(0.8, 0.8)
 
 [node name="BackBackground" type="TextureRect" parent="." unique_id=1143501225]
-offset_top = -1.0
 offset_right = 1920.0
-offset_bottom = 1079.0
+offset_bottom = 1080.0
 texture = ExtResource("5_yaehf")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="BackBackground" unique_id=1206361972]

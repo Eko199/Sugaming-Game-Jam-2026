@@ -54,6 +54,8 @@ const STIR_AMOUNTS: PackedFloat32Array = [2.0, 2.5, 3.0]
 # Gameplay constants
 const WATER_COLOR: Color = Color(0.40, 0.62, 0.85)
 const WATER_TINT_TIME: float = 0.4
+const WATER_DRAIN_TIME: float = 0.5
+const WATER_REFILL_TIME: float = 1.0
 const Z_WATER: int = 1
 const Z_IN_CAULDRON: int = 2
 const Z_CAULDRON_FRONT: int = 3
