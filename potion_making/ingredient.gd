@@ -40,6 +40,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	is_currently_used = true
 	is_dragging = true
 	outline.hide()
+	Audio.play("ingredient_pick", 0.05)
 	return self
 
 func _notification(what: int) -> void:
@@ -47,6 +48,7 @@ func _notification(what: int) -> void:
 		is_dragging = false
 		if not is_drag_successful():
 			_return_to_shelf()
+			Audio.play("ingredient_drop_fail", 0.05)
 
 func _on_mouse_entered() -> void:
 	if is_dragging or is_currently_used: return

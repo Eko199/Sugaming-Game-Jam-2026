@@ -10,7 +10,7 @@ enum QUALITY {
 }
 
 enum RECIPE {
-	SHRINKING, STRENGTH, HEALING, FIRE_RESISTANCE,
+	SHRINKING, ENLARGEMENT, HEALING, FIRE_RESISTANCE,
 	WATER_CONTROL, JUMPING_POWER, CLONING
 }
 
@@ -54,8 +54,8 @@ const STIR_AMOUNTS: PackedFloat32Array = [2.0, 2.5, 3.0]
 # Gameplay constants
 const WATER_COLOR: Color = Color(0.40, 0.62, 0.85)
 const WATER_TINT_TIME: float = 0.4
-const WATER_DRAIN_TIME: float = 0.5
-const WATER_REFILL_TIME: float = 1.0
+const WATER_DRAIN_TIME: float = 0.7
+const WATER_REFILL_TIME: float = 0.9
 const Z_WATER: int = 1
 const Z_IN_CAULDRON: int = 2
 const Z_CAULDRON_FRONT: int = 3
@@ -69,7 +69,7 @@ const MAX_INGREDIENTS: int = 3
 const ROUND_TIME: int = 300
 const PATIENCE_MIN: int = 10
 const PATIENCE_MAX: int = 30
-const CUSTOMER_GAP: float = 1.0
+const CUSTOMER_GAP: float = 2.0
 const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
 const EASY_RECIPE_MIN_WEIGHT: float = 0.35
 const TEMP_DIAL_CHANGE: int = 5

@@ -11,7 +11,7 @@ var RECIPE: Dictionary[Array, Array] = {
 		Cons.STIR_PATTERN.ANY, 10
 	],
 	[Ingredient.TYPE.EXPANDING_BEANS] : [
-		Cons.RECIPE.STRENGTH, Vector2i(75, 95),
+		Cons.RECIPE.ENLARGEMENT, Vector2i(75, 95),
 		Cons.STIR_PATTERN.CLOCKWISE, 15
 	],
 	[Ingredient.TYPE.UNICORN_TEARS, Ingredient.TYPE.STAR_FLOWER] : [

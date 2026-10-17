@@ -25,6 +25,7 @@ func _process(_delta: float) -> void:
 		var step: float = angle_difference(last_angle, angle)
 		if absf(step) <= Cons.STIR_MAX_STEP:
 			accumulated += step
+			if absf(step) > 0.01: Audio.keep_stirring()
 	last_angle = angle
 	if absf(accumulated) < TAU * Cons.STIR_AMOUNTS[cauldron.current_items.size() - 1]: return
 	

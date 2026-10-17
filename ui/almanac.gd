@@ -21,6 +21,7 @@ var current_page: Control
 var unlocked_recipes: Dictionary = {}
 
 func open() -> void:
+	if not get_parent().visible: Audio.play("almanac_open")
 	if current_page:
 		current_page.visible = false
 		page_to_btn[current_page].position.y = -40
@@ -31,9 +32,11 @@ func open() -> void:
 	page_to_btn[current_page].position.y = -100
 
 func close() -> void:
+	if get_parent().visible: Audio.play("almanac_close")
 	get_parent().visible = false
 	
 func switch_page(page: Control) -> void:
+	if page != current_page: Audio.play("almanac_tab", 0.05)
 	page_to_btn[current_page].position.y = -40
 	current_page.visible = false
 	current_page = page

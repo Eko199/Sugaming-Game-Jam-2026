@@ -23,6 +23,7 @@ func _ready() -> void:
 	_potion_served()
 	_ready_done = true
 	update_dial()
+	Audio.start_cauldron()
 
 func can_accept() -> bool:
 	return current_items.size() < Cons.MAX_INGREDIENTS
@@ -35,7 +36,6 @@ func add_ingredient(ing: Ingredient.TYPE) -> void:
 
 func _potion_served(_pot = null) -> void:
 	current_items.clear()
-	_update_water_color()
 	current_stirring = Cons.STIR_PATTERN.NONE
 	if is_node_ready() and _ready_done:
 		_refill_water()
@@ -69,21 +69,25 @@ func _is_spoon_held() -> bool:
 func _unhandled_input(event: InputEvent) -> void:
 	if _is_spoon_held(): return
 	if event.is_action('temp_down'):
-		current_temp = clamp(current_temp - Cons.TEMP_DIAL_CHANGE, 0, 100)
-		update_dial()
+		_change_temp(-Cons.TEMP_DIAL_CHANGE)
 	if event.is_action('temp_up'):
-		current_temp = clamp(current_temp + Cons.TEMP_DIAL_CHANGE, 0, 100)
-		update_dial()
+		_change_temp(Cons.TEMP_DIAL_CHANGE)
+
+func _change_temp(amount: int) -> void:
+	var new_temp: float = clamp(current_temp + amount, 0, 100)
+	if new_temp == current_temp: return
+	current_temp = new_temp
+	update_dial()
+	Audio.play("dial_click", 0.05)
 
 func update_dial() -> void:
 	dial.rotation = PI * (current_temp / 100) - PI / 2
+	Audio.set_heat(current_temp / 100)
 
 func _on_dial_left_button_up() -> void:
 	if _is_spoon_held(): return
-	current_temp = clamp(current_temp - Cons.TEMP_DIAL_CHANGE, 0, 100)
-	update_dial()
+	_change_temp(-Cons.TEMP_DIAL_CHANGE)
 
 func _on_dial_right_button_up() -> void:
 	if _is_spoon_held(): return
-	current_temp = clamp(current_temp + Cons.TEMP_DIAL_CHANGE, 0, 100)
-	update_dial()
+	_change_temp(Cons.TEMP_DIAL_CHANGE)

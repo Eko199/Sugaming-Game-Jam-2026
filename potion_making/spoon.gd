@@ -43,6 +43,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	texture = null
 	is_dragging = true
 	outline.hide()
+	Audio.play("spoon_pick", 0.05)
 	return self
 
 func _return_to_shelf(_result = null) -> void:
