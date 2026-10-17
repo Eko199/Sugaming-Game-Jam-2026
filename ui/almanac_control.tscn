@@ -13,6 +13,12 @@ gradient = SubResource("Gradient_5vw27")
 [sub_resource type="LabelSettings" id="LabelSettings_ov5wf"]
 font_size = 40
 
+[sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7tx1"]
+font_size = 30
+
 [node name="AlmanacControl" type="Control" unique_id=1011438134]
 layout_mode = 3
 anchors_preset = 0
@@ -37,7 +43,7 @@ offset_top = -490.0
 offset_right = 513.0
 offset_bottom = -360.0
 
-[node name="RecipeesBtn" type="Button" parent="." unique_id=974889372]
+[node name="RecipesBtn" type="Button" parent="." unique_id=974889372]
 layout_mode = 0
 offset_left = 323.0
 offset_top = -490.0
@@ -91,28 +97,432 @@ offset_bottom = 292.0
 text = "LOREM IPSUM"
 label_settings = SubResource("LabelSettings_ov5wf")
 
-[node name="Recipees" type="Control" parent="." unique_id=424544720]
+[node name="Recipes" type="Control" parent="." unique_id=424544720]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Recipees" unique_id=2002414573]
+[node name="Label" type="Label" parent="Recipes" unique_id=2002414573]
 layout_mode = 0
 offset_left = -616.0
 offset_top = -342.0
 offset_right = -79.0
-offset_bottom = 295.0
-text = "RECIPEES"
+offset_bottom = -277.0
+text = "RECIPES"
 label_settings = SubResource("LabelSettings_ov5wf")
 
-[node name="Label2" type="Label" parent="Recipees" unique_id=1662505809]
+[node name="Recipe" type="Control" parent="Recipes" unique_id=986180403]
+anchors_preset = 0
+offset_left = -603.0
+offset_top = -256.0
+offset_right = -563.0
+offset_bottom = -216.0
+
+[node name="Potion" type="Label" parent="Recipes/Recipe" unique_id=735721982]
 layout_mode = 0
-offset_left = 105.0
-offset_top = -345.0
-offset_right = 619.0
-offset_bottom = 292.0
-text = "LOREM IPSUM"
-label_settings = SubResource("LabelSettings_ov5wf")
+offset_left = -11.0
+offset_top = 9.0
+offset_right = 104.0
+offset_bottom = 51.0
+text = "??"
+label_settings = SubResource("LabelSettings_7upsp")
+
+[node name="Label" type="Label" parent="Recipes/Recipe" unique_id=1869201343]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 7.0
+offset_right = 156.0
+offset_bottom = 49.0
+text = "="
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Ingredients" type="Control" parent="Recipes/Recipe" unique_id=2067530035]
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe/Ingredients" unique_id=393491774]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -29.0
+offset_right = 81.0
+offset_bottom = 56.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Temperature" type="Label" parent="Recipes/Recipe" unique_id=543785432]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 9.0
+offset_right = 322.0
+offset_bottom = 51.0
+text = "+ ?? °C +"
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Stir" type="TextureRect" parent="Recipes/Recipe" unique_id=1626067985]
+layout_mode = 0
+offset_left = 423.0
+offset_top = -11.0
+offset_right = 513.0
+offset_bottom = 79.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Recipe2" type="Control" parent="Recipes" unique_id=1829628193]
+anchors_preset = 0
+offset_left = -600.0
+offset_top = -89.0
+offset_right = -560.0
+offset_bottom = -49.0
+
+[node name="Potion" type="Label" parent="Recipes/Recipe2" unique_id=409035955]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 9.0
+offset_right = 104.0
+offset_bottom = 51.0
+text = "??"
+label_settings = SubResource("LabelSettings_7upsp")
+
+[node name="Label" type="Label" parent="Recipes/Recipe2" unique_id=880203666]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 7.0
+offset_right = 156.0
+offset_bottom = 49.0
+text = "="
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Ingredients" type="Control" parent="Recipes/Recipe2" unique_id=613604529]
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe2/Ingredients" unique_id=1033467293]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -29.0
+offset_right = 81.0
+offset_bottom = 56.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Temperature" type="Label" parent="Recipes/Recipe2" unique_id=1046975857]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 9.0
+offset_right = 322.0
+offset_bottom = 51.0
+text = "+ ?? °C +"
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Stir" type="TextureRect" parent="Recipes/Recipe2" unique_id=735570582]
+layout_mode = 0
+offset_left = 423.0
+offset_top = -11.0
+offset_right = 513.0
+offset_bottom = 79.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Recipe3" type="Control" parent="Recipes" unique_id=2110742933]
+anchors_preset = 0
+offset_left = -597.0
+offset_top = 55.0
+offset_right = -557.0
+offset_bottom = 95.0
+
+[node name="Potion" type="Label" parent="Recipes/Recipe3" unique_id=1575954283]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 9.0
+offset_right = 104.0
+offset_bottom = 51.0
+text = "??"
+label_settings = SubResource("LabelSettings_7upsp")
+
+[node name="Label" type="Label" parent="Recipes/Recipe3" unique_id=1883435708]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 7.0
+offset_right = 156.0
+offset_bottom = 49.0
+text = "="
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Ingredients" type="Control" parent="Recipes/Recipe3" unique_id=839706517]
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe3/Ingredients" unique_id=698637769]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -29.0
+offset_right = 81.0
+offset_bottom = 56.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Temperature" type="Label" parent="Recipes/Recipe3" unique_id=677462490]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 9.0
+offset_right = 322.0
+offset_bottom = 51.0
+text = "+ ?? °C +"
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Stir" type="TextureRect" parent="Recipes/Recipe3" unique_id=43680711]
+layout_mode = 0
+offset_left = 423.0
+offset_top = -11.0
+offset_right = 513.0
+offset_bottom = 79.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Recipe4" type="Control" parent="Recipes" unique_id=270526190]
+anchors_preset = 0
+offset_left = -592.0
+offset_top = 202.0
+offset_right = -552.0
+offset_bottom = 242.0
+
+[node name="Potion" type="Label" parent="Recipes/Recipe4" unique_id=1836309407]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 9.0
+offset_right = 104.0
+offset_bottom = 51.0
+text = "??"
+label_settings = SubResource("LabelSettings_7upsp")
+
+[node name="Label" type="Label" parent="Recipes/Recipe4" unique_id=892389295]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 7.0
+offset_right = 156.0
+offset_bottom = 49.0
+text = "="
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Ingredients" type="Control" parent="Recipes/Recipe4" unique_id=710974432]
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe4/Ingredients" unique_id=247368341]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -29.0
+offset_right = 81.0
+offset_bottom = 56.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Temperature" type="Label" parent="Recipes/Recipe4" unique_id=449443182]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 9.0
+offset_right = 322.0
+offset_bottom = 51.0
+text = "+ ?? °C +"
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Stir" type="TextureRect" parent="Recipes/Recipe4" unique_id=1598263887]
+layout_mode = 0
+offset_left = 423.0
+offset_top = -11.0
+offset_right = 513.0
+offset_bottom = 79.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Recipe5" type="Control" parent="Recipes" unique_id=227661377]
+anchors_preset = 0
+offset_left = 99.0
+offset_top = -186.0
+offset_right = 139.0
+offset_bottom = -146.0
+
+[node name="Potion" type="Label" parent="Recipes/Recipe5" unique_id=2118297799]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 9.0
+offset_right = 104.0
+offset_bottom = 51.0
+text = "??"
+label_settings = SubResource("LabelSettings_7upsp")
+
+[node name="Label" type="Label" parent="Recipes/Recipe5" unique_id=1860827089]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 7.0
+offset_right = 156.0
+offset_bottom = 49.0
+text = "="
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Ingredients" type="Control" parent="Recipes/Recipe5" unique_id=723943786]
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe5/Ingredients" unique_id=1609551037]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -29.0
+offset_right = 81.0
+offset_bottom = 56.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Temperature" type="Label" parent="Recipes/Recipe5" unique_id=33292447]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 9.0
+offset_right = 322.0
+offset_bottom = 51.0
+text = "+ ?? °C +"
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Stir" type="TextureRect" parent="Recipes/Recipe5" unique_id=115962589]
+layout_mode = 0
+offset_left = 423.0
+offset_top = -11.0
+offset_right = 513.0
+offset_bottom = 79.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Recipe6" type="Control" parent="Recipes" unique_id=1370976381]
+anchors_preset = 0
+offset_left = 99.0
+offset_top = -11.0
+offset_right = 139.0
+offset_bottom = 29.0
+
+[node name="Potion" type="Label" parent="Recipes/Recipe6" unique_id=952334328]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 9.0
+offset_right = 104.0
+offset_bottom = 51.0
+text = "??"
+label_settings = SubResource("LabelSettings_7upsp")
+
+[node name="Label" type="Label" parent="Recipes/Recipe6" unique_id=551608348]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 7.0
+offset_right = 156.0
+offset_bottom = 49.0
+text = "="
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Ingredients" type="Control" parent="Recipes/Recipe6" unique_id=932787130]
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe6/Ingredients" unique_id=1217816636]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -29.0
+offset_right = 81.0
+offset_bottom = 56.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Temperature" type="Label" parent="Recipes/Recipe6" unique_id=560546605]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 9.0
+offset_right = 322.0
+offset_bottom = 51.0
+text = "+ ?? °C +"
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Stir" type="TextureRect" parent="Recipes/Recipe6" unique_id=1211241455]
+layout_mode = 0
+offset_left = 423.0
+offset_top = -11.0
+offset_right = 513.0
+offset_bottom = 79.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Recipe7" type="Control" parent="Recipes" unique_id=1525314024]
+anchors_preset = 0
+offset_left = 101.0
+offset_top = 159.0
+offset_right = 141.0
+offset_bottom = 199.0
+
+[node name="Potion" type="Label" parent="Recipes/Recipe7" unique_id=533980122]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 9.0
+offset_right = 104.0
+offset_bottom = 51.0
+text = "??"
+label_settings = SubResource("LabelSettings_7upsp")
+
+[node name="Label" type="Label" parent="Recipes/Recipe7" unique_id=2094402526]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 7.0
+offset_right = 156.0
+offset_bottom = 49.0
+text = "="
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Ingredients" type="Control" parent="Recipes/Recipe7" unique_id=1349457394]
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 206.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe7/Ingredients" unique_id=1952044753]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -29.0
+offset_right = 81.0
+offset_bottom = 56.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
+
+[node name="Temperature" type="Label" parent="Recipes/Recipe7" unique_id=854308621]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 9.0
+offset_right = 322.0
+offset_bottom = 51.0
+text = "+ ?? °C +"
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Stir" type="TextureRect" parent="Recipes/Recipe7" unique_id=1898752229]
+layout_mode = 0
+offset_left = 423.0
+offset_top = -11.0
+offset_right = 513.0
+offset_bottom = 79.0
+texture = ExtResource("2_ytkxx")
+expand_mode = 2
 
 [node name="Ingredients" type="Control" parent="." unique_id=1408980002]
 visible = false
@@ -164,6 +574,6 @@ label_settings = SubResource("LabelSettings_ov5wf")
 
 [connection signal="pressed" from="CookingBtn" to="." method="_on_cooking_btn_pressed"]
 [connection signal="pressed" from="IngredientsBtn" to="." method="_on_ingredients_btn_pressed"]
-[connection signal="pressed" from="RecipeesBtn" to="." method="_on_recipees_btn_pressed"]
+[connection signal="pressed" from="RecipesBtn" to="." method="_on_recipes_btn_pressed"]
 [connection signal="pressed" from="TutorialBtn" to="." method="_on_tutorial_btn_pressed"]
 [connection signal="pressed" from="TextureRect/Exit" to="." method="_on_exit_pressed"]

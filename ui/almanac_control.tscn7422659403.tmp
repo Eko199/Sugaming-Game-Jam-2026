@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://bf47lyj853ja"]
+
+[ext_resource type="Script" uid="uid://dgm1huqnuwkma" path="res://ui/almanac.gd" id="1_j4527"]
+[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="2_ytkxx"]
+
+[sub_resource type="Gradient" id="Gradient_5vw27"]
+offsets = PackedFloat32Array(0.004, 0.996, 1)
+colors = PackedColorArray(0.37162217, 0.3716222, 0.37162215, 1, 0.4220943, 0.42209432, 0.42209426, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p7tx1"]
+gradient = SubResource("Gradient_5vw27")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ov5wf"]
+font_size = 40
+
+[node name="AlmanacControl" type="Control" unique_id=1011438134]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 951.0
+offset_top = 635.0
+offset_right = 1010.0
+offset_bottom = 700.0
+script = ExtResource("1_j4527")
+metadata/_edit_group_ = true
+
+[node name="CookingBtn" type="Button" parent="." unique_id=702234793]
+layout_mode = 0
+offset_left = 544.0
+offset_top = -490.0
+offset_right = 622.0
+offset_bottom = -360.0
+
+[node name="IngredientsBtn" type="Button" parent="." unique_id=353100691]
+layout_mode = 0
+offset_left = 435.0
+offset_top = -490.0
+offset_right = 513.0
+offset_bottom = -360.0
+
+[node name="RecipesBtn" type="Button" parent="." unique_id=974889372]
+layout_mode = 0
+offset_left = 323.0
+offset_top = -490.0
+offset_right = 401.0
+offset_bottom = -360.0
+
+[node name="TutorialBtn" type="Button" parent="." unique_id=1085961713]
+layout_mode = 0
+offset_left = -583.0
+offset_top = -490.0
+offset_right = -505.0
+offset_bottom = -360.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=705706127]
+layout_mode = 0
+offset_left = -695.0
+offset_top = -412.0
+offset_right = 680.0
+offset_bottom = 348.0
+texture = SubResource("GradientTexture2D_p7tx1")
+
+[node name="Exit" type="Button" parent="TextureRect" unique_id=1318284532]
+layout_mode = 0
+offset_left = 1187.0
+offset_top = 33.0
+offset_right = 1323.0
+offset_bottom = 169.0
+icon = ExtResource("2_ytkxx")
+
+[node name="Tutorial" type="Control" parent="." unique_id=407396862]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Tutorial" unique_id=2135312719]
+layout_mode = 0
+offset_left = -616.0
+offset_top = -342.0
+offset_right = -79.0
+offset_bottom = 295.0
+text = "TUTORIAL"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Label2" type="Label" parent="Tutorial" unique_id=407766913]
+layout_mode = 0
+offset_left = 105.0
+offset_top = -345.0
+offset_right = 619.0
+offset_bottom = 292.0
+text = "LOREM IPSUM"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Recipes" type="Control" parent="." unique_id=424544720]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Recipes" unique_id=2002414573]
+layout_mode = 0
+offset_left = -616.0
+offset_top = -342.0
+offset_right = -79.0
+offset_bottom = 295.0
+text = "RECIPEES"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Label2" type="Label" parent="Recipes" unique_id=1662505809]
+layout_mode = 0
+offset_left = 105.0
+offset_top = -345.0
+offset_right = 619.0
+offset_bottom = 292.0
+text = "LOREM IPSUM"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Ingredients" type="Control" parent="." unique_id=1408980002]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Ingredients" unique_id=1372315519]
+layout_mode = 0
+offset_left = -616.0
+offset_top = -342.0
+offset_right = -79.0
+offset_bottom = 295.0
+text = "INGREDENTS"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Label2" type="Label" parent="Ingredients" unique_id=73934723]
+layout_mode = 0
+offset_left = 105.0
+offset_top = -345.0
+offset_right = 619.0
+offset_bottom = 292.0
+text = "LOREM IPSUM"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Cooking" type="Control" parent="." unique_id=1388461027]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Cooking" unique_id=1587061550]
+layout_mode = 0
+offset_left = -616.0
+offset_top = -342.0
+offset_right = -79.0
+offset_bottom = 295.0
+text = "COOKING"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Label2" type="Label" parent="Cooking" unique_id=556355266]
+layout_mode = 0
+offset_left = 105.0
+offset_top = -345.0
+offset_right = 619.0
+offset_bottom = 292.0
+text = "LOREM IPSUM"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[connection signal="pressed" from="CookingBtn" to="." method="_on_cooking_btn_pressed"]
+[connection signal="pressed" from="IngredientsBtn" to="." method="_on_ingredients_btn_pressed"]
+[connection signal="pressed" from="RecipesBtn" to="." method="_on_recipes_btn_pressed"]
+[connection signal="pressed" from="TutorialBtn" to="." method="_on_tutorial_btn_pressed"]
+[connection signal="pressed" from="TextureRect/Exit" to="." method="_on_exit_pressed"]
