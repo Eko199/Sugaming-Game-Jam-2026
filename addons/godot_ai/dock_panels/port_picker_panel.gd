@@ -38,11 +38,11 @@ func setup() -> void:
 
 
 func _build_ui() -> void:
-	add_theme_constant_override("separation", 4)
+	add_theme_Cons_override("separation", 4)
 	visible = false
 
 	var picker_row := HBoxContainer.new()
-	picker_row.add_theme_constant_override("separation", 6)
+	picker_row.add_theme_Cons_override("separation", 6)
 
 	_spinbox = _port_spinbox(ClientConfigurator.http_port(), "Effective HTTP port")
 	picker_row.add_child(_spinbox)

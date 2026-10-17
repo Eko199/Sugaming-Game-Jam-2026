@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ddyr3a0jetguo"]
+
+[node name="Customer" type="TextureRect" unique_id=637699539]
+offset_left = 670.0
+offset_top = 104.0
+offset_right = 956.0
+offset_bottom = 485.0

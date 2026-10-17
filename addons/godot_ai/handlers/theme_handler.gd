@@ -3,17 +3,17 @@ extends "res://addons/godot_ai/handlers/command_handler.gd"
 
 const ErrorCodes := preload("res://addons/godot_ai/utils/error_codes.gd")
 
-## Handles Theme resource authoring: creating, modifying color/constant/font-size/
+## Handles Theme resource authoring: creating, modifying color/Cons/font-size/
 ## stylebox slots, and applying a theme to a Control subtree.
 ##
 ## Themes are Godot's equivalent of USS: a Theme holds (class, name) -> value
-## entries (colors, constants, fonts, font_sizes, styleboxes, icons) which
+## entries (colors, Conss, fonts, font_sizes, styleboxes, icons) which
 ## cascade down a Control subtree when the theme is assigned at any ancestor.
 ## One well-authored theme replaces hundreds of per-node property sets.
 
 const _COLOR_HINT := "expected hex #rrggbb, named color, or {r,g,b,a} dict"
 
-## Theme constants/font sizes and StyleBoxFlat int properties are 32-bit in the
+## Theme Conss/font sizes and StyleBoxFlat int properties are 32-bit in the
 ## engine; GDScript ints are 64-bit, so an unvalidated 4294967296 narrows to 0
 ## (and 2147483648 to -2147483648) at the property assignment.
 const _INT32_MIN := -2147483648
@@ -21,7 +21,7 @@ const _INT32_MAX := 2147483647
 
 ## Native storage kinds for numeric theme destinations, so validation models
 ## what the engine actually keeps:
-##   _NATIVE_INT32          C++ int32 (Theme constants/font sizes, shadow_size)
+##   _NATIVE_INT32          C++ int32 (Theme Conss/font sizes, shadow_size)
 ##   _NATIVE_FLOAT32        C++ real_t (margins, shadow offsets, Color components)
 ##   _NATIVE_INT32_FLOAT32  int accessors backed by real_t storage: StyleBoxFlat
 ##                          border widths and corner radii take ints but store
@@ -102,7 +102,7 @@ func create_theme(params: Dictionary) -> Dictionary:
 
 
 # ============================================================================
-# theme_set_color / theme_set_constant / theme_set_font_size
+# theme_set_color / theme_set_Cons / theme_set_font_size
 # ============================================================================
 
 func set_color(params: Dictionary) -> Dictionary:
@@ -113,16 +113,16 @@ func set_color(params: Dictionary) -> Dictionary:
 		func(v): return _parse_color(v))
 
 
-# constant / font_size parsers validate before coercing: int("abc")/int({})/int([])
+# Cons / font_size parsers validate before coercing: int("abc")/int({})/int([])
 # all return 0 in GDScript (never null), so a bare `int(v)` would silently store
 # garbage as 0 and report success. Returning null for non-numeric input lets
 # _set_scalar's null guard surface a VALUE_OUT_OF_RANGE error, matching the
 # color path's contract.
-func set_constant(params: Dictionary) -> Dictionary:
-	return _set_scalar(params, "constant", func(theme, name, cls): return theme.get_constant(name, cls),
-		func(theme, name, cls, val): theme.set_constant(name, cls, int(val)),
-		func(theme, name, cls): theme.clear_constant(name, cls),
-		func(theme, name, cls): return theme.has_constant(name, cls),
+func set_Cons(params: Dictionary) -> Dictionary:
+	return _set_scalar(params, "Cons", func(theme, name, cls): return theme.get_Cons(name, cls),
+		func(theme, name, cls, val): theme.set_Cons(name, cls, int(val)),
+		func(theme, name, cls): theme.clear_Cons(name, cls),
+		func(theme, name, cls): return theme.has_Cons(name, cls),
 		func(v): return _parse_int32_value(v))
 
 
@@ -134,7 +134,7 @@ func set_font_size(params: Dictionary) -> Dictionary:
 		func(v): return _parse_int32_value(v))
 
 
-## Theme constant/font_size slots are 32-bit ints. Accepts int/float and
+## Theme Cons/font_size slots are 32-bit ints. Accepts int/float and
 ## valid-int strings, but rejects non-finite or out-of-int32 values before the
 ## engine narrowing can wrap them (4294967296 -> 0, 2147483648 -> -2147483648).
 ## In-range fractional values keep the existing truncation policy.
@@ -151,7 +151,7 @@ static func _parse_int32_value(v: Variant) -> Variant:
 	return int(number)
 
 
-# Shared implementation for scalar Theme slots (color, constant, font_size).
+# Shared implementation for scalar Theme slots (color, Cons, font_size).
 # Captures old value, applies new value, persists it as a pre-flight save, then
 # registers undo that restores the old value and saves again. A failed
 # pre-flight save restores the old value and reports an error instead of
@@ -190,7 +190,7 @@ func _set_scalar(
 		)
 	var parsed = parser.call(raw_value)
 	if parsed == null:
-		## color slots want a color hint; constant/font_size are integer slots.
+		## color slots want a color hint; Cons/font_size are integer slots.
 		var hint := _COLOR_HINT if kind == "color" else "expected a 32-bit integer"
 		return ErrorCodes.make(ErrorCodes.VALUE_OUT_OF_RANGE,
 			"Invalid %s value: %s (%s)" % [kind, raw_value, hint])

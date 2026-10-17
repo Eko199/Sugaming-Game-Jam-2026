@@ -84,7 +84,7 @@ const VARYING_TYPE_NAMES := {
 const ALIASES := {
 	"VisualShaderNodeScalarOp": "VisualShaderNodeFloatOp",
 	"VisualShaderNodeScalarFunc": "VisualShaderNodeFloatFunc",
-	"VisualShaderNodeVectorConstant": "VisualShaderNodeVec3Constant",
+	"VisualShaderNodeVectorCons": "VisualShaderNodeVec3Cons",
 	"VisualShaderNodeVectorParameter": "VisualShaderNodeVec3Parameter",
 	"VisualShaderNodeTime": "VisualShaderNodeInput",
 	"VisualShaderNodeSin": "VisualShaderNodeFloatFunc",
@@ -98,7 +98,7 @@ const IMPLICIT := {
 }
 ## Only node-authoring properties, never script/resource ownership or arbitrary code.
 const PROPERTIES := [
-	"constant", "texture", "operator", "function", "op_type", "input_name",
+	"Cons", "texture", "operator", "function", "op_type", "input_name",
 	"parameter_name", "varying_name", "varying_type",
 	"default_value_enabled", "default_value", "qualifier",
 	"source", "texture_type", "texture_filter", "texture_repeat",

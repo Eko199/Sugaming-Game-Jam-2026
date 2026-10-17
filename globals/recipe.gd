@@ -7,22 +7,22 @@ const PRICE: int = 3
 
 const HEAT_GRACE: int = 15
 var RECIPE: Dictionary[Array, Array] = {
-	[Ingredient.TYPE.FIRE_WORM, Ingredient.TYPE.COLD_MINTLEAF] : [Constant.RECIPE.REC1, Vector2i(30, 70), Constant.STIR_PATTERN.NONE, 10]
+	[Ingredient.TYPE.FIRE_WORM, Ingredient.TYPE.FROSTY_MINT] : [Cons.RECIPE.REC1, Vector2i(30, 70), Cons.STIR_PATTERN.NONE, 10]
 }
 
-func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Constant.STIR_PATTERN):
+func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Cons.STIR_PATTERN):
 	ing.sort()
 	var properties: Array = RECIPE.get(ing, [])
 	if properties.is_empty(): return {
-		success = false, recipe_id = 0, money = 0, quality = Constant.QUALITY.FAIL,
+		success = false, recipe_id = 0, money = 0, quality = Cons.QUALITY.FAIL,
 	}
-	var quality: Constant.QUALITY = (
-		Constant.QUALITY.POOR + int(
+	var quality: Cons.QUALITY = (
+		Cons.QUALITY.POOR + int(
 			properties[HEAT].y > heat and properties[HEAT].x < heat
 		) + int(
-			stir == properties[STIR] or properties[STIR] == Constant.STIR_PATTERN.NONE
+			stir == properties[STIR] or properties[STIR] == Cons.STIR_PATTERN.NONE
 		)
-	) as Constant.QUALITY
+	) as Cons.QUALITY
 	
 	return {
 		success = true,

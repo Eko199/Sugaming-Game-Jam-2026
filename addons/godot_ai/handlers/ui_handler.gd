@@ -422,9 +422,9 @@ const _THEME_OVERRIDE_MAP := {
 		"remove": "remove_theme_color_override",
 		"coerce_type": TYPE_COLOR,
 	},
-	"theme_override_constants/": {
-		"add": "add_theme_constant_override",
-		"remove": "remove_theme_constant_override",
+	"theme_override_Conss/": {
+		"add": "add_theme_Cons_override",
+		"remove": "remove_theme_Cons_override",
 		"coerce_type": TYPE_INT,
 	},
 	"theme_override_font_sizes/": {

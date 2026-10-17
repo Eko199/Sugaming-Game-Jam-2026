@@ -49,7 +49,7 @@ static var COLOR_MUTED := Color(0.7, 0.7, 0.7)
 static var COLOR_HEADER := Color(0.95, 0.95, 0.95)
 ## Used for "in-progress" / "stale, action needed" UI: the startup-grace
 ## status icon, the spawn-failure suggested-port hint, the drift banner,
-## and the per-row mismatch dot. One constant so a future palette tweak
+## and the per-row mismatch dot. One Cons so a future palette tweak
 ## doesn't have to find every literal.
 static var COLOR_AMBER := Color(1.0, 0.75, 0.25)
 
@@ -155,7 +155,7 @@ var _drift_label: Label
 ## Set when the user clicks "How to install uv"; consumed by the next
 ## application focus-in so the uv row is re-probed after the user has had a
 ## chance to install, not immediately. See _on_install_uv and _notification.
-## (Deliberately spelled without the focus-in constant name: the guard in
+## (Deliberately spelled without the focus-in Cons name: the guard in
 ## tests/unit/test_editor_focus_refocus.py locates the notification handler
 ## by first occurrence of that token.)
 var _uv_recheck_pending := false
@@ -347,19 +347,19 @@ func _on_redock() -> void:
 
 func _build_margin_container(margin: int = 12) -> MarginContainer:
 	var margin_container := MarginContainer.new()
-	margin_container.add_theme_constant_override("margin_left", margin)
-	margin_container.add_theme_constant_override("margin_right", margin)
-	margin_container.add_theme_constant_override("margin_top", margin)
-	margin_container.add_theme_constant_override("margin_bottom", margin)
+	margin_container.add_theme_Cons_override("margin_left", margin)
+	margin_container.add_theme_Cons_override("margin_right", margin)
+	margin_container.add_theme_Cons_override("margin_top", margin)
+	margin_container.add_theme_Cons_override("margin_bottom", margin)
 	return margin_container
 
 
 func _build_ui() -> void:
-	add_theme_constant_override("separation", 8)
+	add_theme_Cons_override("separation", 8)
 
 	# --- Top row: status indicator + redock button (when floating) ---
 	var status_row := HBoxContainer.new()
-	status_row.add_theme_constant_override("separation", 8)
+	status_row.add_theme_Cons_override("separation", 8)
 
 	_status_icon = ColorRect.new()
 	_status_icon.custom_minimum_size = Vector2(14, 14)
@@ -410,7 +410,7 @@ func _build_ui() -> void:
 
 	_body = VBoxContainer.new()
 	_body.name = "DockBody"
-	_body.add_theme_constant_override("separation", 8)
+	_body.add_theme_Cons_override("separation", 8)
 	_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_body_scroll.add_child(_body)
 
@@ -418,7 +418,7 @@ func _build_ui() -> void:
 	# state via `get_server_status`). One body paragraph + the matching
 	# action; the top status label already carries the state headline.
 	_crash_panel = VBoxContainer.new()
-	_crash_panel.add_theme_constant_override("separation", 6)
+	_crash_panel.add_theme_Cons_override("separation", 6)
 	_crash_panel.visible = false
 
 	_crash_output = RichTextLabel.new()
@@ -464,7 +464,7 @@ func _build_ui() -> void:
 
 	# --- Update banner (top of dock, hidden until check finds a newer version) ---
 	_update_banner = VBoxContainer.new()
-	_update_banner.add_theme_constant_override("separation", 4)
+	_update_banner.add_theme_Cons_override("separation", 4)
 	_update_banner.visible = false
 
 	_update_label = Label.new()
@@ -487,7 +487,7 @@ func _build_ui() -> void:
 	_update_banner.add_child(_update_status_label)
 
 	var update_btn_row := HBoxContainer.new()
-	update_btn_row.add_theme_constant_override("separation", 6)
+	update_btn_row.add_theme_Cons_override("separation", 6)
 
 	_update_btn = Button.new()
 	_update_btn.text = _UPDATE_ACTION_TEXT
@@ -507,7 +507,7 @@ func _build_ui() -> void:
 
 	# --- Dev-only connection extras (server label + reload button) ---
 	_dev_section = VBoxContainer.new()
-	_dev_section.add_theme_constant_override("separation", 6)
+	_dev_section.add_theme_Cons_override("separation", 6)
 	_body.add_child(_dev_section)
 
 	_server_label = Label.new()
@@ -516,7 +516,7 @@ func _build_ui() -> void:
 	_refresh_server_label()
 
 	var btn_row := HBoxContainer.new()
-	btn_row.add_theme_constant_override("separation", 6)
+	btn_row.add_theme_Cons_override("separation", 6)
 
 	_reload_btn = Button.new()
 	_reload_btn.text = "Dev: Reload Plugin"
@@ -529,20 +529,20 @@ func _build_ui() -> void:
 
 	# --- Setup section (dev-only or when uv missing) ---
 	_setup_section = VBoxContainer.new()
-	_setup_section.add_theme_constant_override("separation", 6)
+	_setup_section.add_theme_Cons_override("separation", 6)
 	_body.add_child(_setup_section)
 
 	_setup_section.add_child(HSeparator.new())
 	_setup_section.add_child(_make_header("Setup"))
 	_setup_container = VBoxContainer.new()
-	_setup_container.add_theme_constant_override("separation", 6)
+	_setup_container.add_theme_Cons_override("separation", 6)
 	_setup_section.add_child(_setup_container)
 
 	_body.add_child(HSeparator.new())
 
 	# --- Clients ---
 	var clients_header_row := HBoxContainer.new()
-	clients_header_row.add_theme_constant_override("separation", 8)
+	clients_header_row.add_theme_Cons_override("separation", 8)
 
 	var clients_header := _make_header("Clients")
 	clients_header_row.add_child(clients_header)
@@ -555,8 +555,8 @@ func _build_ui() -> void:
 	clients_header_row.add_child(_clients_summary_label)
 
 	var clients_actions := HFlowContainer.new()
-	clients_actions.add_theme_constant_override("h_separation", 8)
-	clients_actions.add_theme_constant_override("v_separation", 4)
+	clients_actions.add_theme_Cons_override("h_separation", 8)
+	clients_actions.add_theme_Cons_override("v_separation", 4)
 
 	var clients_refresh_btn := Button.new()
 	clients_refresh_btn.text = "Refresh"
@@ -583,7 +583,7 @@ func _build_ui() -> void:
 
 	# Drift banner — hidden until a sweep finds at least one mismatched client.
 	_drift_banner = VBoxContainer.new()
-	_drift_banner.add_theme_constant_override("separation", 4)
+	_drift_banner.add_theme_Cons_override("separation", 4)
 	_drift_banner.visible = false
 	_drift_label = Label.new()
 	_drift_label.add_theme_color_override("font_color", COLOR_AMBER)
@@ -616,7 +616,7 @@ func _build_ui() -> void:
 	_clients_window.add_child(tabs)
 
 	var clients_tab := VBoxContainer.new()
-	clients_tab.add_theme_constant_override("separation", 8)
+	clients_tab.add_theme_Cons_override("separation", 8)
 	var clients_margin := _build_margin_container()
 	clients_margin.name = "Clients"
 	clients_margin.add_child(clients_tab)
@@ -636,7 +636,7 @@ func _build_ui() -> void:
 	clients_tab.add_child(clients_scroll)
 
 	_client_grid = VBoxContainer.new()
-	_client_grid.add_theme_constant_override("separation", 4)
+	_client_grid.add_theme_Cons_override("separation", 4)
 	_client_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	clients_scroll.add_child(_client_grid)
 
@@ -674,7 +674,7 @@ func _build_ui() -> void:
 
 
 ## Static so `dock_panels/*.gd` subpanels can call it via `McpDock._make_header(...)`
-## without re-declaring identical helpers + COLOR_HEADER constants.
+## without re-declaring identical helpers + COLOR_HEADER Conss.
 static func _make_header(text: String) -> Label:
 	var label := Label.new()
 	label.text = text
@@ -685,7 +685,7 @@ static func _make_header(text: String) -> Label:
 
 func _build_client_row(client_id: String) -> void:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 6)
+	row.add_theme_Cons_override("separation", 6)
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	var dot := ColorRect.new()
@@ -747,7 +747,7 @@ func _build_client_row(client_id: String) -> void:
 	_client_grid.add_child(row)
 
 	var manual_panel := VBoxContainer.new()
-	manual_panel.add_theme_constant_override("separation", 4)
+	manual_panel.add_theme_Cons_override("separation", 4)
 	manual_panel.visible = false
 
 	var manual_hint := Label.new()
@@ -807,7 +807,7 @@ func _update_status() -> void:
 		_post_update_server_pending = false
 
 	## One `match`/`elif` chain, one source of truth. Adding a new
-	## spawn outcome = one `ServerStateScript` constant + one arm here +
+	## spawn outcome = one `ServerStateScript` Cons + one arm here +
 	## one body string in `_crash_body_for_state`.
 	## Default covers both a missing/old Connection instance and an unknown
 	## future transport phase. Every recognized state below overrides it, so
@@ -1466,7 +1466,7 @@ func _refresh_setup_status() -> void:
 		_setup_container.add_child(_make_status_row("Mode", "Dev (venv)", Color.CYAN))
 
 		var btn_row := HBoxContainer.new()
-		btn_row.add_theme_constant_override("separation", 4)
+		btn_row.add_theme_Cons_override("separation", 4)
 		btn_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 		_dev_primary_btn = Button.new()
@@ -1497,7 +1497,7 @@ func _refresh_setup_status() -> void:
 		## flips to amber + "(plugin X)" on drift. Pre-ack we show the
 		## plugin's expected version so the row isn't blank.
 		var server_row := HBoxContainer.new()
-		server_row.add_theme_constant_override("separation", 8)
+		server_row.add_theme_Cons_override("separation", 8)
 		var key_label := Label.new()
 		key_label.text = "Server"
 		key_label.add_theme_color_override("font_color", COLOR_MUTED)
@@ -1565,7 +1565,7 @@ func _make_status_row(
 	tooltip_text: String = ""
 ) -> HBoxContainer:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 6)
+	row.add_theme_Cons_override("separation", 6)
 	if not tooltip_text.is_empty():
 		row.tooltip_text = tooltip_text
 
@@ -1991,7 +1991,7 @@ func _build_tools_tab(tabs: TabContainer) -> void:
 	## `_reset_tools_pending_from_setting()` re-syncs checkbox state from the
 	## saved setting each time the window opens.
 	var tools_tab := VBoxContainer.new()
-	tools_tab.add_theme_constant_override("separation", 8)
+	tools_tab.add_theme_Cons_override("separation", 8)
 	var tools_margin := _build_margin_container()
 	tools_margin.name = "Tools"
 	tools_margin.add_child(tools_tab)
@@ -2009,7 +2009,7 @@ func _build_tools_tab(tabs: TabContainer) -> void:
 	tools_tab.add_child(intro)
 
 	var count_row := HBoxContainer.new()
-	count_row.add_theme_constant_override("separation", 8)
+	count_row.add_theme_Cons_override("separation", 8)
 	var count_header := Label.new()
 	count_header.text = "Tools Enabled:"
 	count_header.add_theme_color_override("font_color", COLOR_MUTED)
@@ -2035,7 +2035,7 @@ func _build_tools_tab(tabs: TabContainer) -> void:
 	tools_tab.add_child(scroll)
 
 	var grid := VBoxContainer.new()
-	grid.add_theme_constant_override("separation", 4)
+	grid.add_theme_Cons_override("separation", 4)
 	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(grid)
 
@@ -2044,7 +2044,7 @@ func _build_tools_tab(tabs: TabContainer) -> void:
 	## their baseline tool budget goes without listing individual core names
 	## inline (tooltip has them).
 	var core_row := HBoxContainer.new()
-	core_row.add_theme_constant_override("separation", 8)
+	core_row.add_theme_Cons_override("separation", 8)
 	var core_chk := CheckBox.new()
 	core_chk.button_pressed = true
 	core_chk.disabled = true
@@ -2075,7 +2075,7 @@ func _build_tools_tab(tabs: TabContainer) -> void:
 	## the server on every change, no restart needed.
 	grid.add_child(HSeparator.new())
 	var custom_header_row := HBoxContainer.new()
-	custom_header_row.add_theme_constant_override("separation", 8)
+	custom_header_row.add_theme_Cons_override("separation", 8)
 	var custom_header := Label.new()
 	custom_header.text = "Custom tools (addon-registered)"
 	custom_header.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -2091,7 +2091,7 @@ func _build_tools_tab(tabs: TabContainer) -> void:
 	custom_hint.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	grid.add_child(custom_hint)
 	_custom_tools_list = VBoxContainer.new()
-	_custom_tools_list.add_theme_constant_override("separation", 4)
+	_custom_tools_list.add_theme_Cons_override("separation", 4)
 	_custom_tools_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	grid.add_child(_custom_tools_list)
 	_connect_custom_tool_registry()
@@ -2100,7 +2100,7 @@ func _build_tools_tab(tabs: TabContainer) -> void:
 	tools_tab.add_child(HSeparator.new())
 
 	var telemetry_row := HBoxContainer.new()
-	telemetry_row.add_theme_constant_override("separation", 8)
+	telemetry_row.add_theme_Cons_override("separation", 8)
 	var telemetry_label := Label.new()
 	telemetry_label.text = "Telemetry"
 	telemetry_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -2113,7 +2113,7 @@ func _build_tools_tab(tabs: TabContainer) -> void:
 	tools_tab.add_child(HSeparator.new())
 
 	var footer := HBoxContainer.new()
-	footer.add_theme_constant_override("separation", 8)
+	footer.add_theme_Cons_override("separation", 8)
 
 	_tools_apply_btn = Button.new()
 	_tools_apply_btn.text = "Apply and Restart Server"
@@ -2197,7 +2197,7 @@ func _refresh_custom_tools_rows() -> void:
 
 func _build_custom_tool_row(registry: McpToolRegistry, spec: McpCustomToolSpec) -> HBoxContainer:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
+	row.add_theme_Cons_override("separation", 8)
 	var chk := CheckBox.new()
 	chk.button_pressed = registry.is_tool_enabled(spec.name)
 	chk.toggled.connect(func(pressed: bool): registry.set_tool_enabled(spec.name, pressed))
@@ -2223,7 +2223,7 @@ func _build_custom_tool_row(registry: McpToolRegistry, spec: McpCustomToolSpec) 
 
 func _build_tools_domain_row(parent: VBoxContainer, entry: Dictionary) -> void:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
+	row.add_theme_Cons_override("separation", 8)
 
 	var chk := CheckBox.new()
 	chk.button_pressed = true  # default; `_reset_tools_pending_from_setting` corrects
@@ -2362,7 +2362,7 @@ func _build_settings_tab(tabs: TabContainer) -> void:
 	## re-sync each time the window opens (via
 	## `_reset_tools_pending_from_setting` / `_on_open_clients_window`).
 	var settings_tab := VBoxContainer.new()
-	settings_tab.add_theme_constant_override("separation", 8)
+	settings_tab.add_theme_Cons_override("separation", 8)
 	settings_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	## The section stack below (Vision Routing + Remote access) can outgrow
 	## the window's minimum height, especially at larger editor scales —
@@ -2394,7 +2394,7 @@ func _build_settings_tab(tabs: TabContainer) -> void:
 	settings_tab.add_child(_allow_hosts_fold)
 
 	_allow_hosts_section = VBoxContainer.new()
-	_allow_hosts_section.add_theme_constant_override("separation", 6)
+	_allow_hosts_section.add_theme_Cons_override("separation", 6)
 	_allow_hosts_fold.add_child(_allow_hosts_section)
 
 	_allow_hosts_section.add_child(_make_header("Allow remote hosts (CIDR)"))

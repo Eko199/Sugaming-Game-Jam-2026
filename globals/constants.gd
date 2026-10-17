@@ -1,12 +1,9 @@
 extends Node
 
+# Enums
 enum STIR_PATTERN {
 	LEFT, RIGHT, ZIG_ZAG, NONE
 }
-
-const DESCRIPTIONS: PackedStringArray = [
-	'blah', 'blah'
-]
 
 enum QUALITY {
 	FAIL, POOR, GOOD, EXCELLENT
@@ -20,9 +17,26 @@ enum DEBUFF {
 	
 }
 
-const MAX_INGREDIENTS: int = 3
+# General information
+## TODO: Add actual sprites
+const INGRIDIENT_TEXTURE: PackedStringArray = [
+	'res://icon.svg',
+	'res://icon.svg',
+	'res://icon.svg',
+	'res://icon.svg',
+	'res://icon.svg',
+	'res://icon.svg',
+]
 
-const INGRIDIENT_TEXTURE: Dictionary[Ingredient.TYPE, String] = {
-	Ingredient.TYPE.FIRE_WORM : 'res://icon.svg',
-	Ingredient.TYPE.COLD_MINTLEAF : 'res://icon.svg',
-}
+# TODO: ГОШО ПЛЗ НАПРАВИ ДЕСКРИПШЪНИ!!!
+const DESCRIPTIONS: PackedStringArray = [
+	'blah',
+	'blah',
+	'blah',
+	'blah',
+	'blah',
+	'blah',
+]
+
+# Gameplay constants
+const MAX_INGREDIENTS: int = 3

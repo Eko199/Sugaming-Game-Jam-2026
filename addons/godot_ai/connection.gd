@@ -643,7 +643,7 @@ func _handle_auth_challenge(parsed: Dictionary) -> void:
 		str(parsed["server_nonce"]),
 		str(parsed["server_version"]),
 	)
-	if not _constant_time_equal(str(parsed["server_proof"]), expected_proof):
+	if not _Cons_time_equal(str(parsed["server_proof"]), expected_proof):
 		_fail_handshake(CLOSE_CODE_AUTH_FAILED, "v4 server proof failed")
 		return
 
@@ -881,7 +881,7 @@ static func _client_proof(
 	)
 
 
-static func _constant_time_equal(left: String, right: String) -> bool:
+static func _Cons_time_equal(left: String, right: String) -> bool:
 	var difference := left.length() ^ right.length()
 	var length := maxi(left.length(), right.length())
 	for index in length:

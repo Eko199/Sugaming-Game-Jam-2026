@@ -18,10 +18,10 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	added_item(data.type, at_position - 0.5 * data.size)
 
 func added_item(ing: Ingredient.TYPE, pos: Vector2) -> void:
-	if current_items.size() >= Constant.MAX_INGREDIENTS: return
+	if current_items.size() >= Cons.MAX_INGREDIENTS: return
 	current_items.append(ing)
 	var idx: int = current_items.size() - 1
-	ingredient_textures[idx].texture = load(Constant.INGRIDIENT_TEXTURE[ing])
+	ingredient_textures[idx].texture = load(Cons.INGRIDIENT_TEXTURE[ing])
 	ingredient_textures[idx].position = pos
 	ingredient_textures[idx].show()
 	

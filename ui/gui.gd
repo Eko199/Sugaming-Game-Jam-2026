@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	#end game
-	pass
+	Event.game_over.emit()
 	
 func _process(_delta: float) -> void:
 	label.text = "%d:%02d" % [timer.time_left / 60, floori(timer.time_left) % 60]

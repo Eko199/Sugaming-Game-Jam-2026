@@ -2,7 +2,8 @@ extends TextureRect
 class_name Ingredient
 
 enum TYPE {
-	FIRE_WORM, COLD_MINTLEAF,
+	FIRE_WORM, FROSTY_MINT, UNICORN_TEARS,
+	EXPANDING_BEANS, STAR_FLOWER, GNOME_HAIR,
 }
 
 @export var type: TYPE
@@ -11,7 +12,7 @@ var saved_texture: Texture2D
 var is_currently_used: bool = false
 
 func _ready() -> void:
-	texture = load(Constant.INGRIDIENT_TEXTURE[type])
+	texture = load(Cons.INGRIDIENT_TEXTURE[type])
 	saved_texture = texture
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
