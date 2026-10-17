@@ -107,7 +107,7 @@ layout_mode = 1
 offset_left = -764.0
 offset_top = -421.0
 offset_right = 1216.0
-offset_bottom = 740.0
+offset_bottom = 761.4999
 scale = Vector2(0.8, 0.8)
 
 [node name="BackBackground" type="TextureRect" parent="." unique_id=1143501225]

@@ -19,6 +19,7 @@ extends Control
 
 var current_page: Control
 var unlocked_recipes: Dictionary = {}
+var recipes_dict: Dictionary = {}
 
 func open() -> void:
 	if not get_parent().visible: Audio.play("almanac_open")
@@ -43,22 +44,42 @@ func switch_page(page: Control) -> void:
 	current_page.visible = true
 	page_to_btn[current_page].position.y = -100
 
+func get_recipe_row(i: int) -> HBoxContainer:
+	var recipe_rows = recipes.get_child(0).get_child(0).get_children() \
+		+ recipes.get_child(0).get_child(1).get_children()
+	return recipe_rows[i]
+
 func unlock_knowledge(
 	potion: Cons.RECIPE,
-	ingredient: bool,
 	temperature: bool,
 	strir_pattern: bool
 ) -> void:
-	if ingredient:
-		unlocked_recipes[potion].ingredients = true
+	var recipe_row: HBoxContainer = get_recipe_row(potion)
+	var unlocked_recipe: RecipeKnowledge = unlocked_recipes[potion]
+
+	unlocked_recipe.ingredients = true
+	var ingredients_container = recipe_row.get_node("Ingredients")
+	for i in range(unlocked_recipe.ingredients_count):
+		var ingredient_container = ingredients_container.get_child(i)
+		var ingredient = recipes_dict[potion][0][i]
+		ingredient_container.texture = load(Cons.INGRIDIENT_TEXTURE[ingredient])
+			
 	if temperature:
-		unlocked_recipes[potion].temperature = true
+		unlocked_recipe.temperature = true
+		var temp_label: Label = recipe_row.get_node("Temperature")
+		var temp_interval: Vector2i = recipes_dict[potion][1]
+		temp_label.text = "+ %s-%s °C +" % [temp_interval.x, temp_interval.y]
 	if strir_pattern:
-		unlocked_recipes[potion].strir_pattern = true
-	
-	var recipe: Control = recipes.get_child(0).get_child(potion + 1)
-	var label: Label = recipe.get_node("Potion")
+		unlocked_recipe.strir_pattern = true
+
+	var label: Label = recipe_row.get_node("Potion")
 	label.text = Utility.get_keyname(potion, Cons.RECIPE)
+	
+func process_potion_result(result: Dictionary) -> void:
+	if not result.success:
+		return
+		
+	unlock_knowledge(result["recipe_id"], result["correct_temperature"], result["correct_stir"])
 
 func _ready() -> void:
 	for rcp_ingredients: Array in Recipe.RECIPE:
@@ -66,7 +87,19 @@ func _ready() -> void:
 		var knowledge: RecipeKnowledge = RecipeKnowledge.new(ingredients_count)
 		var potion = Recipe.RECIPE[rcp_ingredients][0]
 		unlocked_recipes[potion] = knowledge
-
+		
+		var recipe_row: HBoxContainer = get_recipe_row(potion)
+		var ingredients_container = recipe_row.get_node("Ingredients")
+		for i in range(ingredients_container.get_child_count() - 1, ingredients_count - 1, -1):
+			var child = ingredients_container.get_child(i)
+			ingredients_container.remove_child(child)
+			child.queue_free()
+		
+		recipes_dict[potion] = [rcp_ingredients, Recipe.RECIPE[rcp_ingredients][1], Recipe.RECIPE[rcp_ingredients][2]]
+		recipe_row.setup()
+	
+	Event.potion_served.connect(process_potion_result)
+		
 func _on_almanac_pressed() -> void:
 	open()
 
