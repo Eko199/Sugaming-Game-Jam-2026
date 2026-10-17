@@ -6,5 +6,6 @@
 [node name="Ingridient" type="TextureRect" unique_id=83227316 groups=["ingredient"]]
 offset_right = 128.0
 offset_bottom = 128.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_x67pw")
 script = ExtResource("2_c1ve6")

@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bwiwxpgus0hl4" path="res://ui/gui.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://0830dg36o4ho" path="res://main.gd" id="1_lquwl"]
-[ext_resource type="Texture2D" uid="uid://dukht7q1xvq1d" path="res://textures/background_sketch.jpg" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dwvgd1ceya2ff" path="res://potion_making/ingredient.tscn" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cwdg41cb3c5sy" path="res://textures/background.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b4a1c2d50cjdd" path="res://potion_making/cauldron.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://d33d5rnlivlhp" path="res://potion_making/spoon.tscn" id="7_272bh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
 font_size = 32
@@ -47,7 +48,7 @@ label_settings = SubResource("LabelSettings_7mycd")
 [node name="Background" type="Sprite2D" parent="." unique_id=1861596065]
 position = Vector2(961.44446, 542.5)
 scale = Vector2(0.9990741, 0.9990741)
-texture = ExtResource("2_0xm2m")
+texture = ExtResource("3_7mycd")
 
 [node name="Shelf" type="Node2D" parent="." unique_id=25351675]
 
@@ -93,13 +94,20 @@ offset_bottom = 703.0
 type = 5
 
 [node name="Cauldron" parent="." unique_id=1067954735 instance=ExtResource("3_lquwl")]
-offset_left = 579.0
-offset_top = 618.0
-offset_right = 1331.0
-offset_bottom = 907.0
+offset_left = 589.0
+offset_top = 632.0
+offset_right = 1341.0
+offset_bottom = 921.0
 
 [node name="Customer" parent="." unique_id=637699539 instance=ExtResource("6_7mycd")]
 offset_left = 650.0
 offset_top = 101.0
 offset_right = 936.0
 offset_bottom = 482.0
+
+[node name="Spoon" parent="." unique_id=389561872 instance=ExtResource("7_272bh")]
+offset_left = 1470.0
+offset_top = 723.0
+offset_right = 1572.0
+offset_bottom = 1068.0
+rotation = -0.2617994
