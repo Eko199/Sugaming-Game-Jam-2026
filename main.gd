@@ -14,6 +14,7 @@ var potions_served: int = 0
 var is_spoon_held: bool = false
 var is_over: bool = false
 var elapsed: float = 0.0
+var recent_potions: Array[Cons.RECIPE] = []
 
 func _ready() -> void:
 	rng.randomize()
@@ -49,18 +50,33 @@ func round_progress() -> float:
 func _spawn_customer() -> void:
 	var progress: float = round_progress()
 	var recipe: Cons.RECIPE = 0 as Cons.RECIPE if customers_spawned == 0 else _pick_recipe(progress)
-	var patience: float = lerpf(Cons.PATIENCE_MAX, Cons.PATIENCE_MIN, progress)
+	var patience: float = Cons.PATIENCE_MAX - ease(progress, -5) * (Cons.PATIENCE_MAX - Cons.PATIENCE_MIN) # in seconds
 	customers_spawned += 1
 	customer.arrive(recipe, patience)
 
 func _pick_recipe(progress: float) -> Cons.RECIPE:
-	var target: float = progress * (Cons.RECIPE.size() - 1)
+	var target: float = lerpf(0.5, float(Cons.RECIPE.size() - 1), progress)
 	var weights: PackedFloat32Array = []
+	
 	for i: int in Cons.RECIPE.size():
 		var weight: float = 1.0 / pow(1.0 + absf(i - target), Cons.RECIPE_DIFFICULTY_FALLOFF)
-		if i <= target: weight = maxf(weight, Cons.EASY_RECIPE_MIN_WEIGHT)
+		if i <= target:
+			weight = maxf(weight, Cons.EASY_RECIPE_MIN_WEIGHT)
+		
+		if recent_potions.size() > 0 and i == recent_potions[-1]:
+			weight *= Cons.REQUEST_REPEAT_PENALTY_RECENT
+		elif recent_potions.size() > 1 and i == recent_potions[-2]:
+			weight *= Cons.REQUEST_REPEAT_PENALTY_OLDER
+			
 		weights.append(weight)
-	return rng.rand_weighted(weights) as Cons.RECIPE
+	
+	var picked := rng.rand_weighted(weights) as Cons.RECIPE
+	
+	recent_potions.append(picked)
+	if recent_potions.size() > 2:
+		recent_potions.pop_front()
+		
+	return picked
 
 func _on_customer_left(_customer: Customer, _served: bool) -> void:
 	await get_tree().create_timer(Cons.CUSTOMER_GAP).timeout
