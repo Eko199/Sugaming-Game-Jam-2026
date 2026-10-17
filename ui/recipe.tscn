@@ -64,6 +64,9 @@ text = "+ ?? °C +"
 label_settings = SubResource("LabelSettings_7upsp")
 
 [node name="Stir" type="TextureRect" parent="." unique_id=2102165612]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("1_h2ud4")
 expand_mode = 2

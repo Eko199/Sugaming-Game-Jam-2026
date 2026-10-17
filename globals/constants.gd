@@ -19,7 +19,6 @@ enum DEBUFF {
 }
 
 # General information
-## TODO: Add actual sprites
 const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://textures/gnome_hair.png',
 	'res://textures/fireworm.png',
@@ -27,6 +26,12 @@ const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://textures/unicorn_tears.png',
 	'res://textures/expanding_beans.png',
 	'res://textures/star_flower.png',
+]
+
+const STIRRING_TEXTURES: PackedStringArray = [
+	"res://textures/rotation_cw.png",
+	"res://textures/rotation_ccw.png",
+	"res://textures/rotations_both.png"
 ]
 
 const DESCRIPTIONS: PackedStringArray = [
