@@ -9,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dnq0pllbw3rji" path="res://textures/blue-tab.png" id="4_p800m"]
 [ext_resource type="Texture2D" uid="uid://cicush4i4a3xs" path="res://textures/yellow-tab.png" id="5_iu7ow"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ov5wf"]
-font_size = 40
-
 [sub_resource type="LabelSettings" id="LabelSettings_3ftik"]
 font_size = 67
 font_color = Color(0, 0, 0, 1)
@@ -44,20 +41,44 @@ texture = ExtResource("2_8llnm")
 visible = false
 z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 70
 
-[node name="Label" type="Label" parent="Tutorial" unique_id=2135312719]
+[node name="Title" type="Control" parent="Tutorial" unique_id=1506117244]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Tutorial/Title" unique_id=2065353815]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -87.5
+offset_right = 250.0
+offset_bottom = 4.5
 text = "TUTORIAL"
-label_settings = SubResource("LabelSettings_ov5wf")
+label_settings = SubResource("LabelSettings_3ftik")
 
-[node name="Label2" type="Label" parent="Tutorial" unique_id=407766913]
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial" unique_id=1560965130]
 layout_mode = 2
-text = "LOREM IPSUM"
-label_settings = SubResource("LabelSettings_ov5wf")
+theme_override_constants/separation = 200
+
+[node name="Label" type="RichTextLabel" parent="Tutorial/HBoxContainer" unique_id=444120143]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Label2" type="RichTextLabel" parent="Tutorial/HBoxContainer" unique_id=1797187841]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
 
 [node name="Recipes" type="MarginContainer" parent="." unique_id=1057927573]
 z_index = 2
@@ -110,39 +131,87 @@ label_settings = SubResource("LabelSettings_3ftik")
 visible = false
 z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 70
 
-[node name="Label" type="Label" parent="Ingredients" unique_id=1372315519]
+[node name="Title" type="Control" parent="Ingredients" unique_id=2061743193]
 layout_mode = 2
-text = "INGREDENTS"
-label_settings = SubResource("LabelSettings_ov5wf")
 
-[node name="Label2" type="Label" parent="Ingredients" unique_id=73934723]
+[node name="Label" type="Label" parent="Ingredients/Title" unique_id=509326083]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -87.5
+offset_right = 250.0
+offset_bottom = 4.5
+text = "INGREDIENTS"
+label_settings = SubResource("LabelSettings_3ftik")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Ingredients" unique_id=1240819687]
 layout_mode = 2
-text = "LOREM IPSUM"
-label_settings = SubResource("LabelSettings_ov5wf")
+theme_override_constants/separation = 200
+
+[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer" unique_id=356395603]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Label2" type="RichTextLabel" parent="Ingredients/HBoxContainer" unique_id=2048181357]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
 
 [node name="Cooking" type="MarginContainer" parent="." unique_id=307865024]
 visible = false
 z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 70
 
-[node name="Label" type="Label" parent="Cooking" unique_id=1587061550]
+[node name="Title" type="Control" parent="Cooking" unique_id=1270523838]
 layout_mode = 2
-text = "COOKING"
-label_settings = SubResource("LabelSettings_ov5wf")
 
-[node name="Label2" type="Label" parent="Cooking" unique_id=556355266]
+[node name="Label" type="Label" parent="Cooking/Title" unique_id=922027037]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -87.5
+offset_right = 250.0
+offset_bottom = 4.5
+text = "COOKING TIPS"
+label_settings = SubResource("LabelSettings_3ftik")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Cooking" unique_id=1804323738]
 layout_mode = 2
-text = "LOREM IPSUM"
-label_settings = SubResource("LabelSettings_ov5wf")
+theme_override_constants/separation = 200
+
+[node name="Label" type="RichTextLabel" parent="Cooking/HBoxContainer" unique_id=1765519050]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Label2" type="RichTextLabel" parent="Cooking/HBoxContainer" unique_id=2000134478]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
 
 [node name="Bookmarks" type="Control" parent="." unique_id=722244083]
 layout_mode = 2

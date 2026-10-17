@@ -5,24 +5,40 @@ extends Control
 @onready var ingredients: Control = $Ingredients
 @onready var cooking: Control = $Cooking
 
+@onready var tutorial_btn: Button = $Bookmarks/TutorialBtn
+@onready var recipes_btn: Button = $Bookmarks/RecipesBtn
+@onready var ingredients_btn: Button = $Bookmarks/IngredientsBtn
+@onready var cooking_btn: Button = $Bookmarks/CookingBtn
+
+@onready var page_to_btn: Dictionary = {
+	tutorial : tutorial_btn,
+	recipes : recipes_btn,
+	ingredients : ingredients_btn,
+	cooking : cooking_btn,
+}
+
 var current_page: Control
 var unlocked_recipes: Dictionary = {}
 
 func open() -> void:
 	if current_page:
 		current_page.visible = false
+		page_to_btn[current_page].position.y = -40
 
 	current_page = recipes
 	current_page.visible = true
 	get_parent().visible = true
+	page_to_btn[current_page].position.y = -100
 
 func close() -> void:
 	get_parent().visible = false
 	
 func switch_page(page: Control) -> void:
+	page_to_btn[current_page].position.y = -40
 	current_page.visible = false
 	current_page = page
 	current_page.visible = true
+	page_to_btn[current_page].position.y = -100
 
 func unlock_knowledge(
 	potion: Cons.RECIPE,
@@ -47,8 +63,6 @@ func _ready() -> void:
 		var knowledge: RecipeKnowledge = RecipeKnowledge.new(ingredients_count)
 		var potion = Recipe.RECIPE[rcp_ingredients][0]
 		unlocked_recipes[potion] = knowledge
-	
-	unlock_knowledge(0, true, true, true)
 
 func _on_almanac_pressed() -> void:
 	open()
