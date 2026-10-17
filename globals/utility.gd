@@ -52,3 +52,21 @@ func mix_colors(ings: Array[Ingredient.TYPE]) -> Color:
 	mixed = Color.from_hsv(mixed.h, lerpf(mixed.s, avg_sat / n, 0.6), lerpf(mixed.v, avg_val / n, 0.5))
 	var strength: float = Cons.WATER_TINT_STRENGTH[mini(ings.size(), Cons.WATER_TINT_STRENGTH.size() - 1)]
 	return Cons.WATER_COLOR.lerp(mixed, strength)
+
+func floating_text(parent: Node, text: String, pos: Vector2, color: Color = Color.WHITE, font_size: int = 40, rise: float = 50.0, duration: float = 1.2) -> Label:
+	var popup: Label = Label.new()
+	var settings: LabelSettings = LabelSettings.new()
+	settings.font_size = font_size
+	settings.font_color = color
+	settings.outline_size = 8
+	settings.outline_color = Color.BLACK
+	popup.label_settings = settings
+	popup.text = text
+	popup.position = pos
+	popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	parent.add_child(popup)
+	var tween: Tween = popup.create_tween().set_parallel()
+	tween.tween_property(popup, "position:y", pos.y - rise, duration)
+	tween.tween_property(popup, "modulate:a", 0.0, duration).set_ease(Tween.EASE_IN)
+	tween.chain().tween_callback(popup.queue_free)
+	return popup

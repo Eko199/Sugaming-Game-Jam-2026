@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8ohgtxd7ilg0" path="res://potion_making/cauldron.gd" id="1_6bp5d"]
 [ext_resource type="Texture2D" uid="uid://dcwaefrir31d0" path="res://textures/couldron.png" id="2_jokxh"]
+[ext_resource type="Texture2D" uid="uid://b88hhynfokj3a" path="res://textures/cauldron_opening_mask.png" id="2_r6ss7"]
 [ext_resource type="Texture2D" uid="uid://bv32u4fx1mo6" path="res://textures/water.png" id="2_s5f67"]
 [ext_resource type="Texture2D" uid="uid://bvmp4mxx3f3mi" path="res://textures/dial.png" id="4_bn7tg"]
 
@@ -30,8 +31,9 @@ offset_right = 382.0
 offset_bottom = 166.0
 script = ExtResource("1_6bp5d")
 
-[node name="Water" type="TextureRect" parent="." unique_id=756609593]
-y_sort_enabled = true
+[node name="WaterMask" type="TextureRect" parent="." unique_id=1457116373]
+clip_children = 1
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,10 +44,22 @@ offset_right = 66.5
 offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_r6ss7")
+
+[node name="Water" type="TextureRect" parent="WaterMask" unique_id=756609593]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_s5f67")
 
 [node name="Cauldron" type="TextureRect" parent="." unique_id=2134596718]
-z_index = 1
+z_index = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,7 +73,7 @@ grow_vertical = 2
 texture = ExtResource("2_jokxh")
 
 [node name="Dial" type="TextureRect" parent="." unique_id=680366212]
-z_index = 1
+z_index = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,7 +91,7 @@ pivot_offset_ratio = Vector2(0.5, 0.9)
 texture = ExtResource("4_bn7tg")
 
 [node name="StirButtons" type="HBoxContainer" parent="." unique_id=2003139960]
-visible = false
+z_index = 3
 layout_mode = 0
 offset_left = 196.0
 offset_top = 367.0

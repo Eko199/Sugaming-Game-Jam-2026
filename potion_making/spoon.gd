@@ -1,5 +1,7 @@
 extends TextureRect
 
+@onready var outline: TextureRect = $Outline
+
 const drag_preview = preload("res://potion_making/drag_preview.gd")
 
 var saved_texture: Texture2D
@@ -16,6 +18,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	set_drag_preview(item_holder)
 	texture = null
 	is_dragging = true
+	outline.hide()
 	return self
 
 func _return_to_shelf(_result = null) -> void:
@@ -27,3 +30,10 @@ func _notification(what: int) -> void:
 		is_dragging = false
 		if not is_drag_successful():
 			_return_to_shelf()
+
+func _on_mouse_entered() -> void:
+	if is_dragging: return
+	outline.show()
+
+func _on_mouse_exited() -> void:
+	outline.hide()

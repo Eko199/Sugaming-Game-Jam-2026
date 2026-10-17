@@ -8,6 +8,8 @@ enum TYPE {
 
 @export var type: TYPE
 
+@onready var outline: TextureRect = $Outline
+
 var saved_texture: Texture2D
 var is_currently_used: bool = false
 var is_dragging: bool = false
@@ -36,6 +38,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	texture = null
 	is_currently_used = true
 	is_dragging = true
+	outline.hide()
 	return self
 
 func _notification(what: int) -> void:
@@ -43,3 +46,10 @@ func _notification(what: int) -> void:
 		is_dragging = false
 		if not is_drag_successful():
 			_return_to_shelf()
+
+func _on_mouse_entered() -> void:
+	if is_dragging or is_currently_used: return
+	outline.show()
+
+func _on_mouse_exited() -> void:
+	outline.hide()

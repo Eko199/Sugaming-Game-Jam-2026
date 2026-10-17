@@ -29,14 +29,13 @@ const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://icon.svg',
 ]
 
-# TODO: ГОШО ПЛЗ НАПРАВИ ДЕСКРИПШЪНИ!!!
 const DESCRIPTIONS: PackedStringArray = [
-	'blah',
-	'blah',
-	'blah',
-	'blah',
-	'blah',
-	'blah',
+	'A coarse, springy strand taken from a tiny garden gnome.',
+	'Wiggly creatures that generate heat like crazy.',
+	'Ice-cold leaves that can put you in an eternal slumber.',
+	'Pure, rainbow liquid magic.',
+	'Highly unstable magical legumes.',
+	'A glowing celestial blossom that only blooms at midnight.',
 ]
 
 const INGREDIENT_COLOR: PackedColorArray = [
@@ -51,6 +50,13 @@ const WATER_COLOR: Color = Color(0.40, 0.62, 0.85)
 const WATER_TINT_STRENGTH: PackedFloat32Array = [0.0, 0.65, 0.85, 1.0]
 const WATER_TINT_TIME: float = 0.4
 
+const Z_WATER: int = 1
+const Z_IN_CAULDRON: int = 2
+const Z_CAULDRON_FRONT: int = 3
+const Z_HELD: int = 4
+const SINK_TIME: float = 0.45
+const SINK_DEPTH: float = 70.0
+
 const QUALITY_MULT: PackedFloat32Array = [
 	0.0, 1.0, 1.5, 2.0
 ]
@@ -64,3 +70,4 @@ const CUSTOMER_GAP: float = 1.0
 const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
 const EASY_RECIPE_MIN_WEIGHT: float = 0.35
 const TEMP_DIAL_CHANGE: int = 5
+const PERFECT_TIME_BONUS: float = 5.0
