@@ -60,6 +60,7 @@ func _update_water_color() -> void:
 
 func brew() -> void:
 	var result: Dictionary = Recipe.evaluate(current_items.duplicate(), roundi(current_temp), current_stirring)
+	result.success = result.success and Utility.scene.customer.wanted == result.recipe_id
 	Event.potion_served.emit(result)
 
 func _is_spoon_held() -> bool:
