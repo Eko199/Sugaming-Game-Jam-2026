@@ -21,5 +21,5 @@ func _format_time(seconds: float) -> String:
 	var s: int = ceili(seconds)
 	return "%d:%02d" % [floori(s / 60.0), s % 60]
 
-func _on_time_added(seconds: float) -> void:
-	Utility.floating_text(self, "+%ds" % roundi(seconds), label.position + Vector2(label.size.x + 20, 0), Color(0.4, 1, 0.4))
+func _on_time_added(_seconds: float) -> void:
+	Utility.floating_text(self, "+", label.position + Vector2(label.size.x + 20, 0), Color(0.4, 1, 0.4))
