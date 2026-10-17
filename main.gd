@@ -4,6 +4,7 @@ class_name MainScene
 @onready var round_timer: Timer = $UI/Timer
 @onready var customer: Customer = $Customer
 @onready var spoon: TextureRect = $Spoon
+@onready var almanac: MarginContainer = $UI/ColorRect/AlmanacControl
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var customers_spawned: int = 0
@@ -68,3 +69,9 @@ func _on_customer_paid(amount: int, quality: Cons.QUALITY) -> void:
 func _on_spoon_button_up() -> void:
 	spoon.hide()
 	is_spoon_held = true
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and almanac.get_parent().visible == true:
+		almanac.close()
+	elif event.is_action_pressed("open_book") and almanac.get_parent().visible == false:
+		almanac.open()
