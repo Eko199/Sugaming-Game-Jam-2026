@@ -70,13 +70,6 @@ func _on_almanac_pressed() -> void:
 func _on_exit_pressed() -> void:
 	close()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") and visible == true:
-		close()
-	if event is InputEventKey and event.pressed and not event.echo \
-		and event.keycode == KEY_SPACE and visible == false:
-			open()
-
 func _on_cooking_btn_pressed() -> void:
 	switch_page(cooking)
 
