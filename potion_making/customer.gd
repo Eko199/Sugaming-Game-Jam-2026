@@ -23,7 +23,6 @@ func _ready() -> void:
 	rest_y = position.y
 	hide()
 
-## Off-screen x on the right, so customers walk in/out from right to left.
 func _offscreen_x() -> float:
 	return get_viewport_rect().size.x - 600.0
 
@@ -63,7 +62,6 @@ func _reset_pose() -> void:
 	scale = Vector2.ONE
 	position.y = rest_y
 
-## Small reaction: shake + red when unhappy, squash when poor, hop(s) when good/excellent.
 func _react(served: bool, quality: Cons.QUALITY) -> Tween:
 	pivot_offset = Vector2(size.x / 2.0, size.y)
 	react_tween = create_tween()

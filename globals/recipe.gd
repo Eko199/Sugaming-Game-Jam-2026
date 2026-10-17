@@ -11,11 +11,11 @@ var RECIPE: Dictionary[Array, Array] = {
 		Cons.STIR_PATTERN.ANY, 10
 	],
 	[Ingredient.TYPE.EXPANDING_BEANS] : [
-		Cons.RECIPE.ENLARGEMENT, Vector2i(75, 95),
+		Cons.RECIPE.ENLARGEMENT, Vector2i(75, 100),
 		Cons.STIR_PATTERN.CLOCKWISE, 15
 	],
 	[Ingredient.TYPE.UNICORN_TEARS, Ingredient.TYPE.STAR_FLOWER] : [
-		Cons.RECIPE.HEALING, Vector2i(0, 100),
+		Cons.RECIPE.HEALING, Vector2i(10, 90),
 		Cons.STIR_PATTERN.ANY, 20
 	],
 	[Ingredient.TYPE.FIRE_WORM, Ingredient.TYPE.FROSTY_MINT] : [

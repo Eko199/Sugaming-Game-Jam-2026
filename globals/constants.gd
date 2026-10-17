@@ -15,11 +15,10 @@ enum RECIPE {
 }
 
 enum DEBUFF {
-	COLOR_BLINDNESS, SPEECH_MISUNDERSTANDING,
+	COLOR_BLINDNESS, SPEECH_MISUNDERSTANDING, ITEM_SHUFFLE, SOUND_MUFFLING
 }
 
 # General information
-## TODO: Add actual sprites
 const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://textures/gnome_hair.png',
 	'res://textures/fireworm.png',
@@ -74,3 +73,5 @@ const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
 const EASY_RECIPE_MIN_WEIGHT: float = 0.35
 const TEMP_DIAL_CHANGE: int = 5
 const PERFECT_TIME_BONUS: float = 5.0
+const DEBUFF_FAILS: int = 2
+const DEBUFF_TIME: int = 20

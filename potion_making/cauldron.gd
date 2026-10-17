@@ -11,11 +11,14 @@ var current_temp: float = 50.0
 var current_stirring: Cons.STIR_PATTERN = Cons.STIR_PATTERN.NONE
 var refill_tween: Tween
 var _ready_done: bool = false
+var customer_present: bool = false
 
 func _ready() -> void:
 	Event.potion_served.connect(_potion_served)
 	Event.cauldron_emptied.connect(_potion_served)
 	Event.stirred.connect(_stirred)
+	Event.customer_arrived.connect(func(_c: Customer) -> void: customer_present = true)
+	Event.customer_left.connect(func(_c: Customer, _served: bool) -> void: customer_present = false)
 	water_mask.z_index = Cons.Z_WATER
 	front.z_index = Cons.Z_CAULDRON_FRONT
 	dial.z_index = Cons.Z_CAULDRON_FRONT
@@ -51,6 +54,7 @@ func _refill_water() -> void:
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 
 func _stirred(pattern: Cons.STIR_PATTERN) -> void:
+	if not customer_present: return
 	current_stirring = pattern
 	brew()
 
@@ -60,6 +64,7 @@ func _update_water_color() -> void:
 
 func brew() -> void:
 	var result: Dictionary = Recipe.evaluate(current_items.duplicate(), roundi(current_temp), current_stirring)
+	result.success = result.success and Utility.scene.customer.wanted == result.recipe_id
 	Event.potion_served.emit(result)
 
 func _is_spoon_held() -> bool:
@@ -67,7 +72,6 @@ func _is_spoon_held() -> bool:
 	return viewport.gui_is_dragging() and viewport.gui_get_drag_data() is Spoon
 
 func _unhandled_input(event: InputEvent) -> void:
-	if _is_spoon_held(): return
 	if event.is_action('temp_down'):
 		_change_temp(-Cons.TEMP_DIAL_CHANGE)
 	if event.is_action('temp_up'):

@@ -6,8 +6,10 @@ enum TYPE {
 	UNICORN_TEARS, EXPANDING_BEANS, STAR_FLOWER,
 }
 
-@export var type: TYPE
-
+@export var type: TYPE:
+	set(value): 
+		type = value
+		reload()
 @onready var outline: TextureRect = $Outline
 
 var saved_texture: Texture2D
@@ -16,11 +18,14 @@ var is_dragging: bool = false
 const drag_preview = preload("res://potion_making/drag_preview.gd")
 
 func _ready() -> void:
-	texture = load(Cons.INGRIDIENT_TEXTURE[type])
-	outline.texture = texture
-	saved_texture = texture
+	reload()
 	Event.potion_served.connect(_return_to_shelf)
 	Event.cauldron_emptied.connect(_return_to_shelf)
+
+func reload() -> void:
+	texture = load(Cons.INGRIDIENT_TEXTURE[type])
+	if outline != null: outline.texture = texture
+	saved_texture = texture
 
 func _return_to_shelf(_result = null) -> void:
 	if is_dragging: return

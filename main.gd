@@ -6,11 +6,15 @@ class_name MainScene
 @onready var spoon: TextureRect = $Spoon
 @onready var almanac: MarginContainer = $UI/ColorRect/AlmanacControl
 @onready var back_background: TextureRect = $BackBackground
+@onready var shelf: Node2D = $Shelf
+@onready var color_blind: ColorBlindFilter = $ColorBlind
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var customers_spawned: int = 0
 var money: int = 0
 var potions_served: int = 0
+var fails: int = 0
+var current_debuffs: Array[Cons.DEBUFF] = []
 var is_spoon_held: bool = false
 var is_over: bool = false
 var elapsed: float = 0.0
@@ -19,9 +23,12 @@ func _ready() -> void:
 	rng.randomize()
 	Event.customer_left.connect(_on_customer_left)
 	Event.customer_paid.connect(_on_customer_paid)
+	Event.potion_served.connect(_on_potion_served)
 	round_timer.timeout.connect(_end_game)
 	round_timer.start(Cons.ROUND_TIME)
 	_spawn_customer()
+	await get_tree().create_timer(1.0).timeout
+	_shuffle_items()
 
 func _process(delta: float) -> void:
 	elapsed += delta
@@ -62,6 +69,31 @@ func _pick_recipe(progress: float) -> Cons.RECIPE:
 		weights.append(weight)
 	return rng.rand_weighted(weights) as Cons.RECIPE
 
+func _get_debuff() -> void:
+	if fails % Cons.DEBUFF_FAILS != 0: return
+	var debuffs: Array = Cons.DEBUFF.values().filter(
+		func(a): return not a in current_debuffs
+	)
+	var debuff: Cons.DEBUFF = debuffs.pick_random()
+	if debuff == null: return
+	current_debuffs.append(debuff)
+	_apply_debuff(debuff)
+
+func _apply_debuff(wt: Cons.DEBUFF) -> void:
+	match wt:
+		Cons.DEBUFF.COLOR_BLINDNESS:
+			color_blind.fade_in()
+		Cons.DEBUFF.SPEECH_MISUNDERSTANDING: pass
+		Cons.DEBUFF.ITEM_SHUFFLE:
+			_shuffle_items()
+		Cons.DEBUFF.SOUND_MUFFLING: pass
+
+func _shuffle_items() -> void:
+	var items: Array = shelf.get_children().map(func(ing): return ing.type)
+	items.shuffle()
+	for i in shelf.get_child_count():
+		shelf.get_child(i).type = items[i]
+
 func _on_customer_left(_customer: Customer, _served: bool) -> void:
 	await get_tree().create_timer(Cons.CUSTOMER_GAP).timeout
 	if is_over or round_timer.is_stopped(): return
@@ -72,6 +104,11 @@ func _on_customer_paid(amount: int, quality: Cons.QUALITY) -> void:
 	potions_served += 1
 	Event.money_changed.emit(money)
 	if quality == Cons.QUALITY.EXCELLENT: add_time(Cons.PERFECT_TIME_BONUS)
+
+func _on_potion_served(pot: Dictionary) -> void:
+	if pot.success: return
+	fails += 1
+	_get_debuff()
 
 func _on_spoon_button_up() -> void:
 	spoon.hide()

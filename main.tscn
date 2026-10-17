@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cwdg41cb3c5sy" path="res://textures/background.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b4a1c2d50cjdd" path="res://potion_making/cauldron.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bf47lyj853ja" path="res://ui/almanac_control.tscn" id="4_4c57u"]
+[ext_resource type="Script" uid="uid://4jn4w77cy3d5" path="res://ui/color_blind_filter.gd" id="5_cegan"]
 [ext_resource type="Texture2D" uid="uid://c44y8o6fmokw4" path="res://textures/backgroundx2dragon.png" id="5_yaehf"]
 [ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cryb0mo88h5oc" path="res://textures/gnome_hair.png" id="7_2cqfq"]
@@ -109,6 +110,9 @@ offset_top = -421.0
 offset_right = 1216.0
 offset_bottom = 740.0
 scale = Vector2(0.8, 0.8)
+
+[node name="ColorBlind" type="CanvasLayer" parent="." unique_id=471396018]
+script = ExtResource("5_cegan")
 
 [node name="BackBackground" type="TextureRect" parent="." unique_id=1143501225]
 offset_right = 1920.0
