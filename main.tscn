@@ -34,6 +34,18 @@ label_settings = SubResource("LabelSettings_0xm2m")
 
 [node name="AlmanacControl" parent="UI" unique_id=1011438134 instance=ExtResource("3_5vw27")]
 visible = false
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.99998
+offset_top = 151.99998
+offset_right = 199.0
+offset_bottom = 152.0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1861596065]
 position = Vector2(961.44446, 542.5)

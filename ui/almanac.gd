@@ -25,7 +25,7 @@ func switch_page(page: Control) -> void:
 	current_page.visible = true
 
 func unlock_knowledge(
-	potion: Ingredient.TYPE,
+	potion: Cons.RECIPE,
 	ingredient: bool,
 	temperature: bool,
 	strir_pattern: bool
@@ -36,6 +36,10 @@ func unlock_knowledge(
 		unlocked_recipes[potion].temperature = true
 	if strir_pattern:
 		unlocked_recipes[potion].strir_pattern = true
+	
+	var recipe: Control = recipes.get_child(0).get_child(potion + 1)
+	var label: Label = recipe.get_node("Potion")
+	label.text = Utility.get_keyname(potion, Cons.RECIPE)
 
 func _ready() -> void:
 	for rcp_ingredients: Array in Recipe.RECIPE:
@@ -43,6 +47,8 @@ func _ready() -> void:
 		var knowledge: RecipeKnowledge = RecipeKnowledge.new(ingredients_count)
 		var potion = Recipe.RECIPE[rcp_ingredients][0]
 		unlocked_recipes[potion] = knowledge
+	
+	unlock_knowledge(0, true, true, true)
 
 func _on_almanac_pressed() -> void:
 	open()
@@ -67,13 +73,13 @@ func _on_tutorial_btn_pressed() -> void:
 	switch_page(tutorial)
 
 class RecipeKnowledge:
-	var ingredients: Array = [0]
+	var ingredients_count = 1
+	var ingredients: bool = false
 	var temperature: bool = false
 	var strir_pattern: bool = false
 	
-	func _init(ingredients_count: int) -> void:
-		ingredients.resize(ingredients_count)
-		ingredients.fill(0)
+	func _init(_ingredients_count: int) -> void:
+		ingredients_count = _ingredients_count
 	
 	func print() -> void:
 		print(ingredients)

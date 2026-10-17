@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://de1kknukqhl5m"]
+
+[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="1_h2ud4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7tx1"]
+font_size = 30
+
+[node name="Recipe" type="HBoxContainer" unique_id=771960630]
+offset_left = -669.0
+offset_top = -292.0
+offset_right = -71.0
+offset_bottom = -172.0
+theme_override_constants/separation = 67
+
+[node name="Potion" type="Label" parent="." unique_id=1448181069]
+layout_mode = 2
+text = "??"
+label_settings = SubResource("LabelSettings_7upsp")
+
+[node name="Label" type="Label" parent="." unique_id=1142717900]
+layout_mode = 2
+text = "="
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Ingredients" type="HFlowContainer" parent="." unique_id=1310431838]
+custom_minimum_size = Vector2(180, 60)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Ingredients" unique_id=1833869229]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_h2ud4")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Ingredients" unique_id=934899504]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_h2ud4")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Ingredients" unique_id=780383086]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_h2ud4")
+expand_mode = 2
+
+[node name="Temperature" type="Label" parent="." unique_id=989610774]
+layout_mode = 2
+text = "+ ?? °C +"
+label_settings = SubResource("LabelSettings_p7tx1")
+
+[node name="Stir" type="TextureRect" parent="." unique_id=2102165612]
+layout_mode = 2
+texture = ExtResource("1_h2ud4")
+expand_mode = 2

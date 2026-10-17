@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgm1huqnuwkma" path="res://ui/almanac.gd" id="1_j4527"]
 [ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="2_ytkxx"]
+[ext_resource type="PackedScene" uid="uid://de1kknukqhl5m" path="res://ui/recipe.tscn" id="3_kyb6q"]
 
 [sub_resource type="Gradient" id="Gradient_5vw27"]
 offsets = PackedFloat32Array(0.004, 0.996, 1)
@@ -13,567 +14,175 @@ gradient = SubResource("Gradient_5vw27")
 [sub_resource type="LabelSettings" id="LabelSettings_ov5wf"]
 font_size = 40
 
-[sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
-font_size = 30
-
-[sub_resource type="LabelSettings" id="LabelSettings_p7tx1"]
-font_size = 30
-
-[node name="AlmanacControl" type="Control" unique_id=1011438134]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 951.0
-offset_top = 635.0
-offset_right = 1010.0
-offset_bottom = 700.0
+[node name="AlmanacControl" type="MarginContainer" unique_id=1700512780]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 script = ExtResource("1_j4527")
-metadata/_edit_group_ = true
 
-[node name="CookingBtn" type="Button" parent="." unique_id=702234793]
-layout_mode = 0
-offset_left = 544.0
-offset_top = -490.0
-offset_right = 622.0
-offset_bottom = -360.0
+[node name="Bookmarks" type="Control" parent="." unique_id=722244083]
+layout_mode = 2
+mouse_filter = 2
 
-[node name="IngredientsBtn" type="Button" parent="." unique_id=353100691]
+[node name="CookingBtn" type="Button" parent="Bookmarks" unique_id=702234793]
 layout_mode = 0
-offset_left = 435.0
-offset_top = -490.0
-offset_right = 513.0
-offset_bottom = -360.0
+offset_left = 1691.0
+offset_top = -120.0
+offset_right = 1809.0
+offset_bottom = 127.0
 
-[node name="RecipesBtn" type="Button" parent="." unique_id=974889372]
+[node name="IngredientsBtn" type="Button" parent="Bookmarks" unique_id=353100691]
 layout_mode = 0
-offset_left = 323.0
-offset_top = -490.0
-offset_right = 401.0
-offset_bottom = -360.0
+offset_left = 1521.0
+offset_top = -120.0
+offset_right = 1639.0
+offset_bottom = 127.0
 
-[node name="TutorialBtn" type="Button" parent="." unique_id=1085961713]
+[node name="RecipesBtn" type="Button" parent="Bookmarks" unique_id=974889372]
 layout_mode = 0
-offset_left = -583.0
-offset_top = -490.0
-offset_right = -505.0
-offset_bottom = -360.0
+offset_left = 1329.0
+offset_top = -120.0
+offset_right = 1447.0
+offset_bottom = 127.0
+
+[node name="TutorialBtn" type="Button" parent="Bookmarks" unique_id=1085961713]
+layout_mode = 0
+offset_left = 98.0
+offset_top = -120.0
+offset_right = 216.0
+offset_bottom = 127.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=705706127]
-layout_mode = 0
-offset_left = -695.0
-offset_top = -412.0
-offset_right = 680.0
-offset_bottom = 348.0
+layout_mode = 2
 texture = SubResource("GradientTexture2D_p7tx1")
 
-[node name="Exit" type="Button" parent="TextureRect" unique_id=1318284532]
-layout_mode = 0
-offset_left = 1187.0
-offset_top = 33.0
-offset_right = 1323.0
-offset_bottom = 169.0
-icon = ExtResource("2_ytkxx")
-
-[node name="Tutorial" type="Control" parent="." unique_id=407396862]
+[node name="Tutorial" type="MarginContainer" parent="." unique_id=1424209766]
 visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="Label" type="Label" parent="Tutorial" unique_id=2135312719]
-layout_mode = 0
-offset_left = -616.0
-offset_top = -342.0
-offset_right = -79.0
-offset_bottom = 295.0
+layout_mode = 2
 text = "TUTORIAL"
 label_settings = SubResource("LabelSettings_ov5wf")
 
 [node name="Label2" type="Label" parent="Tutorial" unique_id=407766913]
-layout_mode = 0
-offset_left = 105.0
-offset_top = -345.0
-offset_right = 619.0
-offset_bottom = 292.0
+layout_mode = 2
 text = "LOREM IPSUM"
 label_settings = SubResource("LabelSettings_ov5wf")
 
-[node name="Recipes" type="Control" parent="." unique_id=424544720]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Recipes" type="MarginContainer" parent="." unique_id=1057927573]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="Label" type="Label" parent="Recipes" unique_id=2002414573]
+[node name="VFlowContainer" type="VFlowContainer" parent="Recipes" unique_id=1683986501]
+layout_mode = 2
+theme_override_constants/h_separation = 300
+theme_override_constants/v_separation = 120
+alignment = 1
+
+[node name="Recipe1" parent="Recipes/VFlowContainer" unique_id=1410940039 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe2" parent="Recipes/VFlowContainer" unique_id=1652881450 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe3" parent="Recipes/VFlowContainer" unique_id=1659612402 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe4" parent="Recipes/VFlowContainer" unique_id=1538374553 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe5" parent="Recipes/VFlowContainer" unique_id=1926209624 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe6" parent="Recipes/VFlowContainer" unique_id=1209565737 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe7" parent="Recipes/VFlowContainer" unique_id=1070182856 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Recipes" unique_id=2136623018]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Recipes/Control" unique_id=2002414573]
 layout_mode = 0
-offset_left = -616.0
-offset_top = -342.0
-offset_right = -79.0
-offset_bottom = -277.0
+offset_left = 6.0
+offset_top = -68.0
+offset_right = 1806.0
+offset_bottom = -13.0
 text = "RECIPES"
 label_settings = SubResource("LabelSettings_ov5wf")
 
-[node name="Recipe" type="Control" parent="Recipes" unique_id=986180403]
-anchors_preset = 0
-offset_left = -603.0
-offset_top = -256.0
-offset_right = -563.0
-offset_bottom = -216.0
-
-[node name="Potion" type="Label" parent="Recipes/Recipe" unique_id=735721982]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 9.0
-offset_right = 104.0
-offset_bottom = 51.0
-text = "??"
-label_settings = SubResource("LabelSettings_7upsp")
-
-[node name="Label" type="Label" parent="Recipes/Recipe" unique_id=1869201343]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 7.0
-offset_right = 156.0
-offset_bottom = 49.0
-text = "="
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Ingredients" type="Control" parent="Recipes/Recipe" unique_id=2067530035]
-anchors_preset = 0
-offset_left = 166.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 56.0
-
-[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe/Ingredients" unique_id=393491774]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -29.0
-offset_right = 81.0
-offset_bottom = 56.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Temperature" type="Label" parent="Recipes/Recipe" unique_id=543785432]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 9.0
-offset_right = 322.0
-offset_bottom = 51.0
-text = "+ ?? °C +"
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Stir" type="TextureRect" parent="Recipes/Recipe" unique_id=1626067985]
-layout_mode = 0
-offset_left = 423.0
-offset_top = -11.0
-offset_right = 513.0
-offset_bottom = 79.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Recipe2" type="Control" parent="Recipes" unique_id=1829628193]
-anchors_preset = 0
-offset_left = -600.0
-offset_top = -89.0
-offset_right = -560.0
-offset_bottom = -49.0
-
-[node name="Potion" type="Label" parent="Recipes/Recipe2" unique_id=409035955]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 9.0
-offset_right = 104.0
-offset_bottom = 51.0
-text = "??"
-label_settings = SubResource("LabelSettings_7upsp")
-
-[node name="Label" type="Label" parent="Recipes/Recipe2" unique_id=880203666]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 7.0
-offset_right = 156.0
-offset_bottom = 49.0
-text = "="
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Ingredients" type="Control" parent="Recipes/Recipe2" unique_id=613604529]
-anchors_preset = 0
-offset_left = 166.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 56.0
-
-[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe2/Ingredients" unique_id=1033467293]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -29.0
-offset_right = 81.0
-offset_bottom = 56.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Temperature" type="Label" parent="Recipes/Recipe2" unique_id=1046975857]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 9.0
-offset_right = 322.0
-offset_bottom = 51.0
-text = "+ ?? °C +"
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Stir" type="TextureRect" parent="Recipes/Recipe2" unique_id=735570582]
-layout_mode = 0
-offset_left = 423.0
-offset_top = -11.0
-offset_right = 513.0
-offset_bottom = 79.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Recipe3" type="Control" parent="Recipes" unique_id=2110742933]
-anchors_preset = 0
-offset_left = -597.0
-offset_top = 55.0
-offset_right = -557.0
-offset_bottom = 95.0
-
-[node name="Potion" type="Label" parent="Recipes/Recipe3" unique_id=1575954283]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 9.0
-offset_right = 104.0
-offset_bottom = 51.0
-text = "??"
-label_settings = SubResource("LabelSettings_7upsp")
-
-[node name="Label" type="Label" parent="Recipes/Recipe3" unique_id=1883435708]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 7.0
-offset_right = 156.0
-offset_bottom = 49.0
-text = "="
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Ingredients" type="Control" parent="Recipes/Recipe3" unique_id=839706517]
-anchors_preset = 0
-offset_left = 166.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 56.0
-
-[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe3/Ingredients" unique_id=698637769]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -29.0
-offset_right = 81.0
-offset_bottom = 56.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Temperature" type="Label" parent="Recipes/Recipe3" unique_id=677462490]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 9.0
-offset_right = 322.0
-offset_bottom = 51.0
-text = "+ ?? °C +"
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Stir" type="TextureRect" parent="Recipes/Recipe3" unique_id=43680711]
-layout_mode = 0
-offset_left = 423.0
-offset_top = -11.0
-offset_right = 513.0
-offset_bottom = 79.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Recipe4" type="Control" parent="Recipes" unique_id=270526190]
-anchors_preset = 0
-offset_left = -592.0
-offset_top = 202.0
-offset_right = -552.0
-offset_bottom = 242.0
-
-[node name="Potion" type="Label" parent="Recipes/Recipe4" unique_id=1836309407]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 9.0
-offset_right = 104.0
-offset_bottom = 51.0
-text = "??"
-label_settings = SubResource("LabelSettings_7upsp")
-
-[node name="Label" type="Label" parent="Recipes/Recipe4" unique_id=892389295]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 7.0
-offset_right = 156.0
-offset_bottom = 49.0
-text = "="
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Ingredients" type="Control" parent="Recipes/Recipe4" unique_id=710974432]
-anchors_preset = 0
-offset_left = 166.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 56.0
-
-[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe4/Ingredients" unique_id=247368341]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -29.0
-offset_right = 81.0
-offset_bottom = 56.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Temperature" type="Label" parent="Recipes/Recipe4" unique_id=449443182]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 9.0
-offset_right = 322.0
-offset_bottom = 51.0
-text = "+ ?? °C +"
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Stir" type="TextureRect" parent="Recipes/Recipe4" unique_id=1598263887]
-layout_mode = 0
-offset_left = 423.0
-offset_top = -11.0
-offset_right = 513.0
-offset_bottom = 79.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Recipe5" type="Control" parent="Recipes" unique_id=227661377]
-anchors_preset = 0
-offset_left = 99.0
-offset_top = -186.0
-offset_right = 139.0
-offset_bottom = -146.0
-
-[node name="Potion" type="Label" parent="Recipes/Recipe5" unique_id=2118297799]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 9.0
-offset_right = 104.0
-offset_bottom = 51.0
-text = "??"
-label_settings = SubResource("LabelSettings_7upsp")
-
-[node name="Label" type="Label" parent="Recipes/Recipe5" unique_id=1860827089]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 7.0
-offset_right = 156.0
-offset_bottom = 49.0
-text = "="
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Ingredients" type="Control" parent="Recipes/Recipe5" unique_id=723943786]
-anchors_preset = 0
-offset_left = 166.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 56.0
-
-[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe5/Ingredients" unique_id=1609551037]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -29.0
-offset_right = 81.0
-offset_bottom = 56.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Temperature" type="Label" parent="Recipes/Recipe5" unique_id=33292447]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 9.0
-offset_right = 322.0
-offset_bottom = 51.0
-text = "+ ?? °C +"
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Stir" type="TextureRect" parent="Recipes/Recipe5" unique_id=115962589]
-layout_mode = 0
-offset_left = 423.0
-offset_top = -11.0
-offset_right = 513.0
-offset_bottom = 79.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Recipe6" type="Control" parent="Recipes" unique_id=1370976381]
-anchors_preset = 0
-offset_left = 99.0
-offset_top = -11.0
-offset_right = 139.0
-offset_bottom = 29.0
-
-[node name="Potion" type="Label" parent="Recipes/Recipe6" unique_id=952334328]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 9.0
-offset_right = 104.0
-offset_bottom = 51.0
-text = "??"
-label_settings = SubResource("LabelSettings_7upsp")
-
-[node name="Label" type="Label" parent="Recipes/Recipe6" unique_id=551608348]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 7.0
-offset_right = 156.0
-offset_bottom = 49.0
-text = "="
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Ingredients" type="Control" parent="Recipes/Recipe6" unique_id=932787130]
-anchors_preset = 0
-offset_left = 166.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 56.0
-
-[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe6/Ingredients" unique_id=1217816636]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -29.0
-offset_right = 81.0
-offset_bottom = 56.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Temperature" type="Label" parent="Recipes/Recipe6" unique_id=560546605]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 9.0
-offset_right = 322.0
-offset_bottom = 51.0
-text = "+ ?? °C +"
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Stir" type="TextureRect" parent="Recipes/Recipe6" unique_id=1211241455]
-layout_mode = 0
-offset_left = 423.0
-offset_top = -11.0
-offset_right = 513.0
-offset_bottom = 79.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Recipe7" type="Control" parent="Recipes" unique_id=1525314024]
-anchors_preset = 0
-offset_left = 101.0
-offset_top = 159.0
-offset_right = 141.0
-offset_bottom = 199.0
-
-[node name="Potion" type="Label" parent="Recipes/Recipe7" unique_id=533980122]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 9.0
-offset_right = 104.0
-offset_bottom = 51.0
-text = "??"
-label_settings = SubResource("LabelSettings_7upsp")
-
-[node name="Label" type="Label" parent="Recipes/Recipe7" unique_id=2094402526]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 7.0
-offset_right = 156.0
-offset_bottom = 49.0
-text = "="
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Ingredients" type="Control" parent="Recipes/Recipe7" unique_id=1349457394]
-anchors_preset = 0
-offset_left = 166.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 56.0
-
-[node name="TextureRect" type="TextureRect" parent="Recipes/Recipe7/Ingredients" unique_id=1952044753]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -29.0
-offset_right = 81.0
-offset_bottom = 56.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Temperature" type="Label" parent="Recipes/Recipe7" unique_id=854308621]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 9.0
-offset_right = 322.0
-offset_bottom = 51.0
-text = "+ ?? °C +"
-label_settings = SubResource("LabelSettings_p7tx1")
-
-[node name="Stir" type="TextureRect" parent="Recipes/Recipe7" unique_id=1898752229]
-layout_mode = 0
-offset_left = 423.0
-offset_top = -11.0
-offset_right = 513.0
-offset_bottom = 79.0
-texture = ExtResource("2_ytkxx")
-expand_mode = 2
-
-[node name="Ingredients" type="Control" parent="." unique_id=1408980002]
+[node name="Ingredients" type="MarginContainer" parent="." unique_id=1353418424]
 visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="Label" type="Label" parent="Ingredients" unique_id=1372315519]
-layout_mode = 0
-offset_left = -616.0
-offset_top = -342.0
-offset_right = -79.0
-offset_bottom = 295.0
+layout_mode = 2
 text = "INGREDENTS"
 label_settings = SubResource("LabelSettings_ov5wf")
 
 [node name="Label2" type="Label" parent="Ingredients" unique_id=73934723]
-layout_mode = 0
-offset_left = 105.0
-offset_top = -345.0
-offset_right = 619.0
-offset_bottom = 292.0
+layout_mode = 2
 text = "LOREM IPSUM"
 label_settings = SubResource("LabelSettings_ov5wf")
 
-[node name="Cooking" type="Control" parent="." unique_id=1388461027]
+[node name="Cooking" type="MarginContainer" parent="." unique_id=307865024]
 visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="Label" type="Label" parent="Cooking" unique_id=1587061550]
-layout_mode = 0
-offset_left = -616.0
-offset_top = -342.0
-offset_right = -79.0
-offset_bottom = 295.0
+layout_mode = 2
 text = "COOKING"
 label_settings = SubResource("LabelSettings_ov5wf")
 
 [node name="Label2" type="Label" parent="Cooking" unique_id=556355266]
-layout_mode = 0
-offset_left = 105.0
-offset_top = -345.0
-offset_right = 619.0
-offset_bottom = 292.0
+layout_mode = 2
 text = "LOREM IPSUM"
 label_settings = SubResource("LabelSettings_ov5wf")
 
-[connection signal="pressed" from="CookingBtn" to="." method="_on_cooking_btn_pressed"]
-[connection signal="pressed" from="IngredientsBtn" to="." method="_on_ingredients_btn_pressed"]
-[connection signal="pressed" from="RecipesBtn" to="." method="_on_recipes_btn_pressed"]
-[connection signal="pressed" from="TutorialBtn" to="." method="_on_tutorial_btn_pressed"]
-[connection signal="pressed" from="TextureRect/Exit" to="." method="_on_exit_pressed"]
+[node name="ExitControl" type="Control" parent="." unique_id=634802143]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="ExitControl" unique_id=1318284532]
+layout_mode = 0
+offset_left = 1672.0
+offset_top = 58.0
+offset_right = 1808.0
+offset_bottom = 194.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+icon = ExtResource("2_ytkxx")
+
+[connection signal="pressed" from="Bookmarks/CookingBtn" to="." method="_on_cooking_btn_pressed"]
+[connection signal="pressed" from="Bookmarks/IngredientsBtn" to="." method="_on_ingredients_btn_pressed"]
+[connection signal="pressed" from="Bookmarks/RecipesBtn" to="." method="_on_recipes_btn_pressed"]
+[connection signal="pressed" from="Bookmarks/TutorialBtn" to="." method="_on_tutorial_btn_pressed"]
+[connection signal="pressed" from="ExitControl/Exit" to="." method="_on_exit_pressed"]
