@@ -41,9 +41,29 @@ const DESCRIPTIONS: PackedStringArray = [
 # Gameplay constants
 const MAX_INGREDIENTS: int = 3
 const ROUND_TIME: int = 300
-const PATIENCE_MIN: int = 20
-const PATIENCE_MAX: int = 50
+const PATIENCE_MIN: int = 10
+const PATIENCE_MAX: int = 30
 const CUSTOMER_GAP: float = 1.0
 const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
-## Minimum weight for recipes easier than the current difficulty (the current one has weight 1.0)
 const EASY_RECIPE_MIN_WEIGHT: float = 0.35
+
+const REQUEST_LINES: Array = [
+	[
+		"QUICK! A %s potion, NOW!",
+		"%s potion! Hurry, hurry!",
+		"No time! %s potion, fast!",
+		"The dragon's coming! %s potion!!",
+	],
+	[
+		"Please give me a %s potion!",
+		"One %s potion, please.",
+		"I need a %s potion.",
+		"Got a %s potion for me?",
+	],
+	[
+		"Whenever you're ready, a %s potion please~",
+		"No rush, friend. One %s potion.",
+		"Take your time, I'd like a %s potion.",
+		"Ah, a %s potion would be lovely.",
+	],
+]
