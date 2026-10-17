@@ -65,6 +65,12 @@ func unlock_knowledge(
 
 	var label: Label = recipe_row.get_node("Potion")
 	label.text = Utility.get_keyname(potion, Cons.RECIPE)
+	
+func process_potion_result(result: Dictionary) -> void:
+	if not result.success:
+		return
+		
+	unlock_knowledge(result["recipe_id"], true, result["correct_temperature"], result["correct_stir"])
 
 func _ready() -> void:
 	for rcp_ingredients: Array in Recipe.RECIPE:
@@ -80,7 +86,7 @@ func _ready() -> void:
 		
 		recipes_dict[potion] = [rcp_ingredients, Recipe.RECIPE[rcp_ingredients][1], Recipe.RECIPE[rcp_ingredients][2]]
 	
-	unlock_knowledge(0, true, true, true)
+	Event.potion_served.connect(process_potion_result)
 		
 func _on_almanac_pressed() -> void:
 	open()
