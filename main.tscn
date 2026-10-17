@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://0830dg36o4ho" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://dukht7q1xvq1d" path="res://textures/background_sketch.jpg" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dwvgd1ceya2ff" path="res://potion_making/ingredient.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bf47lyj853ja" path="res://ui/almanac_control.tscn" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://b4a1c2d50cjdd" path="res://potion_making/cauldron.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="7_272bh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
 font_size = 32
@@ -29,6 +31,9 @@ offset_right = 175.0
 offset_bottom = 103.0
 text = "5:00"
 label_settings = SubResource("LabelSettings_0xm2m")
+
+[node name="AlmanacControl" parent="UI" unique_id=1011438134 instance=ExtResource("3_5vw27")]
+visible = false
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1861596065]
 position = Vector2(961.44446, 542.5)
@@ -89,3 +94,12 @@ offset_left = 650.0
 offset_top = 101.0
 offset_right = 936.0
 offset_bottom = 482.0
+
+[node name="Almanac" type="Button" parent="." unique_id=466546909]
+offset_left = 213.0
+offset_top = 810.0
+offset_right = 349.0
+offset_bottom = 997.0
+icon = ExtResource("7_272bh")
+
+[connection signal="pressed" from="Almanac" to="UI/AlmanacControl" method="_on_almanac_pressed"]

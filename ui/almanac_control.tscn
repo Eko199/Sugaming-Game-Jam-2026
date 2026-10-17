@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bf47lyj853ja"]
+
+[ext_resource type="Script" uid="uid://dgm1huqnuwkma" path="res://ui/almanac.gd" id="1_j4527"]
+[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="2_ytkxx"]
+
+[sub_resource type="Gradient" id="Gradient_5vw27"]
+offsets = PackedFloat32Array(0.004, 0.996, 1)
+colors = PackedColorArray(0.37162217, 0.3716222, 0.37162215, 1, 0.4220943, 0.42209432, 0.42209426, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p7tx1"]
+gradient = SubResource("Gradient_5vw27")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ov5wf"]
+font_size = 40
+
+[node name="AlmanacControl" type="Control" unique_id=1011438134]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 951.0
+offset_top = 635.0
+offset_right = 1010.0
+offset_bottom = 700.0
+script = ExtResource("1_j4527")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=705706127]
+layout_mode = 0
+offset_left = -695.0
+offset_top = -412.0
+offset_right = 680.0
+offset_bottom = 348.0
+texture = SubResource("GradientTexture2D_p7tx1")
+
+[node name="Label" type="Label" parent="." unique_id=2002414573]
+layout_mode = 0
+offset_left = -616.0
+offset_top = -342.0
+offset_right = -46.0
+offset_bottom = 295.0
+text = "LOREM IPSUM"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Label2" type="Label" parent="." unique_id=1662505809]
+layout_mode = 0
+offset_left = 49.0
+offset_top = -345.0
+offset_right = 619.0
+offset_bottom = 292.0
+text = "LOREM IPSUM"
+label_settings = SubResource("LabelSettings_ov5wf")
+
+[node name="Exit" type="Button" parent="." unique_id=1318284532]
+layout_mode = 0
+offset_left = 492.0
+offset_top = -379.0
+offset_right = 628.0
+offset_bottom = -243.0
+icon = ExtResource("2_ytkxx")
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
