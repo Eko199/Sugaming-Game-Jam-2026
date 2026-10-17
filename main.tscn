@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://0830dg36o4ho" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dwvgd1ceya2ff" path="res://potion_making/ingredient.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://gx1s8u4ergal" path="res://ui/end_screen.tscn" id="3_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bf47lyj853ja" path="res://ui/almanac_control.tscn" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://cwdg41cb3c5sy" path="res://textures/background.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b4a1c2d50cjdd" path="res://potion_making/cauldron.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://d33d5rnlivlhp" path="res://potion_making/spoon.tscn" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://dxo2xb5fkkraa" path="res://textures/almanach.png" id="8_kek77"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
 font_size = 32
@@ -47,6 +49,30 @@ text = "0 coins"
 label_settings = SubResource("LabelSettings_7mycd")
 
 [node name="EndScreen" parent="UI" unique_id=1532378341 instance=ExtResource("3_5vw27")]
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=91601122]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="AlmanacControl" parent="UI/ColorRect" unique_id=1011438134 instance=ExtResource("3_5vw27")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 165.99998
+offset_top = 111.499985
+offset_right = 226.0
+offset_bottom = 192.5
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1861596065]
 position = Vector2(961.44446, 542.5)
@@ -108,9 +134,22 @@ offset_top = 101.0
 offset_right = 936.0
 offset_bottom = 482.0
 
+[node name="Almanac" type="Button" parent="." unique_id=466546909]
+offset_left = 180.0
+offset_top = 746.0
+offset_right = 437.0
+offset_bottom = 1028.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("8_kek77")
+flat = true
+expand_icon = true
+
 [node name="Spoon" parent="." unique_id=389561872 instance=ExtResource("7_272bh")]
 offset_left = 1470.0
 offset_top = 723.0
 offset_right = 1572.0
 offset_bottom = 1068.0
 rotation = -0.2617994
+mouse_default_cursor_shape = 2
+
+[connection signal="pressed" from="Almanac" to="UI/ColorRect/AlmanacControl" method="_on_almanac_pressed"]

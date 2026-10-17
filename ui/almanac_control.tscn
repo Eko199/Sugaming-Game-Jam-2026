@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://bf47lyj853ja"]
+
+[ext_resource type="Script" uid="uid://dgm1huqnuwkma" path="res://ui/almanac.gd" id="1_j4527"]
+[ext_resource type="Texture2D" uid="uid://bd5i8llst35wu" path="res://textures/open-book.png" id="2_8llnm"]
+[ext_resource type="Texture2D" uid="uid://ciykwiaxdcmhi" path="res://textures/red-tab.png" id="2_boy4e"]
+[ext_resource type="Texture2D" uid="uid://2c6dp0q3oc20" path="res://icon.svg" id="2_ytkxx"]
+[ext_resource type="Texture2D" uid="uid://2ti3mwqk8hai" path="res://textures/green-tab.png" id="3_bgjhh"]
+[ext_resource type="PackedScene" uid="uid://de1kknukqhl5m" path="res://ui/recipe.tscn" id="3_kyb6q"]
+[ext_resource type="Texture2D" uid="uid://dnq0pllbw3rji" path="res://textures/blue-tab.png" id="4_p800m"]
+[ext_resource type="Texture2D" uid="uid://cicush4i4a3xs" path="res://textures/yellow-tab.png" id="5_iu7ow"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ftik"]
+font_size = 67
+font_color = Color(0, 0, 0, 1)
+
+[node name="AlmanacControl" type="MarginContainer" unique_id=1700512780]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_j4527")
+
+[node name="Book" type="TextureRect" parent="." unique_id=705706127]
+z_index = 1
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_8llnm")
+
+[node name="Tutorial" type="MarginContainer" parent="." unique_id=1424209766]
+visible = false
+z_index = 2
+layout_mode = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 70
+
+[node name="Title" type="Control" parent="Tutorial" unique_id=1506117244]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Tutorial/Title" unique_id=2065353815]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -87.5
+offset_right = 250.0
+offset_bottom = 4.5
+text = "TUTORIAL"
+label_settings = SubResource("LabelSettings_3ftik")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial" unique_id=1560965130]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Label" type="RichTextLabel" parent="Tutorial/HBoxContainer" unique_id=444120143]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Label2" type="RichTextLabel" parent="Tutorial/HBoxContainer" unique_id=1797187841]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Recipes" type="MarginContainer" parent="." unique_id=1057927573]
+z_index = 2
+layout_mode = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 70
+
+[node name="VFlowContainer" type="VFlowContainer" parent="Recipes" unique_id=1683986501]
+layout_mode = 2
+theme_override_constants/h_separation = 250
+theme_override_constants/v_separation = 90
+alignment = 1
+
+[node name="Recipe1" parent="Recipes/VFlowContainer" unique_id=1410940039 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe2" parent="Recipes/VFlowContainer" unique_id=1652881450 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe3" parent="Recipes/VFlowContainer" unique_id=1659612402 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe4" parent="Recipes/VFlowContainer" unique_id=1538374553 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe5" parent="Recipes/VFlowContainer" unique_id=1926209624 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe6" parent="Recipes/VFlowContainer" unique_id=1209565737 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Recipe7" parent="Recipes/VFlowContainer" unique_id=1070182856 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
+[node name="Title" type="Control" parent="Recipes" unique_id=2136623018]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Recipes/Title" unique_id=2002414573]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -87.5
+offset_right = 250.0
+offset_bottom = 4.5
+text = "RECIPES"
+label_settings = SubResource("LabelSettings_3ftik")
+
+[node name="Ingredients" type="MarginContainer" parent="." unique_id=1353418424]
+visible = false
+z_index = 2
+layout_mode = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 70
+
+[node name="Title" type="Control" parent="Ingredients" unique_id=2061743193]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Ingredients/Title" unique_id=509326083]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -87.5
+offset_right = 250.0
+offset_bottom = 4.5
+text = "INGREDIENTS"
+label_settings = SubResource("LabelSettings_3ftik")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Ingredients" unique_id=1240819687]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer" unique_id=356395603]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Label2" type="RichTextLabel" parent="Ingredients/HBoxContainer" unique_id=2048181357]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Cooking" type="MarginContainer" parent="." unique_id=307865024]
+visible = false
+z_index = 2
+layout_mode = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 70
+
+[node name="Title" type="Control" parent="Cooking" unique_id=1270523838]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Cooking/Title" unique_id=922027037]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -87.5
+offset_right = 250.0
+offset_bottom = 4.5
+text = "COOKING TIPS"
+label_settings = SubResource("LabelSettings_3ftik")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Cooking" unique_id=1804323738]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Label" type="RichTextLabel" parent="Cooking/HBoxContainer" unique_id=1765519050]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Label2" type="RichTextLabel" parent="Cooking/HBoxContainer" unique_id=2000134478]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "
+[color=black]LOREM IPSUM"
+fit_content = true
+
+[node name="Bookmarks" type="Control" parent="." unique_id=722244083]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CookingBtn" type="Button" parent="Bookmarks" unique_id=702234793]
+layout_mode = 0
+offset_left = 1696.0
+offset_top = -40.0
+offset_right = 1814.0
+offset_bottom = 207.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("2_boy4e")
+flat = true
+expand_icon = true
+
+[node name="IngredientsBtn" type="Button" parent="Bookmarks" unique_id=353100691]
+layout_mode = 0
+offset_left = 1540.0
+offset_top = -40.0
+offset_right = 1658.0
+offset_bottom = 207.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_bgjhh")
+flat = true
+expand_icon = true
+
+[node name="RecipesBtn" type="Button" parent="Bookmarks" unique_id=974889372]
+layout_mode = 0
+offset_left = 1382.0
+offset_top = -40.0
+offset_right = 1500.0
+offset_bottom = 207.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("4_p800m")
+flat = true
+expand_icon = true
+
+[node name="TutorialBtn" type="Button" parent="Bookmarks" unique_id=1085961713]
+layout_mode = 0
+offset_left = 98.0
+offset_top = -40.0
+offset_right = 216.0
+offset_bottom = 207.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("5_iu7ow")
+flat = true
+expand_icon = true
+
+[node name="ExitControl" type="Control" parent="." unique_id=634802143]
+z_index = 3
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Exit" type="Button" parent="ExitControl" unique_id=1318284532]
+layout_mode = 0
+offset_left = 1695.0
+offset_top = 117.5
+offset_right = 1831.0
+offset_bottom = 253.5
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+icon = ExtResource("2_ytkxx")
+
+[connection signal="pressed" from="Bookmarks/CookingBtn" to="." method="_on_cooking_btn_pressed"]
+[connection signal="pressed" from="Bookmarks/IngredientsBtn" to="." method="_on_ingredients_btn_pressed"]
+[connection signal="pressed" from="Bookmarks/RecipesBtn" to="." method="_on_recipes_btn_pressed"]
+[connection signal="pressed" from="Bookmarks/TutorialBtn" to="." method="_on_tutorial_btn_pressed"]
+[connection signal="pressed" from="ExitControl/Exit" to="." method="_on_exit_pressed"]
