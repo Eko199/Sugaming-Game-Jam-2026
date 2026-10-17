@@ -6,9 +6,34 @@ const STIR: int = 2
 const PRICE: int = 3
 
 var RECIPE: Dictionary[Array, Array] = {
-	[Ingredient.TYPE.FIRE_WORM] : [
-		Cons.RECIPE.FIRE_RESISTANCE, Vector2i(30, 70),
+	[Ingredient.TYPE.GNOME_HAIR] : [
+		Cons.RECIPE.SHRINKING, Vector2i(30, 70),
 		Cons.STIR_PATTERN.ANY, 10
+	],
+	[Ingredient.TYPE.EXPANDING_BEANS] : [
+		Cons.RECIPE.STRENGTH, Vector2i(75, 95),
+		Cons.STIR_PATTERN.CLOCKWISE, 15
+	],
+	[Ingredient.TYPE.UNICORN_TEARS, Ingredient.TYPE.STAR_FLOWER] : [
+		Cons.RECIPE.HEALING, Vector2i(0, 100),
+		Cons.STIR_PATTERN.ANY, 20
+	],
+	[Ingredient.TYPE.FIRE_WORM, Ingredient.TYPE.FROSTY_MINT] : [
+		Cons.RECIPE.FIRE_RESISTANCE, Vector2i(40, 70),
+		Cons.STIR_PATTERN.ANY, 25
+	],
+	[Ingredient.TYPE.FROSTY_MINT, Ingredient.TYPE.UNICORN_TEARS] : [
+		Cons.RECIPE.WATER_CONTROL, Vector2i(10, 30),
+		Cons.STIR_PATTERN.COUNTERCLOCKWISE, 30
+	],
+	[Ingredient.TYPE.EXPANDING_BEANS, Ingredient.TYPE.STAR_FLOWER] : [
+		Cons.RECIPE.JUMPING_POWER, Vector2i(40, 55),
+		Cons.STIR_PATTERN.CLOCKWISE, 35
+	],
+	[Ingredient.TYPE.GNOME_HAIR, Ingredient.TYPE.UNICORN_TEARS,
+	 Ingredient.TYPE.EXPANDING_BEANS] : [
+		Cons.RECIPE.CLONING, Vector2i(0, 20),
+		Cons.STIR_PATTERN.ANY, 45
 	]
 }
 

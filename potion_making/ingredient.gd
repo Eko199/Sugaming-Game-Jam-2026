@@ -2,8 +2,8 @@ extends TextureRect
 class_name Ingredient
 
 enum TYPE {
-	FIRE_WORM, FROSTY_MINT, UNICORN_TEARS,
-	EXPANDING_BEANS, STAR_FLOWER, GNOME_HAIR,
+	GNOME_HAIR, FIRE_WORM, FROSTY_MINT,
+	UNICORN_TEARS, EXPANDING_BEANS, STAR_FLOWER,
 }
 
 @export var type: TYPE
@@ -11,6 +11,7 @@ enum TYPE {
 var saved_texture: Texture2D
 var is_currently_used: bool = false
 var is_dragging: bool = false
+const drag_preview = preload("res://potion_making/drag_preview.gd")
 
 func _ready() -> void:
 	texture = load(Cons.INGRIDIENT_TEXTURE[type])
@@ -19,16 +20,18 @@ func _ready() -> void:
 	Event.cauldron_emptied.connect(_return_to_shelf)
 
 func _return_to_shelf(_result = null) -> void:
+	if is_dragging: return
 	texture = saved_texture
 	is_currently_used = false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if is_currently_used: return null
 	var item: TextureRect = duplicate()
-	var item_holder: Control = Control.new()
+	var item_holder: Control = drag_preview.new()
 	item_holder.add_child(item)
 
 	item.position = -0.5 * size
+	item.rotation = randf_range(-0.1, 0.1) * PI
 	set_drag_preview(item_holder)
 	texture = null
 	is_currently_used = true

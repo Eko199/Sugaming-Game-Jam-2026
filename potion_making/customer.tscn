@@ -22,22 +22,6 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_ot4or")
 script = ExtResource("2_4sc2f")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1172895856]
-layout_mode = 0
-offset_left = 361.0
-offset_top = -70.0
-offset_right = 798.0
-offset_bottom = 205.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "I want"
-fit_content = true
-
-[node name="Timer" type="Timer" parent="." unique_id=1589425296]
-one_shot = true
-
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1651688127]
 layout_mode = 0
 offset_left = 14.0
@@ -45,5 +29,15 @@ offset_top = -50.0
 offset_right = 285.0
 offset_bottom = -23.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_4sc2f")
+
+[node name="Timer" type="Timer" parent="." unique_id=1589425296]
+one_shot = true
+
+[node name="RequestLabel" type="Label" parent="." unique_id=1064407323]
+layout_mode = 0
+offset_left = 361.0
+offset_top = -70.0
+offset_right = 489.0
+offset_bottom = 58.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
