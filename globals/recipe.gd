@@ -44,6 +44,7 @@ func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Cons.STIR_PATTERN):
 		success = false,
 		recipe_id = 0,
 		money = 0,
+		ingredient_count = 0,
 		quality = Cons.QUALITY.FAIL,
 		correct_temperature = false,
 		correct_stir = false
@@ -60,6 +61,7 @@ func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Cons.STIR_PATTERN):
 		success = true,
 		recipe_id = properties[REC_ID],
 		money = properties[PRICE],
+		ingredient_count = ing.size(),
 		quality = quality,
 		correct_temperature = properties[HEAT].y > heat and properties[HEAT].x < heat,
 		correct_stir = stir == properties[STIR] or properties[STIR] == Cons.STIR_PATTERN.ANY

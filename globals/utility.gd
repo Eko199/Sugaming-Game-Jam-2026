@@ -30,6 +30,7 @@ class DragPreview extends Control:
 ## Returns the current main scene
 var scene: MainScene:
 	get: return get_tree().current_scene if is_inside_tree() else null
+var speech_impairment_active: bool = false
 
 ## Give an enum and key to get the name of the key
 func get_keyname(key: int, enu: Dictionary) -> String:
@@ -70,3 +71,20 @@ func floating_text(parent: Node, text: String, pos: Vector2, color: Color = Colo
 	tween.tween_property(popup, "modulate:a", 0.0, duration).set_ease(Tween.EASE_IN)
 	tween.chain().tween_callback(popup.queue_free)
 	return popup
+
+func shuffle(text: String) -> String:
+	var n: int = text.length()
+	var k: int = n >> 1
+	if n <= 1 or k <= 1:
+		return text
+	k = clampi(k, 2, n)
+	var chars: Array = Array(text.split(""))
+	var indices: Array = range(n)
+	indices.shuffle()
+	var chosen: Array = indices.slice(0, k)
+	var first_char: String = chars[chosen[0]]
+	for i in k - 1:
+		chars[chosen[i]] = chars[chosen[i + 1]]
+	chars[chosen[k - 1]] = first_char
+	
+	return "".join(chars)

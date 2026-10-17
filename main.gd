@@ -9,6 +9,8 @@ class_name MainScene
 @onready var shelf: Node2D = $Shelf
 @onready var color_blind: ColorBlindFilter = $ColorBlind
 
+const TIMED_DEBUFFS: Array[Cons.DEBUFF] = [Cons.DEBUFF.SENSORY_DEPRIVATION, Cons.DEBUFF.SOUND_IMPAIRMENT]
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var customers_spawned: int = 0
 var money: int = 0
@@ -28,8 +30,6 @@ func _ready() -> void:
 	round_timer.timeout.connect(_end_game)
 	round_timer.start(Cons.ROUND_TIME)
 	_spawn_customer()
-	await get_tree().create_timer(1.0).timeout
-	_shuffle_items()
 
 func _process(delta: float) -> void:
 	elapsed += delta
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 
 func add_time(seconds: float) -> void:
 	if is_over: return
-	round_timer.start(round_timer.time_left + seconds)
+	round_timer.start(clampf(round_timer.time_left + seconds, 0.0, Cons.ROUND_TIME))
 	Event.time_added.emit(seconds)
 
 func _end_game() -> void:
@@ -90,19 +90,34 @@ func _get_debuff() -> void:
 	var debuffs: Array = Cons.DEBUFF.values().filter(
 		func(a): return not a in current_debuffs
 	)
+	if debuffs.is_empty(): return
 	var debuff: Cons.DEBUFF = debuffs.pick_random()
-	if debuff == null: return
 	current_debuffs.append(debuff)
 	_apply_debuff(debuff)
+	if debuff in TIMED_DEBUFFS:
+		Event.debuff_started.emit(debuff, Cons.DEBUFF_TIME)
+		await get_tree().create_timer(Cons.DEBUFF_TIME).timeout
+		_remove_debuff(debuff)
 
 func _apply_debuff(wt: Cons.DEBUFF) -> void:
 	match wt:
-		Cons.DEBUFF.COLOR_BLINDNESS:
+		Cons.DEBUFF.SENSORY_DEPRIVATION:
 			color_blind.fade_in()
-		Cons.DEBUFF.SPEECH_MISUNDERSTANDING: pass
+			Audio.muffle()
+		Cons.DEBUFF.SOUND_IMPAIRMENT:
+			Utility.speech_impairment_active = true
 		Cons.DEBUFF.ITEM_SHUFFLE:
 			_shuffle_items()
-		Cons.DEBUFF.SOUND_MUFFLING: pass
+
+func _remove_debuff(wt: Cons.DEBUFF) -> void:
+	current_debuffs.erase(wt)
+	match wt:
+		Cons.DEBUFF.SENSORY_DEPRIVATION:
+			color_blind.fade_out()
+			Audio.unmuffle()
+		Cons.DEBUFF.SOUND_IMPAIRMENT:
+			Utility.speech_impairment_active = false
+	Event.debuff_ended.emit(wt)
 
 func _shuffle_items() -> void:
 	var items: Array = shelf.get_children().map(func(ing): return ing.type)
@@ -115,11 +130,12 @@ func _on_customer_left(_customer: Customer, _served: bool) -> void:
 	if is_over or round_timer.is_stopped(): return
 	_spawn_customer()
 	
-func _on_customer_paid(amount: int, quality: Cons.QUALITY) -> void:
+func _on_customer_paid(amount: int, quality: Cons.QUALITY, ingredient_count: int) -> void:
 	money += roundi(amount * Cons.QUALITY_MULT[quality])
 	potions_served += 1
 	Event.money_changed.emit(money)
-	if quality == Cons.QUALITY.EXCELLENT: add_time(Cons.PERFECT_TIME_BONUS)
+	if quality == Cons.QUALITY.EXCELLENT: 
+		add_time(Cons.PERFECT_TIME_BONUS_BASE + Cons.PERFECT_TIME_BONUS_PER_INGREDIENT * ingredient_count)
 
 func _on_potion_served(pot: Dictionary) -> void:
 	if pot.success: return

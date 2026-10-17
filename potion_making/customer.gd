@@ -39,6 +39,8 @@ func arrive(recipe: Cons.RECIPE, patience_time: float) -> void:
 	wanted = recipe
 	patience = patience_time
 	request_label.text = Utility.get_keyname(wanted, Cons.RECIPE)
+	if Utility.speech_impairment_active:
+		request_label.text = Utility.shuffle(request_label.text)
 	progress_bar.max_value = patience
 	progress_bar.value = patience
 	active = true
@@ -104,7 +106,7 @@ func _process(_delta: float) -> void:
 func _on_potion_served(result: Dictionary) -> void:
 	if not active: return
 	var served: bool = result.success and result.recipe_id == wanted
-	if served: Event.customer_paid.emit(result.money, result.quality)
+	if served: Event.customer_paid.emit(result.money, result.quality, result.ingredient_count)
 	leave(served, result.quality if served else Cons.QUALITY.FAIL)
 
 func _on_timer_timeout() -> void:

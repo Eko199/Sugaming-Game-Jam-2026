@@ -5,9 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://dwvgd1ceya2ff" path="res://potion_making/ingredient.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://gx1s8u4ergal" path="res://ui/end_screen.tscn" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://cwdg41cb3c5sy" path="res://textures/background.png" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://duo1kkrgs58l0" path="res://textures/clock_grey.png" id="3_getpj"]
 [ext_resource type="PackedScene" uid="uid://b4a1c2d50cjdd" path="res://potion_making/cauldron.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bf47lyj853ja" path="res://ui/almanac_control.tscn" id="4_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bu6a5ogj3eoa7" path="res://textures/clock_red.png" id="4_ryguw"]
 [ext_resource type="Script" uid="uid://4jn4w77cy3d5" path="res://ui/color_blind_filter.gd" id="5_cegan"]
+[ext_resource type="Texture2D" uid="uid://bx83flvm6hjyr" path="res://textures/clock_hand.png" id="5_ryguw"]
 [ext_resource type="Texture2D" uid="uid://c44y8o6fmokw4" path="res://textures/backgroundx2dragon.png" id="5_yaehf"]
 [ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cryb0mo88h5oc" path="res://textures/gnome_hair.png" id="7_2cqfq"]
@@ -19,10 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://kje8aykg3aw8" path="res://textures/expanding_beans.png" id="11_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="12_getpj"]
 [ext_resource type="Material" uid="uid://dfb8bhaighxkb" path="res://shaders/outline_almanac.tres" id="17_074og"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
-font_size = 32
-font_color = Color(1.1949118, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 32
@@ -75,19 +74,35 @@ wait_time = 70.0
 one_shot = true
 autostart = true
 
-[node name="Label" type="Label" parent="UI" unique_id=405726089]
-offset_left = 75.0
-offset_top = 58.0
-offset_right = 175.0
-offset_bottom = 103.0
-text = "5:00"
-label_settings = SubResource("LabelSettings_0xm2m")
+[node name="Clock" type="TextureProgressBar" parent="UI" unique_id=1897711525]
+offset_left = 26.0
+offset_top = 76.0
+offset_right = 234.0
+offset_bottom = 282.0
+value = 20.0
+fill_mode = 4
+texture_under = ExtResource("3_getpj")
+texture_progress = ExtResource("4_ryguw")
+
+[node name="Hand" type="TextureRect" parent="UI/Clock" unique_id=981320252]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_top = -56.000015
+offset_right = 36.0
+offset_bottom = 142.99998
+grow_horizontal = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset_ratio = Vector2(0.5, 0.8)
+texture = ExtResource("5_ryguw")
 
 [node name="MoneyLabel" type="Label" parent="UI" unique_id=141992439]
-offset_left = 75.0
-offset_top = 108.0
-offset_right = 76.0
-offset_bottom = 131.0
+offset_left = 1720.0
+offset_top = 431.0
+offset_right = 1827.0
+offset_bottom = 476.0
 text = "0 coins"
 label_settings = SubResource("LabelSettings_7mycd")
 

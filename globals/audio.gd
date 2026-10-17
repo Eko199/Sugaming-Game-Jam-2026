@@ -45,6 +45,8 @@ const FIRE_HEAT_RANGE_DB: Vector2 = Vector2(-12.0, 3.0)
 const FADE_TIME: float = 0.6
 const STIR_HOLD: float = 0.15
 const SILENT_DB: float = -60.0
+const CLEAR_HZ: float = 20500.0
+const MUFFLED_HZ: float = 700.0
 
 var bgm: AudioStreamPlayer
 var ambience: AudioStreamPlayer
@@ -54,9 +56,13 @@ var stir: AudioStreamPlayer
 var dragon_timer: Timer
 var heat_db: float = 0.0
 var stir_hold: float = 0.0
+var muffle_filter: AudioEffectLowPassFilter = AudioEffectLowPassFilter.new()
+var muffle_tween: Tween
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	muffle_filter.cutoff_hz = CLEAR_HZ
+	AudioServer.add_bus_effect(AudioServer.get_bus_index("Master"), muffle_filter)
 	bgm = _make_loop("bgm")
 	ambience = _make_loop("ambience_shop_loop")
 	bubble = _make_loop("cauldron_bubble_loop")
@@ -97,6 +103,18 @@ func play(sound: String, pitch_spread: float = 0.0, delay: float = 0.0) -> void:
 	player.finished.connect(player.queue_free)
 	add_child(player)
 	player.play()
+
+## Gradually muffles everything with a low-pass filter on the master bus.
+func muffle(duration: float = 2.0) -> void:
+	if muffle_tween: muffle_tween.kill()
+	muffle_tween = create_tween()
+	muffle_tween.tween_property(muffle_filter, "cutoff_hz", MUFFLED_HZ, duration)
+
+## Fades the master low-pass filter back open.
+func unmuffle(duration: float = 2.0) -> void:
+	if muffle_tween: muffle_tween.kill()
+	muffle_tween = create_tween()
+	muffle_tween.tween_property(muffle_filter, "cutoff_hz", CLEAR_HZ, duration)
 
 ## Called by the cauldron when a round starts; (re)starts its loops and the dragon timer.
 func start_cauldron() -> void:
@@ -167,7 +185,7 @@ func _on_customer_arrived(_customer: Customer) -> void:
 func _on_customer_left(_customer: Customer, served: bool) -> void:
 	if not served: play("customer_leave_angry", 0.0, 0.5)
 
-func _on_customer_paid(_amount: int, _quality: Cons.QUALITY) -> void:
+func _on_customer_paid(_amount: int, _quality: Cons.QUALITY, _ingredient_count: int) -> void:
 	play("coins", 0.05, 0.4)
 
 func _on_time_added(_seconds: float) -> void:
