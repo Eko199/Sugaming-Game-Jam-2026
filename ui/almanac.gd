@@ -19,6 +19,7 @@ extends Control
 
 var current_page: Control
 var unlocked_recipes: Dictionary = {}
+var recipes_dict: Dictionary = {}
 
 func open() -> void:
 	if current_page:
@@ -46,15 +47,23 @@ func unlock_knowledge(
 	temperature: bool,
 	strir_pattern: bool
 ) -> void:
+	var recipe_row: Control = recipes.get_child(0).get_child(potion)
+	var unlocked_recipe: RecipeKnowledge = unlocked_recipes[potion]
+
 	if ingredient:
-		unlocked_recipes[potion].ingredients = true
+		unlocked_recipe.ingredients = true
+		var ingredients_container = recipe_row.get_node("Ingredients")
+		for i in range(unlocked_recipe.ingredients_count):
+			var ingredient_container = ingredients_container.get_child(i)
+			var ingredient_num = recipes_dict[potion][0][i]
+			ingredient_container.texture = load(Cons.INGRIDIENT_TEXTURE[ingredient_num])
+			
 	if temperature:
-		unlocked_recipes[potion].temperature = true
+		unlocked_recipe.temperature = true
 	if strir_pattern:
-		unlocked_recipes[potion].strir_pattern = true
-	
-	var recipe: Control = recipes.get_child(0).get_child(potion + 1)
-	var label: Label = recipe.get_node("Potion")
+		unlocked_recipe.strir_pattern = true
+
+	var label: Label = recipe_row.get_node("Potion")
 	label.text = Utility.get_keyname(potion, Cons.RECIPE)
 
 func _ready() -> void:
@@ -63,7 +72,16 @@ func _ready() -> void:
 		var knowledge: RecipeKnowledge = RecipeKnowledge.new(ingredients_count)
 		var potion = Recipe.RECIPE[rcp_ingredients][0]
 		unlocked_recipes[potion] = knowledge
-
+		
+		var recipe_row = recipes.get_child(0).get_child(potion)
+		var ingredients_container = recipe_row.get_node("Ingredients")
+		for i in range(ingredients_count, ingredients_container.get_child_count()):
+			ingredients_container.get_child(i).queue_free()
+		
+		recipes_dict[potion] = [rcp_ingredients, Recipe.RECIPE[rcp_ingredients][1], Recipe.RECIPE[rcp_ingredients][2]]
+	
+	unlock_knowledge(0, true, true, true)
+		
 func _on_almanac_pressed() -> void:
 	open()
 

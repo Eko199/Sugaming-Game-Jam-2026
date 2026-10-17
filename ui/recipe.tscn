@@ -24,7 +24,7 @@ text = "="
 label_settings = SubResource("LabelSettings_7upsp")
 
 [node name="Ingredients" type="HFlowContainer" parent="." unique_id=1310431838]
-custom_minimum_size = Vector2(180, 60)
+custom_minimum_size = Vector2(180, 120)
 layout_mode = 2
 alignment = 1
 
