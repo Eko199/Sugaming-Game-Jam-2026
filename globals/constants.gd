@@ -25,7 +25,7 @@ enum DEBUFF {
 
 const SPOON_UPGRADES_PRICE: PackedInt32Array = [
 	150,
-	300
+	350
 ]
 
 const SPOON_LEVEL_MULT: PackedFloat32Array = [
