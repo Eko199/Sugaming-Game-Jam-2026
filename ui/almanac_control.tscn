@@ -89,6 +89,7 @@ text = "
 fit_content = true
 
 [node name="Recipes" type="MarginContainer" parent="." unique_id=1057927573]
+visible = false
 z_index = 2
 layout_mode = 2
 theme_override_constants/margin_left = 130
@@ -156,7 +157,7 @@ visible = false
 z_index = 2
 layout_mode = 2
 theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 170
+theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 40
 
@@ -166,23 +167,24 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Ingredients/Title" unique_id=509326083]
 layout_mode = 0
 offset_left = -9.0
-offset_top = -87.5
-offset_right = 250.0
-offset_bottom = 4.5
+offset_top = -110.5
+offset_right = 360.0
+offset_bottom = -10.5
 text = "  INGREDIENTS"
 label_settings = SubResource("LabelSettings_3ftik")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Ingredients" unique_id=1240819687]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 80
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Ingredients/HBoxContainer" unique_id=784980776]
-custom_maximum_size = Vector2(800, -1)
+custom_maximum_size = Vector2(740, -1)
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Ingredient" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer" unique_id=1190100045]
 layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient" unique_id=1173117977]
 layout_mode = 2
@@ -192,14 +194,17 @@ stretch_mode = 3
 [node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient" unique_id=356395603]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]Gnome Hair: \"A coarse, springy strand taken from a tiny garden gnome.\""
+text = "[font_size=48]Gnome Hair[/font_size]
+A coarse, springy strand taken from a tiny garden gnome."
 fit_content = true
+vertical_alignment = 1
 
 [node name="Ingredient2" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer" unique_id=1844817639]
 layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient2" unique_id=424180424]
 layout_mode = 2
@@ -209,14 +214,17 @@ stretch_mode = 3
 [node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient2" unique_id=967755770]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]Fireworms: \"Wiggly creatures that generate heat like crazy. Never leave them on their own or there will be a fire.\""
+text = "[font_size=48]Fireworms[/font_size]
+Wiggly creatures that generate heat like crazy. Never leave them on their own or there will be a fire."
 fit_content = true
+vertical_alignment = 1
 
 [node name="Ingredient3" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer" unique_id=1312275912]
 layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient3" unique_id=782137113]
 layout_mode = 2
@@ -226,11 +234,13 @@ stretch_mode = 3
 [node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer/Ingredient3" unique_id=1855132578]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]Frosty Mint: \"Ice-cold leaves that can put you in an eternal slumber.\""
+text = "[font_size=48]Frosty Mint[/font_size]
+Ice-cold leaves that can put you in an eternal slumber."
 fit_content = true
+vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Ingredients/HBoxContainer" unique_id=176320194]
 custom_maximum_size = Vector2(800, -1)
@@ -239,6 +249,7 @@ theme_override_constants/separation = 0
 
 [node name="Ingredient" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer2" unique_id=1623791771]
 layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient" unique_id=2135636698]
 layout_mode = 2
@@ -248,14 +259,17 @@ stretch_mode = 3
 [node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient" unique_id=969047085]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]Unicorn Tears: \"Pure, holographic liquid magic. Bends light, reality, and customer patience.\""
+text = "[font_size=48]Unicorn Tears[/font_size]
+Pure, holographic liquid magic. Bends light, reality, and customer patience."
 fit_content = true
+vertical_alignment = 1
 
 [node name="Ingredient2" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer2" unique_id=868862054]
 layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient2" unique_id=1093996724]
 layout_mode = 2
@@ -265,14 +279,17 @@ stretch_mode = 3
 [node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient2" unique_id=580207619]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]Expanding Beans: \"Highly unstable magical legumes. Warning: Do not swallow unless you want to grow.\""
+text = "[font_size=48]Expanding Beans[/font_size]
+Highly unstable magical legumes. Warning: Do not swallow unless you want to grow."
 fit_content = true
+vertical_alignment = 1
 
 [node name="Ingredient3" type="HBoxContainer" parent="Ingredients/HBoxContainer/VBoxContainer2" unique_id=1093127016]
 layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="TextureRect" type="TextureRect" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient3" unique_id=1920004185]
 layout_mode = 2
@@ -282,11 +299,13 @@ stretch_mode = 3
 [node name="Label" type="RichTextLabel" parent="Ingredients/HBoxContainer/VBoxContainer2/Ingredient3" unique_id=1405017862]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]Star Flower: \"A glowing celestial blossom that only blooms at midnight. Hums with pure energy.\""
+text = "[font_size=48]Star Flower[/font_size]
+A glowing celestial blossom that only blooms at midnight. Hums with pure energy."
 fit_content = true
+vertical_alignment = 1
 
 [node name="Cooking" type="MarginContainer" parent="." unique_id=307865024]
 visible = false
