@@ -4,6 +4,7 @@ class_name Spoon
 @onready var outline: TextureRect = $Outline
 @onready var upgrade: Button = $"../Spoon Upgrade"
 @onready var upgrade_outline: TextureRect = $"../Spoon Upgrade/Outline"
+@onready var price_tag: TextureRect = $"../Spoon Upgrade/Price"
 
 const drag_preview = preload("res://potion_making/drag_preview.gd")
 
@@ -53,7 +54,7 @@ func _update_spoon_sprite() -> void:
 	texture = load(Cons.SPOONS_TEXTURE[level - 1])
 	
 	if level < len(Cons.SPOONS_TEXTURE):
-		upgrade.get_child(0).text = "%s" % Cons.SPOON_UPGRADES_PRICE[level - 1]
+		price_tag.texture = load(Cons.PRICE_TAGS[level - 1])
 		upgrade.icon = load(Cons.SPOONS_TEXTURE[level])
 		upgrade_outline.texture = upgrade.icon
 

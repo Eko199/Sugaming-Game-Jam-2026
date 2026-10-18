@@ -40,6 +40,11 @@ const SPOONS_TEXTURE: PackedStringArray = [
 	"res://textures/golden_spoon.png"
 ]
 
+const PRICE_TAGS: PackedStringArray = [
+	"res://textures/price_tag_silver_spoon.png",
+	"res://textures/price_tag_gold_spoon.png"
+]
+
 # General information
 const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://textures/gnome_hair.png',
