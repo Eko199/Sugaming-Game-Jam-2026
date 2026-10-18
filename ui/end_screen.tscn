@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gx1s8u4ergal"]
 
 [ext_resource type="Script" uid="uid://c5icilyk0w2pg" path="res://ui/end_screen.gd" id="1_70k24"]
+[ext_resource type="FontFile" uid="uid://q76ndoljljym" path="res://fonts/LuckiestGuy-Regular.ttf" id="2_s243q"]
 
 [node name="EndScreen" type="ColorRect" unique_id=1532378341]
 process_mode = 3
@@ -26,6 +27,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.81960785, 0.2509804, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_s243q")
 theme_override_font_sizes/font_size = 96
 text = "Time's up!"
 horizontal_alignment = 1
@@ -45,5 +47,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 90)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_s243q")
 theme_override_font_sizes/font_size = 44
 text = "Play again"

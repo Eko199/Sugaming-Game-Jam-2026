@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bf47lyj853ja"]
 
+[ext_resource type="Theme" uid="uid://ua450fdb0ulu" path="res://ui/almanac_theme.tres" id="1_e6w12"]
 [ext_resource type="Script" uid="uid://dgm1huqnuwkma" path="res://ui/almanac.gd" id="1_j4527"]
 [ext_resource type="Texture2D" uid="uid://bd5i8llst35wu" path="res://textures/open-book.png" id="2_8llnm"]
 [ext_resource type="Texture2D" uid="uid://ciykwiaxdcmhi" path="res://textures/red-tab.png" id="2_boy4e"]
@@ -31,6 +32,7 @@ offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_e6w12")
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10

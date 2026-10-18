@@ -43,6 +43,11 @@ enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
 cauldron=""
 
+[gui]
+
+theme/custom="res://ui/game_theme.tres"
+theme/custom_font="res://fonts/fredoka_semibold.tres"
+
 [input]
 
 temp_down={

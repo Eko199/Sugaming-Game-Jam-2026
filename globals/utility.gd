@@ -57,6 +57,7 @@ func mix_colors(ings: Array[Ingredient.TYPE]) -> Color:
 func floating_text(parent: Node, text: String, pos: Vector2, color: Color = Color.WHITE, font_size: int = 40, rise: float = 50.0, duration: float = 1.2) -> Label:
 	var popup: Label = Label.new()
 	var settings: LabelSettings = LabelSettings.new()
+	settings.font = Cons.FONT_DISPLAY
 	settings.font_size = font_size
 	settings.font_color = color
 	settings.outline_size = 8

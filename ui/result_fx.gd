@@ -56,6 +56,7 @@ func _on_potion_served(result: Dictionary) -> void:
 func _popup_word(text: String, pos: Vector2, color: Color, quality: Cons.QUALITY) -> void:
 	var label: Label = Label.new()
 	var settings: LabelSettings = LabelSettings.new()
+	settings.font = Cons.FONT_DISPLAY
 	settings.font_size = WORD_SIZE + (24 if quality == Cons.QUALITY.EXCELLENT else 0)
 	settings.font_color = color
 	settings.outline_size = 14
@@ -192,6 +193,7 @@ func _on_customer_paid(amount: int, quality: Cons.QUALITY, _ingredient_count: in
 func _popup_coins(text: String, pos: Vector2, quality: Cons.QUALITY) -> void:
 	var label: Label = Label.new()
 	var settings: LabelSettings = LabelSettings.new()
+	settings.font = Cons.FONT_DISPLAY
 	settings.font_size = 48 + 8 * quality
 	settings.font_color = COIN_COLOR
 	settings.outline_size = 10

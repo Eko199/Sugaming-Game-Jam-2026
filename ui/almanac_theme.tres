@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://ua450fdb0ulu"]
+
+[ext_resource type="FontFile" uid="uid://cf6mj3nacyu8n" path="res://fonts/CaveatBrush-Regular.ttf" id="1_bugx6"]
+
+[resource]
+Button/fonts/font = ExtResource("1_bugx6")
+Label/fonts/font = ExtResource("1_bugx6")
+RichTextLabel/fonts/bold_font = ExtResource("1_bugx6")
+RichTextLabel/fonts/normal_font = ExtResource("1_bugx6")

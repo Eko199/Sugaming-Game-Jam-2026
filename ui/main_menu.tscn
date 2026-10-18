@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bf8qh44ari6rc"]
+
+[ext_resource type="FontFile" uid="uid://q76ndoljljym" path="res://fonts/LuckiestGuy-Regular.ttf" id="1_t7e0r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0dkrt"]
+font = ExtResource("1_t7e0r")
+font_size = 140
+font_color = Color(1, 0.8235294, 0.24705882, 1)
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.53333336)
+shadow_offset = Vector2(6, 8)
+
+[node name="MainMenu" type="Control" unique_id=428109502]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=818737733]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=973390451]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/VBox" unique_id=669336414]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+text = "Blind Brew"
+label_settings = SubResource("LabelSettings_0dkrt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Margin/VBox" unique_id=947379762]
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_t7e0r")
+theme_override_font_sizes/font_size = 64
+text = "Play"

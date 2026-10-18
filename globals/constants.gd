@@ -1,5 +1,10 @@
 extends Node
 
+# Fonts (UI default is Fredoka via the project theme, res://ui/game_theme.tres)
+const FONT_DISPLAY: Font = preload("res://fonts/LuckiestGuy-Regular.ttf")
+const FONT_HANDWRITTEN: Font = preload("res://fonts/CaveatBrush-Regular.ttf")
+const FONT_UI: Font = preload("res://fonts/fredoka_semibold.tres")
+
 # Enums
 enum STIR_PATTERN {
 	CLOCKWISE, COUNTERCLOCKWISE, ANY, NONE
