@@ -51,7 +51,9 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	return data is Ingredient and cauldron.can_accept()
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	_sink(data.saved_texture, data.size, get_global_transform() * at_position)
+	var drop_pos: Vector2 = get_global_transform() * at_position
+	_sink(data.saved_texture, data.size, drop_pos)
+	cauldron.splash(drop_pos)
 	cauldron.add_ingredient(data.type)
 
 func _sink(tex: Texture2D, item_size: Vector2, global_pos: Vector2) -> void:

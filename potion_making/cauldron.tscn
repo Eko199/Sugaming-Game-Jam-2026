@@ -1,11 +1,23 @@
-[gd_scene format=3 uid="uid://b4a1c2d50cjdd"]
+[gd_scene format=4 uid="uid://b4a1c2d50cjdd"]
 
 [ext_resource type="Script" uid="uid://8ohgtxd7ilg0" path="res://potion_making/cauldron.gd" id="1_6bp5d"]
 [ext_resource type="Texture2D" uid="uid://dcwaefrir31d0" path="res://textures/couldron.png" id="2_jokxh"]
 [ext_resource type="Texture2D" uid="uid://b88hhynfokj3a" path="res://textures/cauldron_opening_mask.png" id="2_r6ss7"]
 [ext_resource type="Texture2D" uid="uid://bv32u4fx1mo6" path="res://textures/water.png" id="2_s5f67"]
+[ext_resource type="Shader" uid="uid://yuw0ne1ihu4r" path="res://shaders/water.gdshader" id="3_ougw2"]
 [ext_resource type="Texture2D" uid="uid://bvmp4mxx3f3mi" path="res://textures/dial.png" id="4_bn7tg"]
 [ext_resource type="Script" uid="uid://dtb8h8mfq0a2r" path="res://potion_making/cauldron_hitbox.gd" id="6_w3ram"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3ram"]
+shader = ExtResource("3_ougw2")
+shader_parameter/water_color = Color(0.4, 0.62, 0.85, 1)
+shader_parameter/aspect = 1.5
+shader_parameter/heat = 0.5
+shader_parameter/light_tint = Color(0.9, 0.94, 1, 1)
+shader_parameter/ripples = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/trails = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/trail_ages = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/bubbles = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="Control" type="Control" unique_id=279629869]
 layout_mode = 3
@@ -31,6 +43,7 @@ texture = ExtResource("2_r6ss7")
 
 [node name="Water" type="TextureRect" parent="WaterMask" unique_id=756609593]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_w3ram")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

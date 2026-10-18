@@ -18,16 +18,45 @@
 [ext_resource type="Texture2D" uid="uid://dxo2xb5fkkraa" path="res://textures/almanach.png" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://ydmnt67wtj55" path="res://textures/fireworm.png" id="8_yaehf"]
 [ext_resource type="Texture2D" uid="uid://ng1l3tj37mb3" path="res://textures/frosty_mint.png" id="9_074og"]
+[ext_resource type="Shader" uid="uid://bre3vmmriw4r7" path="res://shaders/atmosphere.gdshader" id="10_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://ct0th50y6133g" path="res://textures/unicorn_tears.png" id="10_cegan"]
 [ext_resource type="Texture2D" uid="uid://kje8aykg3aw8" path="res://textures/expanding_beans.png" id="11_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="12_getpj"]
-[ext_resource type="Material" uid="uid://dfb8bhaighxkb" path="res://shaders/outline_almanac.tres" id="17_074og"]
+[ext_resource type="Shader" uid="uid://bi3mjspidxgua" path="res://shaders/outline.gdshader" id="22_d13ii"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 32
 font_color = Color(1, 0.8235294, 0.24705882, 1)
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikh62"]
+shader = ExtResource("10_1u8w0")
+shader_parameter/shadow_tint = Color(0.3, 0.22, 0.55, 1)
+shader_parameter/highlight_tint = Color(1, 0.82, 0.55, 1)
+shader_parameter/grade_strength = 0.35
+shader_parameter/saturation = 0.9530000452675
+shader_parameter/contrast = 0.9920000233699999
+shader_parameter/bloom_strength = 0.5
+shader_parameter/bloom_threshold = 0.6
+shader_parameter/flicker_strength = 0.05
+shader_parameter/vignette_strength = 0.55
+shader_parameter/vignette_color = Color(0.05, 0.02, 0.12, 1)
+shader_parameter/mote_strength = 0.30000001425
+shader_parameter/mote_color = Color(0.75, 0.55, 1, 1)
+shader_parameter/grain_strength = 0.035
+shader_parameter/aberration = 1.2
+
+[sub_resource type="Gradient" id="Gradient_d13ii"]
+offsets = PackedFloat32Array(0.8077922, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.5764706)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ikh62"]
+gradient = SubResource("Gradient_d13ii")
+width = 1920
+height = 1080
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_fern3"]
 _data = [Vector2(0, 0.80381477), 0.0, -1.1035422, 0, 0, Vector2(1, 0.34332424), 0.0, 0.0, 0, 0]
@@ -62,6 +91,12 @@ scale_max = 16.0
 scale_curve = SubResource("CurveTexture_074og")
 color_ramp = SubResource("GradientTexture1D_fh2at")
 alpha_curve = SubResource("CurveTexture_gw35a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
+shader = ExtResource("22_d13ii")
+shader_parameter/outline_color = Color(0.8, 0.6, 0.4, 1)
+shader_parameter/outline_width = 4.00000019
+shader_parameter/alpha_threshold = 0.1
 
 [node name="Main" type="Node2D" unique_id=1236197917]
 script = ExtResource("1_lquwl")
@@ -129,6 +164,31 @@ scale = Vector2(0.8, 0.8)
 [node name="ColorBlind" type="CanvasLayer" parent="." unique_id=471396018]
 script = ExtResource("5_cegan")
 
+[node name="Atmosphere" type="CanvasLayer" parent="." unique_id=656466894]
+layer = 90
+
+[node name="Cozyness" type="ColorRect" parent="Atmosphere" unique_id=1170677762]
+material = SubResource("ShaderMaterial_ikh62")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Vignette" type="TextureRect" parent="Atmosphere" unique_id=1172853288]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = -44.0
+offset_right = 39.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_ikh62")
+
 [node name="BackBackground" type="TextureRect" parent="." unique_id=1143501225]
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -155,41 +215,41 @@ texture = ExtResource("7_2cqfq")
 
 [node name="Ing2" parent="Shelf" unique_id=83227316 instance=ExtResource("2_1bvp3")]
 offset_left = 189.0
-offset_top = 544.0
+offset_top = 533.0
 offset_right = 385.0
-offset_bottom = 740.0
+offset_bottom = 729.0
 texture = ExtResource("8_yaehf")
 type = 1
 
 [node name="Ing3" parent="Shelf" unique_id=608215484 instance=ExtResource("2_1bvp3")]
 offset_left = 375.0
-offset_top = 546.0
+offset_top = 533.0
 offset_right = 599.0
-offset_bottom = 742.0
+offset_bottom = 729.0
 texture = ExtResource("9_074og")
 type = 2
 
 [node name="Ing4" parent="Shelf" unique_id=139729822 instance=ExtResource("2_1bvp3")]
 offset_left = 1326.0
-offset_top = 508.0
+offset_top = 533.0
 offset_right = 1550.0
-offset_bottom = 704.0
+offset_bottom = 729.0
 texture = ExtResource("10_cegan")
 type = 3
 
 [node name="Ing5" parent="Shelf" unique_id=1162163949 instance=ExtResource("2_1bvp3")]
 offset_left = 1512.0
-offset_top = 550.0
+offset_top = 533.0
 offset_right = 1736.0
-offset_bottom = 746.0
+offset_bottom = 729.0
 texture = ExtResource("11_82xsv")
 type = 4
 
 [node name="Ing6" parent="Shelf" unique_id=596765486 instance=ExtResource("2_1bvp3")]
 offset_left = 1693.0
-offset_top = 554.0
+offset_top = 533.0
 offset_right = 1917.0
-offset_bottom = 750.0
+offset_bottom = 729.0
 texture = ExtResource("12_getpj")
 type = 5
 
@@ -219,7 +279,7 @@ expand_icon = true
 [node name="Outline" type="TextureRect" parent="Almanac" unique_id=1619935378]
 visible = false
 show_behind_parent = true
-material = ExtResource("17_074og")
+material = SubResource("ShaderMaterial_d13ii")
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

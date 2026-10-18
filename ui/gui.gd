@@ -5,16 +5,33 @@ extends CanvasLayer
 @onready var hand: TextureRect = $Clock/Hand
 @onready var money_label: Label = $MoneyLabel
 
+var shown_money: int = 0
+var money_tween: Tween
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	clock.max_value = Cons.ROUND_TIME
 	Event.money_changed.connect(_on_money_changed)
 	Event.time_added.connect(_on_time_added)
+	add_child(ResultFx.new())
 	_on_money_changed(0)
 
 func _on_money_changed(amount: int) -> void:
-	money_label.text = "%d coins" % amount
+	if amount == shown_money:
+		money_label.text = "%d coins" % amount
+		return
+	if money_tween: money_tween.kill()
+	money_label.pivot_offset = money_label.size / 2.0
+	money_tween = create_tween()
+	money_tween.tween_property(money_label, "scale", Vector2.ONE * 1.35, 0.1) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	money_tween.parallel().tween_method(_show_money, shown_money, amount, 0.45)
+	money_tween.tween_property(money_label, "scale", Vector2.ONE, 0.2)
+
+func _show_money(value: float) -> void:
+	shown_money = roundi(value)
+	money_label.text = "%d coins" % shown_money
 
 func _process(_delta: float) -> void:
 	var progress: float = Cons.ROUND_TIME - timer.time_left
