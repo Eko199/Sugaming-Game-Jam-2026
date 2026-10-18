@@ -29,6 +29,12 @@ const SPOON_LEVEL_MULT: PackedFloat32Array = [
 	2.0
 ]
 
+const SPOONS_TEXTURE: PackedStringArray = [
+	"res://textures/spoon.png",
+	"res://textures/silver_spoon.png",
+	"res://textures/golden_spoon.png"
+]
+
 # General information
 const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://textures/gnome_hair.png',

@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://kje8aykg3aw8" path="res://textures/expanding_beans.png" id="11_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="12_getpj"]
 [ext_resource type="Material" uid="uid://dfb8bhaighxkb" path="res://shaders/outline_almanac.tres" id="17_074og"]
-[ext_resource type="Texture2D" uid="uid://c0n0xcuycsire" path="res://textures/spoon.png" id="20_82xsv"]
+[ext_resource type="Texture2D" uid="uid://dn2jnda54knet" path="res://textures/silver_spoon.png" id="20_82xsv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
 font_size = 32
@@ -237,6 +237,7 @@ focus_mode = 0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 icon = ExtResource("20_82xsv")
+flat = true
 expand_icon = true
 
 [node name="Price" type="Label" parent="Spoon Upgrade" unique_id=1098402380]
