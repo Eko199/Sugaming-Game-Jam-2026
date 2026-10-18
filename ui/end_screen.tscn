@@ -61,7 +61,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Title" type="Label" parent="Box" unique_id=1554287672]
@@ -83,6 +83,36 @@ theme_override_font_sizes/font_size = 56
 text = "Score: 0"
 horizontal_alignment = 1
 
+[node name="ServedLabel" type="Label" parent="Box" unique_id=2079689901]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 56
+text = "Customers served: 0"
+horizontal_alignment = 1
+
+[node name="PerfectLabel" type="Label" parent="Box" unique_id=147609083]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 56
+text = "Perfect potions: 0"
+horizontal_alignment = 1
+
+[node name="FailedLabel" type="Label" parent="Box" unique_id=625660006]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 56
+text = "Failed potions: 0"
+horizontal_alignment = 1
+
 [node name="PlayAgain" type="Button" parent="Box" unique_id=633051052]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 90)
@@ -97,10 +127,10 @@ layout_mode = 2
 
 [node name="Highscore" type="Label" parent="Box/HighscoreControl" unique_id=565479920]
 layout_mode = 0
-offset_left = 330.0
-offset_top = -314.5
-offset_right = 631.0
-offset_bottom = -201.5
+offset_left = 334.0
+offset_top = -463.0
+offset_right = 635.0
+offset_bottom = -350.0
 rotation = -0.5726636
 pivot_offset = Vector2(150.5, 56.5)
 text = "New 
