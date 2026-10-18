@@ -50,7 +50,7 @@ func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Cons.STIR_PATTERN):
 	}
 	var quality: Cons.QUALITY = (
 		Cons.QUALITY.POOR + int(
-			properties[HEAT].y > heat and properties[HEAT].x < heat
+			properties[HEAT].y >= heat and properties[HEAT].x <= heat
 		) + int(
 			stir == properties[STIR] or properties[STIR] == Cons.STIR_PATTERN.ANY
 		)
@@ -61,6 +61,6 @@ func evaluate(ing: Array[Ingredient.TYPE], heat: int, stir: Cons.STIR_PATTERN):
 		recipe_id = properties[REC_ID],
 		money = properties[PRICE],
 		quality = quality,
-		correct_temperature = properties[HEAT].y > heat and properties[HEAT].x < heat,
+		correct_temperature = properties[HEAT].y >= heat and properties[HEAT].x <= heat,
 		correct_stir = stir == properties[STIR] or properties[STIR] == Cons.STIR_PATTERN.ANY
 	}
