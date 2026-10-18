@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="12_getpj"]
 [ext_resource type="Texture2D" uid="uid://dn2jnda54knet" path="res://textures/silver_spoon.png" id="20_82xsv"]
 [ext_resource type="Shader" uid="uid://bi3mjspidxgua" path="res://shaders/outline.gdshader" id="22_d13ii"]
+[ext_resource type="Texture2D" uid="uid://c0n0xcuycsire" path="res://textures/spoon.png" id="25_0odxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 32
@@ -101,6 +102,12 @@ shader_parameter/alpha_threshold = 0.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
 font_size = 30
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
+shader = ExtResource("22_d13ii")
+shader_parameter/outline_color = Color(0.8, 0.6, 0.4, 1)
+shader_parameter/outline_width = 4.0
+shader_parameter/alpha_threshold = 0.7
 
 [node name="Main" type="Node2D" unique_id=1236197917]
 script = ExtResource("1_lquwl")
@@ -324,7 +331,23 @@ offset_bottom = 157.86502
 text = "100"
 label_settings = SubResource("LabelSettings_7upsp")
 
+[node name="Outline" type="TextureRect" parent="Spoon Upgrade" unique_id=1187735444]
+visible = false
+show_behind_parent = true
+material = SubResource("ShaderMaterial_lswn8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_0odxb")
+expand_mode = 1
+stretch_mode = 5
+
 [connection signal="mouse_entered" from="Almanac" to="Almanac/Outline" method="show"]
 [connection signal="mouse_exited" from="Almanac" to="Almanac/Outline" method="hide"]
 [connection signal="pressed" from="Almanac" to="UI/ColorRect/AlmanacControl" method="_on_almanac_pressed"]
+[connection signal="mouse_entered" from="Spoon Upgrade" to="Spoon" method="_on_spoon_upgrade_mouse_entered"]
+[connection signal="mouse_exited" from="Spoon Upgrade" to="Spoon" method="_on_spoon_upgrade_mouse_exited"]
 [connection signal="pressed" from="Spoon Upgrade" to="Spoon" method="_on_spoon_upgrade_pressed"]
