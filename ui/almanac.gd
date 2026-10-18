@@ -41,6 +41,9 @@ func _ready() -> void:
 	
 	Event.potion_served.connect(process_potion_result)
 	
+	#for i in 8:
+		#unlock_knowledge(i, true, true)
+
 func open() -> void:
 	if not get_parent().visible: Audio.play("almanac_open")
 	if current_page:
