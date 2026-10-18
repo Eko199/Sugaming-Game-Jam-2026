@@ -5,7 +5,8 @@ class_name Customer
 @export var patience: float
 
 @onready var timer: Timer = $Timer
-@onready var request_label: Label = $RequestLabel
+@onready var request_label: Label = $Bubble/RequestLabel
+@onready var bubble: TextureRect = $Bubble
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 const WALK_TIME: float = 0.7
@@ -21,6 +22,7 @@ func _ready() -> void:
 	Event.potion_served.connect(_on_potion_served)
 	rest_x = position.x
 	rest_y = position.y
+	bubble.modulate.a = 0
 	hide()
 
 func _offscreen_x() -> float:
@@ -31,14 +33,15 @@ func _walk_to(x: float, speech_to: float, delay: float = WALK_TIME) -> Tween:
 	walk_tween = create_tween().set_trans(Tween.TRANS_SINE)
 	walk_tween.tween_property(self, "position:x", x, WALK_TIME)
 	walk_tween.parallel().tween_property(
-		request_label, "modulate:a", speech_to, SPEECH_SHOW
+		bubble, "modulate:a", speech_to, SPEECH_SHOW
 	).from(abs(speech_to - 1.0)).set_delay(delay)
 	return walk_tween
 
 func arrive(recipe: Cons.RECIPE, patience_time: float) -> void:
 	wanted = recipe
 	patience = patience_time
-	request_label.text = Utility.get_keyname(wanted, Cons.RECIPE)
+	texture = load(Cons.CHARACTER_TEXTURES.pick_random())
+	request_label.text = Utility.get_keyname(wanted, Cons.RECIPE).to_upper()
 	if Utility.speech_impairment_active:
 		request_label.text = Utility.shuffle(request_label.text)
 	progress_bar.max_value = patience

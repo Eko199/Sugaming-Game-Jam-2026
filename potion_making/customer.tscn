@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ddyr3a0jetguo"]
 
-[ext_resource type="Texture2D" uid="uid://1paesvpuuavy" path="res://textures/knight1.png" id="1_4sc2f"]
+[ext_resource type="Texture2D" uid="uid://cy74tuvulch2m" path="res://textures/knight3.png" id="1_j81x4"]
 [ext_resource type="Script" uid="uid://bfjgopvcextfi" path="res://potion_making/customer.gd" id="2_4sc2f"]
+[ext_resource type="Texture2D" uid="uid://bgnei6phos8uo" path="res://textures/speach.png" id="3_j81x4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sc2f"]
 content_margin_left = 2.0
@@ -16,12 +17,13 @@ corner_radius_bottom_left = 6
 corner_detail = 6
 
 [node name="Customer" type="TextureRect" unique_id=637699539]
+custom_minimum_size = Vector2(0, 350)
 offset_right = 286.0
-offset_bottom = 381.0
+offset_bottom = 348.1369
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("1_4sc2f")
-expand_mode = 5
-stretch_mode = 5
+texture = ExtResource("1_j81x4")
+expand_mode = 3
+stretch_mode = 4
 script = ExtResource("2_4sc2f")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1651688127]
@@ -36,15 +38,33 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="." unique_id=1589425296]
 one_shot = true
 
-[node name="RequestLabel" type="Label" parent="." unique_id=1064407323]
-modulate = Color(1, 1, 1, 0)
+[node name="Bubble" type="TextureRect" parent="." unique_id=89133980]
 layout_mode = 0
-offset_left = -261.0
-offset_top = 62.0
-offset_right = -23.0
-offset_bottom = 190.0
+offset_left = -472.0
+offset_top = -169.0
+offset_right = 113.0
+offset_bottom = 306.0
+texture = ExtResource("3_j81x4")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RequestLabel" type="Label" parent="Bubble" unique_id=1064407323]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = -27.5
+offset_right = 114.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
+text = "FIRE_RESISTANCE"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -63,6 +63,18 @@ const DEBUFF_TEXTURES: PackedStringArray = [
 	"res://textures/shuffle.png",
 ]
 
+const CHARACTER_TEXTURES: Array[String] = [
+	'res://textures/girl1purple.png',
+	'res://textures/girl2red.png',
+	'res://textures/girl3teal.png',
+	'res://textures/guy1green.png',
+	'res://textures/guy2blue.png',
+	'res://textures/knight1.png',
+	'res://textures/knight2.png',
+	'res://textures/knight3.png'
+	
+]
+
 ## Indexed by DEBUFF. Shown when the debuff hits and as the badge tooltip.
 const DEBUFF_NAMES: PackedStringArray = [
 	"Senses dulled!",

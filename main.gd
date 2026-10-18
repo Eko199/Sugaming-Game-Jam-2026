@@ -27,7 +27,6 @@ func _ready() -> void:
 	rng.randomize()
 	Event.customer_left.connect(_on_customer_left)
 	Event.customer_paid.connect(_on_customer_paid)
-	Event.potion_served.connect(_on_potion_served)
 	round_timer.timeout.connect(_end_game)
 	round_timer.start(Cons.ROUND_TIME)
 	_show_tutorial()
@@ -128,7 +127,11 @@ func _shuffle_items() -> void:
 	for i in shelf.get_child_count():
 		shelf.get_child(i).type = items[i]
 
-func _on_customer_left(_customer: Customer, _served: bool) -> void:
+## Every unhappy exit is a fail: a wrong/failed potion or running out of patience.
+func _on_customer_left(_customer: Customer, served: bool) -> void:
+	if not served and not is_over:
+		fails += 1
+		_get_debuff()
 	await get_tree().create_timer(Cons.CUSTOMER_GAP).timeout
 	if is_over or round_timer.is_stopped(): return
 	_spawn_customer()
@@ -140,11 +143,6 @@ func _on_customer_paid(amount: int, quality: Cons.QUALITY, ingredient_count: int
 	if quality == Cons.QUALITY.EXCELLENT: 
 		perfect_potions += 1
 		add_time(Cons.PERFECT_TIME_BONUS_BASE + Cons.PERFECT_TIME_BONUS_PER_INGREDIENT * ingredient_count)
-
-func _on_potion_served(pot: Dictionary) -> void:
-	if pot.success: return
-	fails += 1
-	_get_debuff()
 
 func _on_spoon_button_up() -> void:
 	spoon.hide()

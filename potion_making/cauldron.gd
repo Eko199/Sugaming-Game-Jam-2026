@@ -121,7 +121,6 @@ func _spawn_bubble(heat: float) -> void:
 	bubbles[next_bubble] = Vector4(pos.x, pos.y, 0.0, randf_range(BUBBLE_MIN_SIZE, BUBBLE_MAX_SIZE))
 	next_bubble = (next_bubble + 1) % MAX_BUBBLES
 
-## While the spoon is dragged through the water, leave streaks along its path.
 func _stir_trail() -> void:
 	var mouse: Vector2 = get_global_mouse_position()
 	if not _is_spoon_held() or not ($Hitbox as CauldronHitbox).is_over(mouse):
