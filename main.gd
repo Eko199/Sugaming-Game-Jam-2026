@@ -35,6 +35,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	elapsed += delta
+	if not is_over: Audio.tick_clock(delta, round_timer.time_left)
 	var radius: Vector2 = back_background.size / 2
 	var mouse_pos: Vector2 = (get_local_mouse_position() - radius) / radius
 	var dir: Vector2 = (get_local_mouse_position() - radius).normalized()

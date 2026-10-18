@@ -30,6 +30,7 @@ const GAIN: Dictionary[String, float] = {
 	"potion_poor": 0.4,
 	"spoon_pick": 22.0,
 	"stir_loop": 7.3,
+	"tick": -6.0,
 	"time_bonus": -4.0,
 }
 
@@ -45,6 +46,10 @@ const STIR_HOLD: float = 0.15
 const SILENT_DB: float = -60.0
 const CLEAR_HZ: float = 20500.0
 const MUFFLED_HZ: float = 700.0
+## The clock starts ticking when this many seconds remain, speeding up towards the end.
+const TICK_WINDOW: float = 30.0
+## Seconds between ticks at the start of the window and at the very end.
+const TICK_INTERVAL: Vector2 = Vector2(1.2, 0.3)
 
 var bgm: AudioStreamPlayer
 var ambience: AudioStreamPlayer
@@ -56,6 +61,7 @@ var heat_db: float = 0.0
 var stir_hold: float = 0.0
 var muffle_filter: AudioEffectLowPassFilter = AudioEffectLowPassFilter.new()
 var muffle_tween: Tween
+var tick_timer: float = 0.0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -124,6 +130,17 @@ func start_cauldron() -> void:
 func set_heat(heat: float) -> void:
 	heat_db = lerpf(FIRE_HEAT_RANGE_DB.x, FIRE_HEAT_RANGE_DB.y, heat)
 	if fire.playing: fire.volume_db = _db("cauldron_fire_loop") + heat_db
+
+## Called every frame by the round; ticks faster as the time runs out.
+func tick_clock(delta: float, time_left: float) -> void:
+	if time_left > TICK_WINDOW or time_left <= 0.0:
+		tick_timer = 0.0
+		return
+	tick_timer -= delta
+	if tick_timer > 0.0: return
+	var urgency: float = 1.0 - time_left / TICK_WINDOW
+	tick_timer = lerpf(TICK_INTERVAL.x, TICK_INTERVAL.y, urgency)
+	play("tick", 0.03)
 
 ## Keeps the stirring loop alive while the spoon is moving inside the cauldron.
 func keep_stirring() -> void:
