@@ -1,0 +1,328 @@
+[gd_scene format=3 uid="uid://bf8qh44ari6rc"]
+
+[ext_resource type="Script" uid="uid://ddnmg411rbgd8" path="res://ui/main_menu.gd" id="1_0dkrt"]
+[ext_resource type="FontFile" uid="uid://q76ndoljljym" path="res://fonts/LuckiestGuy-Regular.ttf" id="1_t7e0r"]
+[ext_resource type="Texture2D" uid="uid://c44y8o6fmokw4" path="res://textures/backgroundx2dragon.png" id="2_bgdrg"]
+[ext_resource type="Texture2D" uid="uid://cwdg41cb3c5sy" path="res://textures/background.png" id="3_bgshp"]
+[ext_resource type="Shader" uid="uid://bre3vmmriw4r7" path="res://shaders/atmosphere.gdshader" id="4_atmos"]
+[ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="6_star"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atmos"]
+shader = ExtResource("4_atmos")
+shader_parameter/shadow_tint = Color(0.3, 0.22, 0.55, 1)
+shader_parameter/highlight_tint = Color(1, 0.82, 0.55, 1)
+shader_parameter/grade_strength = 0.35
+shader_parameter/saturation = 0.95
+shader_parameter/contrast = 1.0
+shader_parameter/bloom_strength = 0.5
+shader_parameter/bloom_threshold = 0.6
+shader_parameter/flicker_strength = 0.05
+shader_parameter/vignette_strength = 0.7
+shader_parameter/vignette_color = Color(0.05, 0.02, 0.12, 1)
+shader_parameter/mote_strength = 0.5
+shader_parameter/mote_color = Color(0.75, 0.55, 1, 1)
+shader_parameter/grain_strength = 0.035
+shader_parameter/aberration = 1.2
+
+[sub_resource type="Gradient" id="Gradient_dim"]
+colors = PackedColorArray(0.05, 0.02, 0.12, 0.72, 0.05, 0.02, 0.12, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dim"]
+gradient = SubResource("Gradient_dim")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font = ExtResource("1_t7e0r")
+font_size = 160
+font_color = Color(1, 0.8235294, 0.24705882, 1)
+outline_size = 22
+outline_color = Color(0.12, 0.04, 0.16, 1)
+shadow_size = 0
+shadow_color = Color(0.05, 0.02, 0.12, 0.7)
+shadow_offset = Vector2(8, 12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eifb7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_caption"]
+font = ExtResource("1_t7e0r")
+font_size = 30
+font_color = Color(0.86, 0.78, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_value"]
+font = ExtResource("1_t7e0r")
+font_size = 68
+font_color = Color(1, 0.8235294, 0.24705882, 1)
+outline_size = 12
+outline_color = Color(0.12, 0.04, 0.16, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hint"]
+font_size = 24
+font_color = Color(0.86, 0.78, 1, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_play_normal"]
+bg_color = Color(0.45, 0.2, 0.56, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 9
+border_color = Color(1, 0.8235294, 0.24705882, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 14
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_play_pressed"]
+bg_color = Color(0.34, 0.14, 0.43, 1)
+border_width_left = 5
+border_width_top = 9
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.85, 0.66, 0.18, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_play_hover"]
+bg_color = Color(0.58, 0.28, 0.7, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 9
+border_color = Color(1, 0.9, 0.5, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+shadow_color = Color(1, 0.75, 0.3, 0.35)
+shadow_size = 22
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBox_empty"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_quit_normal"]
+bg_color = Color(0.11, 0.05, 0.18, 0.85)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 6
+border_color = Color(0.75, 0.6, 1, 0.7)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_quit_hover"]
+bg_color = Color(0.2, 0.1, 0.3, 0.92)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 6
+border_color = Color(0.86, 0.78, 1, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[node name="MainMenu" type="Control" unique_id=380449475]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0dkrt")
+
+[node name="BackBackground" type="TextureRect" parent="." unique_id=1589160487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bgdrg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Background" type="TextureRect" parent="." unique_id=1506016220]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_bgshp")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Atmosphere" type="ColorRect" parent="." unique_id=1073877266]
+material = SubResource("ShaderMaterial_atmos")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dim" type="TextureRect" parent="." unique_id=390723848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_dim")
+expand_mode = 1
+
+[node name="DriftLayer" type="Control" parent="." unique_id=282110621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=2048839391]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
+[node name="Content" type="VBoxContainer" parent="Margin" unique_id=1884237320]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="Title" type="Label" parent="Margin/Content" unique_id=2027637381]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Blind Brew"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Margin/Content" unique_id=1566401428]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HighScorePanel" type="PanelContainer" parent="Margin/Content" unique_id=348502769]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eifb7")
+
+[node name="HBox" type="HBoxContainer" parent="Margin/Content/HighScorePanel" unique_id=236124484]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="HighScoreIcon" type="TextureRect" parent="Margin/Content/HighScorePanel/HBox" unique_id=992779136]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_star")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Texts" type="VBoxContainer" parent="Margin/Content/HighScorePanel/HBox" unique_id=1799871091]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -6
+
+[node name="HighScoreCaption" type="Label" parent="Margin/Content/HighScorePanel/HBox/Texts" unique_id=477106164]
+layout_mode = 2
+text = "High score"
+label_settings = SubResource("LabelSettings_caption")
+
+[node name="HighScoreValue" type="Label" parent="Margin/Content/HighScorePanel/HBox/Texts" unique_id=874188160]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_value")
+
+[node name="HighScoreHint" type="Label" parent="Margin/Content/HighScorePanel/HBox/Texts" unique_id=177291543]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Play a round to set one!"
+label_settings = SubResource("LabelSettings_hint")
+
+[node name="Spacer2" type="Control" parent="Margin/Content" unique_id=2085323847]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PlayButton" type="Button" parent="Margin/Content" unique_id=1542613648]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(460, 112)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8235294, 0.24705882, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.04, 0.16, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_t7e0r")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBox_play_normal")
+theme_override_styles/pressed = SubResource("StyleBox_play_pressed")
+theme_override_styles/hover = SubResource("StyleBox_play_hover")
+theme_override_styles/disabled = SubResource("StyleBox_play_pressed")
+theme_override_styles/focus = SubResource("StyleBox_empty")
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Margin/Content" unique_id=576949033]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 78)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.86, 0.78, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.04, 0.16, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_t7e0r")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBox_quit_normal")
+theme_override_styles/pressed = SubResource("StyleBox_quit_normal")
+theme_override_styles/hover = SubResource("StyleBox_quit_hover")
+theme_override_styles/disabled = SubResource("StyleBox_quit_normal")
+theme_override_styles/focus = SubResource("StyleBox_empty")
+text = "Quit"
+
+[node name="Fade" type="ColorRect" parent="." unique_id=590782372]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.05, 0.02, 0.08, 0)

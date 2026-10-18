@@ -3,146 +3,368 @@
 [ext_resource type="Script" uid="uid://c5icilyk0w2pg" path="res://ui/end_screen.gd" id="1_70k24"]
 [ext_resource type="FontFile" uid="uid://q76ndoljljym" path="res://fonts/LuckiestGuy-Regular.ttf" id="2_s243q"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ov5wf"]
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font = ExtResource("2_s243q")
+font_size = 130
+font_color = Color(1, 0.8235294, 0.24705882, 1)
+outline_size = 20
+outline_color = Color(0.12, 0.04, 0.16, 1)
+shadow_size = 0
+shadow_color = Color(0.05, 0.02, 0.12, 0.7)
+shadow_offset = Vector2(8, 12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0odxb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_caption"]
+font = ExtResource("2_s243q")
+font_size = 34
+font_color = Color(0.86, 0.78, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_score"]
+font = ExtResource("2_s243q")
+font_size = 120
+font_color = Color(1, 0.8235294, 0.24705882, 1)
+outline_size = 16
+outline_color = Color(0.12, 0.04, 0.16, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_best"]
+font_size = 30
+font_color = Color(0.86, 0.78, 1, 0.85)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_divider"]
+bg_color = Color(0.86, 0.78, 1, 0.25)
+
+[sub_resource type="LabelSettings" id="LabelSettings_stat_served"]
+font = ExtResource("2_s243q")
+font_size = 60
+outline_size = 10
+outline_color = Color(0.12, 0.04, 0.16, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_stat_caption"]
+font_size = 26
+font_color = Color(0.86, 0.78, 1, 0.85)
+
+[sub_resource type="LabelSettings" id="LabelSettings_stat_perfect"]
+font = ExtResource("2_s243q")
+font_size = 60
+font_color = Color(0.55, 0.95, 0.55, 1)
+outline_size = 10
+outline_color = Color(0.12, 0.04, 0.16, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_stat_failed"]
+font = ExtResource("2_s243q")
+font_size = 60
+font_color = Color(1, 0.5, 0.5, 1)
+outline_size = 10
+outline_color = Color(0.12, 0.04, 0.16, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_play_normal"]
+bg_color = Color(0.45, 0.2, 0.56, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 9
+border_color = Color(1, 0.8235294, 0.24705882, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 14
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_play_pressed"]
+bg_color = Color(0.34, 0.14, 0.43, 1)
+border_width_left = 5
+border_width_top = 9
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.85, 0.66, 0.18, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_play_hover"]
+bg_color = Color(0.58, 0.28, 0.7, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 9
+border_color = Color(1, 0.9, 0.5, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+shadow_color = Color(1, 0.75, 0.3, 0.35)
+shadow_size = 22
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBox_empty"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_menu_normal"]
+bg_color = Color(0.11, 0.05, 0.18, 0.9)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.75, 0.6, 1, 0.75)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 14
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_menu_pressed"]
+bg_color = Color(0.08, 0.03, 0.13, 0.95)
+border_width_left = 4
+border_width_top = 8
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.75, 0.6, 1, 0.75)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_menu_hover"]
+bg_color = Color(0.2, 0.1, 0.3, 0.95)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.86, 0.78, 1, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+shadow_color = Color(0.75, 0.6, 1, 0.3)
+shadow_size = 20
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_stamp"]
+content_margin_left = 26.0
+content_margin_top = 10.0
+content_margin_right = 26.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.8235294, 0.24705882, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.12, 0.04, 0.16, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(1, 0.75, 0.3, 0.45)
+shadow_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_stamp"]
+font = ExtResource("2_s243q")
 font_size = 40
-font_color = Color(1, 0.81960785, 0.2509804, 1)
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_70k24"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_s243q"]
-resource_name = "pulse"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.15, 1.15), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ibj4"]
-_data = {
-&"RESET": SubResource("Animation_70k24"),
-&"pulse": SubResource("Animation_s243q")
-}
+font_color = Color(0.2, 0.07, 0.25, 1)
 
 [node name="EndScreen" type="ColorRect" unique_id=1532378341]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.75)
-script = ExtResource("1_70k24")
-
-[node name="Box" type="VBoxContainer" parent="." unique_id=1664749519]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
-alignment = 1
+color = Color(0.05, 0.02, 0.1, 0.8)
+script = ExtResource("1_70k24")
 
-[node name="Title" type="Label" parent="Box" unique_id=1554287672]
+[node name="Center" type="CenterContainer" parent="." unique_id=1764008184]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Box" type="VBoxContainer" parent="Center" unique_id=1222433256]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.81960785, 0.2509804, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("2_s243q")
-theme_override_font_sizes/font_size = 96
-text = "Time's up!"
-horizontal_alignment = 1
+mouse_filter = 2
+theme_override_constants/separation = 34
 
-[node name="ScoreLabel" type="Label" parent="Box" unique_id=1425882276]
+[node name="Title" type="Label" parent="Center/Box" unique_id=2075383332]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 56
-text = "Score: 0"
-horizontal_alignment = 1
-
-[node name="ServedLabel" type="Label" parent="Box" unique_id=2079689901]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 56
-text = "Customers served: 0"
-horizontal_alignment = 1
-
-[node name="PerfectLabel" type="Label" parent="Box" unique_id=147609083]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 56
-text = "Perfect potions: 0"
-horizontal_alignment = 1
-
-[node name="FailedLabel" type="Label" parent="Box" unique_id=625660006]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 56
-text = "Failed potions: 0"
-horizontal_alignment = 1
-
-[node name="PlayAgain" type="Button" parent="Box" unique_id=633051052]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 90)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_s243q")
-theme_override_font_sizes/font_size = 44
-text = "Play again"
-
-[node name="HighscoreControl" type="Control" parent="Box" unique_id=505148327]
-visible = false
-layout_mode = 2
-
-[node name="Highscore" type="Label" parent="Box/HighscoreControl" unique_id=565479920]
-layout_mode = 0
-offset_left = 334.0
-offset_top = -463.0
-offset_right = 635.0
-offset_bottom = -350.0
-rotation = -0.5726636
-pivot_offset = Vector2(150.5, 56.5)
-text = "New 
-Highscore!"
-label_settings = SubResource("LabelSettings_ov5wf")
+text = "Time's up!"
+label_settings = SubResource("LabelSettings_title")
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Box/HighscoreControl/Highscore" unique_id=711341539]
-libraries/ = SubResource("AnimationLibrary_7ibj4")
-autoplay = &"pulse"
+[node name="Card" type="PanelContainer" parent="Center/Box" unique_id=1016189237]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(760, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0odxb")
+
+[node name="CardBox" type="VBoxContainer" parent="Center/Box/Card" unique_id=1799272366]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ScoreCaption" type="Label" parent="Center/Box/Card/CardBox" unique_id=2137636181]
+layout_mode = 2
+text = "Score"
+label_settings = SubResource("LabelSettings_caption")
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Center/Box/Card/CardBox" unique_id=23550708]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_score")
+horizontal_alignment = 1
+
+[node name="BestLabel" type="Label" parent="Center/Box/Card/CardBox" unique_id=1008617000]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Best: 0"
+label_settings = SubResource("LabelSettings_best")
+horizontal_alignment = 1
+
+[node name="Divider" type="HSeparator" parent="Center/Box/Card/CardBox" unique_id=1732855401]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBox_divider")
+
+[node name="Stats" type="HBoxContainer" parent="Center/Box/Card/CardBox" unique_id=1606352578]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Served" type="VBoxContainer" parent="Center/Box/Card/CardBox/Stats" unique_id=105231511]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ServedLabel" type="Label" parent="Center/Box/Card/CardBox/Stats/Served" unique_id=877908250]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_stat_served")
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="Center/Box/Card/CardBox/Stats/Served" unique_id=1474291417]
+layout_mode = 2
+text = "Customers served"
+label_settings = SubResource("LabelSettings_stat_caption")
+horizontal_alignment = 1
+
+[node name="Perfect" type="VBoxContainer" parent="Center/Box/Card/CardBox/Stats" unique_id=1637461461]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="PerfectLabel" type="Label" parent="Center/Box/Card/CardBox/Stats/Perfect" unique_id=1324119246]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_stat_perfect")
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="Center/Box/Card/CardBox/Stats/Perfect" unique_id=653753641]
+layout_mode = 2
+text = "Perfect potions"
+label_settings = SubResource("LabelSettings_stat_caption")
+horizontal_alignment = 1
+
+[node name="Failed" type="VBoxContainer" parent="Center/Box/Card/CardBox/Stats" unique_id=1614212601]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="FailedLabel" type="Label" parent="Center/Box/Card/CardBox/Stats/Failed" unique_id=298500788]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_stat_failed")
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="Center/Box/Card/CardBox/Stats/Failed" unique_id=92244759]
+layout_mode = 2
+text = "Failed potions"
+label_settings = SubResource("LabelSettings_stat_caption")
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Center/Box" unique_id=2129002304]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 34
+alignment = 1
+
+[node name="PlayAgain" type="Button" parent="Center/Box/Buttons" unique_id=326907870]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 104)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8235294, 0.24705882, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.8)
+theme_override_colors/font_outline_color = Color(0.12, 0.04, 0.16, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_s243q")
+theme_override_font_sizes/font_size = 54
+theme_override_styles/normal = SubResource("StyleBox_play_normal")
+theme_override_styles/pressed = SubResource("StyleBox_play_pressed")
+theme_override_styles/hover = SubResource("StyleBox_play_hover")
+theme_override_styles/disabled = SubResource("StyleBox_play_pressed")
+theme_override_styles/focus = SubResource("StyleBox_empty")
+text = "Play again"
+
+[node name="MainMenuButton" type="Button" parent="Center/Box/Buttons" unique_id=381053107]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 104)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.86, 0.78, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.86, 0.78, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.86, 0.78, 1, 0.8)
+theme_override_colors/font_outline_color = Color(0.12, 0.04, 0.16, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_s243q")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBox_menu_normal")
+theme_override_styles/pressed = SubResource("StyleBox_menu_pressed")
+theme_override_styles/hover = SubResource("StyleBox_menu_hover")
+theme_override_styles/disabled = SubResource("StyleBox_menu_pressed")
+theme_override_styles/focus = SubResource("StyleBox_empty")
+text = "Main menu"
+
+[node name="NewHighScore" type="PanelContainer" parent="." unique_id=1677676756]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+rotation = 0.2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_stamp")
+
+[node name="Label" type="Label" parent="NewHighScore" unique_id=1000530577]
+layout_mode = 2
+text = "New high score!"
+label_settings = SubResource("LabelSettings_stamp")
+horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="." unique_id=124141977]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.05, 0.02, 0.08, 0)

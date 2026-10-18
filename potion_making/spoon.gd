@@ -96,6 +96,7 @@ func _on_spoon_upgrade_pressed() -> void:
 	level += 1
 	Utility.scene.money -= price
 	Event.money_changed.emit(Utility.scene.money)
+	Audio.play('coins')
 
 	if level > len(Cons.SPOON_UPGRADES_PRICE):
 		upgrade.visible = false

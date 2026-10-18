@@ -2,8 +2,6 @@ extends Node
 
 const DIR: String = "res://audio/"
 
-## Per-sound gain in dB. Loudness-matched from the raw ElevenLabs files:
-## gain = category target loudness - measured loudness, capped so peaks stay below -1 dBFS.
 const GAIN: Dictionary[String, float] = {
 	"almanac_close": -10.0,
 	"almanac_open": 8.4,

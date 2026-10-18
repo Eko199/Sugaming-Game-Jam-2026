@@ -105,6 +105,15 @@ func check_and_save_high_score(current_score: int) -> bool:
 	config.save(Cons.SAVE_PATH)
 	return true
 
+## 12345 -> "12,345"
+func format_number(value: int) -> String:
+	var digits: String = str(absi(value))
+	var out: String = ""
+	while digits.length() > 3:
+		out = "," + digits.right(3) + out
+		digits = digits.left(-3)
+	return ("-" if value < 0 else "") + digits + out
+
 func load_high_score() -> void:
 	var config := ConfigFile.new()
 	if config.load(Cons.SAVE_PATH) == OK:
