@@ -37,6 +37,8 @@ func _update_cursor() -> void:
 	mouse_default_cursor_shape = CURSOR_POINTING_HAND if has_ingredients else CURSOR_FORBIDDEN
 	
 func _update_spoon_upgrade(_money = null) -> void:
+	if level > len(Cons.SPOON_UPGRADES_PRICE):
+		return
 	var price: int = Cons.SPOON_UPGRADES_PRICE[level - 1]
 	upgrade.disabled = Utility.scene.money < price
 	upgrade.mouse_default_cursor_shape = CURSOR_POINTING_HAND if not upgrade.disabled else CURSOR_FORBIDDEN
@@ -81,7 +83,7 @@ func _on_spoon_upgrade_pressed() -> void:
 	Utility.scene.money -= price
 	Event.money_changed.emit(Utility.scene.money)
 
-	if level == 3:
+	if level > len(Cons.SPOON_UPGRADES_PRICE):
 		upgrade.visible = false
 	else:
 		upgrade.get_child(0).text = "%s" % Cons.SPOON_UPGRADES_PRICE[level - 1]
