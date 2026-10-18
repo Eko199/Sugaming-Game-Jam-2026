@@ -17,6 +17,10 @@ const PATIENCE_COLORS: Dictionary[float, Color] = {
 	0.6: Color(1.0, 0.85, 0.25),
 	1.0: Color(0.45, 0.9, 0.35),
 }
+const BAR_POS: Vector2 = Vector2(-27.0, -65.0)
+const BAR_SIZE: Vector2 = Vector2(323.0, 55.0)
+const DRAGON_BAR_SIZE: Vector2 = Vector2(260.0, 50.0)
+const DRAGON_BAR_GAP: float = 6.0
 const SHAKE_START: float = 0.45
 const SHAKE_MAX_PX: float = 6.0
 const SHAKE_MAX_ROT: float = 0.04
@@ -26,6 +30,7 @@ var _patience_gradient: Gradient
 var rest_x: float
 var rest_y: float
 var active: bool = false
+var is_dragon: bool = false
 var walk_tween: Tween
 var react_tween: Tween
 
@@ -52,11 +57,17 @@ func _walk_to(x: float, speech_to: float, delay: float = WALK_TIME) -> Tween:
 	).from(abs(speech_to - 1.0)).set_delay(delay)
 	return walk_tween
 
-func arrive(recipe: Cons.RECIPE, patience_time: float) -> void:
+func arrive(recipe: Cons.RECIPE, patience_time: float, dragon: bool = false) -> void:
 	wanted = recipe
 	patience = patience_time
-	texture = load(Cons.CHARACTER_TEXTURES.pick_random())
+	is_dragon = dragon
+	texture = load(Cons.DRAGON_TEXTURE if dragon else Cons.CHARACTER_TEXTURES.pick_random())
+	position.x = -150 if is_dragon else 0
+	bubble.position.x = -310 if is_dragon else -472
+	_place_progress_bar()
 	progress_bar.tint_progress = PATIENCE_COLORS[1.0]
+	if is_dragon:
+		patience /= Cons.DRAGON_PATIENCE
 	request_label.text = Utility.get_keyname(wanted, Cons.RECIPE).to_upper()
 	if Utility.speech_impairment_active:
 		request_label.text = Utility.shuffle(request_label.text)
@@ -69,6 +80,17 @@ func arrive(recipe: Cons.RECIPE, patience_time: float) -> void:
 	Event.customer_arrived.emit(self)
 	_walk_to(rest_x, 1.0).set_ease(Tween.EASE_OUT).finished.connect(func() -> void:
 		if active: timer.start(patience))
+
+func _place_progress_bar() -> void:
+	progress_bar.rotation = 0.0
+	if is_dragon:
+		var tex_top: float = (size.y - texture.get_height()) / 2.0
+		progress_bar.size = DRAGON_BAR_SIZE
+		_bar_rest = Vector2(size.x / 2.0 - DRAGON_BAR_SIZE.x / 2.0, tex_top - DRAGON_BAR_SIZE.y - DRAGON_BAR_GAP)
+	else:
+		progress_bar.size = BAR_SIZE
+		_bar_rest = BAR_POS
+	progress_bar.position = _bar_rest
 
 func wants(ing: Ingredient.TYPE, count: int) -> bool:
 	for ings: Array in Recipe.RECIPE:

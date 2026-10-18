@@ -186,8 +186,8 @@ func _on_customer_left(_customer: Customer, served: bool) -> void:
 func _on_customer_paid(_amount: int, _quality: Cons.QUALITY, _ingredient_count: int) -> void:
 	play("coins", 0.05, 0.4)
 
-func _on_time_added(_seconds: float) -> void:
-	play("time_bonus")
+func _on_time_added(seconds: float) -> void:
+	play("time_bonus" if seconds >= 0.0 else "dragon_fire")
 
 func _on_game_over() -> void:
 	dragon_timer.stop()

@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
 [ext_resource type="FontFile" uid="uid://cf6mj3nacyu8n" path="res://fonts/CaveatBrush-Regular.ttf" id="6_a6jrf"]
 [ext_resource type="Texture2D" uid="uid://d36ottu18m3wd" path="res://textures/coin.png" id="6_lswn8"]
-[ext_resource type="Texture2D" uid="uid://cryb0mo88h5oc" path="res://textures/gnome_hair.png" id="7_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://d33d5rnlivlhp" path="res://potion_making/spoon.tscn" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://dxo2xb5fkkraa" path="res://textures/almanach.png" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://ydmnt67wtj55" path="res://textures/fireworm.png" id="8_yaehf"]
@@ -47,7 +46,7 @@ expand_margin_bottom = 6.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font = ExtResource("6_a6jrf")
-font_size = 32
+font_size = 42
 font_color = Color(1, 0.8235294, 0.24705882, 1)
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
@@ -55,10 +54,10 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ikh62"]
 shader = ExtResource("10_1u8w0")
 shader_parameter/shadow_tint = Color(0.3, 0.22, 0.55, 1)
-shader_parameter/highlight_tint = Color(1, 0.82, 0.55, 1)
+shader_parameter/highlight_tint = Color(1, 0.888, 0.72, 1)
 shader_parameter/grade_strength = 0.35
-shader_parameter/saturation = 0.9530000452675
-shader_parameter/contrast = 0.99200002337
+shader_parameter/saturation = 0.9600000456
+shader_parameter/contrast = 0.88000001805
 shader_parameter/bloom_strength = 0.5
 shader_parameter/bloom_threshold = 0.6
 shader_parameter/flicker_strength = 0.05
@@ -151,10 +150,10 @@ pivot_offset_ratio = Vector2(0.5, 0.8)
 texture = ExtResource("5_ryguw")
 
 [node name="Money" type="PanelContainer" parent="UI" unique_id=1835211639]
-offset_left = 1673.0
+offset_left = 1664.0
 offset_top = 420.0
-offset_right = 1874.0
-offset_bottom = 465.0
+offset_right = 1884.0
+offset_bottom = 482.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lswn8")
 
 [node name="HBox" type="HBoxContainer" parent="UI/Money" unique_id=919267168]
@@ -201,6 +200,7 @@ offset_bottom = 761.4999
 scale = Vector2(0.8, 0.8)
 
 [node name="ColorBlind" type="CanvasLayer" parent="." unique_id=471396018]
+process_mode = 3
 script = ExtResource("5_cegan")
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=656466894]
@@ -238,12 +238,11 @@ offset_left = 21.0
 offset_top = 533.0
 offset_right = 217.0
 offset_bottom = 729.0
-texture = ExtResource("7_2cqfq")
 
 [node name="Ing2" parent="Shelf" unique_id=83227316 instance=ExtResource("2_1bvp3")]
-offset_left = 189.0
+offset_left = 199.0
 offset_top = 533.0
-offset_right = 385.0
+offset_right = 395.0
 offset_bottom = 729.0
 texture = ExtResource("8_yaehf")
 type = 1

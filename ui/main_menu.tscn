@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddnmg411rbgd8" path="res://ui/main_menu.gd" id="1_0dkrt"]
 [ext_resource type="FontFile" uid="uid://q76ndoljljym" path="res://fonts/LuckiestGuy-Regular.ttf" id="1_t7e0r"]
-[ext_resource type="Texture2D" uid="uid://le1df1tadwma" path="res://textures/backgroundx2.png" id="2_ei257"]
-[ext_resource type="Texture2D" uid="uid://cwdg41cb3c5sy" path="res://textures/background.png" id="3_bgshp"]
+[ext_resource type="Texture2D" uid="uid://bktuah7uaf1ht" path="res://textures/background_game.jpg" id="2_ei257"]
 [ext_resource type="Shader" uid="uid://bre3vmmriw4r7" path="res://shaders/atmosphere.gdshader" id="4_atmos"]
 [ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="6_star"]
 
@@ -139,18 +138,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0dkrt")
 
-[node name="BackBackground" type="TextureRect" parent="." unique_id=1589160487]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_ei257")
-expand_mode = 1
-stretch_mode = 6
-
 [node name="Background" type="TextureRect" parent="." unique_id=1506016220]
 layout_mode = 1
 anchors_preset = 15
@@ -159,7 +146,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_bgshp")
+texture = ExtResource("2_ei257")
 expand_mode = 1
 stretch_mode = 6
 

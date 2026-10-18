@@ -137,5 +137,12 @@ const DEBUFF_FAILS: int = 1
 const DEBUFF_TIME: int = 20
 const REQUEST_REPEAT_PENALTY_RECENT: float = 0.5
 const REQUEST_REPEAT_PENALTY_OLDER: float = 0.8
+const DRAGON_CHANCE: float = 0.05
+const DRAGON_MONEY_MULT: float = 2.0
+const DRAGON_TIME_PENALTY: float = 5.0
+const DRAGON_PATIENCE: float = 1.5
+const DRAGON_TEXTURE: String = "res://textures/dragon.png"
+const BACKGROUND_WITH_DRAGON: String = "res://textures/backgroundx2dragon.png"
+const BACKGROUND_NO_DRAGON: String = "res://textures/backgroundx2.png"
 
 const SAVE_PATH: String = "user://save_data.cfg"

@@ -7,7 +7,6 @@ const DRIFTER_ALPHA: float = 0.45
 const DRIFT_TIME: Vector2 = Vector2(11.0, 19.0)
 const PARALLAX: float = 6.0
 
-@onready var back_background: TextureRect = $BackBackground
 @onready var drift_layer: Control = $DriftLayer
 @onready var content: VBoxContainer = %Content
 @onready var title: Label = %Title
@@ -36,11 +35,6 @@ func _ready() -> void:
 
 	_play_intro()
 	play_button.grab_focus.call_deferred()
-
-func _process(_delta: float) -> void:
-	var half: Vector2 = size / 2.0
-	var offset: Vector2 = (get_local_mouse_position() - half) / half
-	back_background.position = back_background.position.lerp(offset.limit_length(1.0) * PARALLAX, 0.1)
 
 func _show_high_score(score: int) -> void:
 	if score > 0:

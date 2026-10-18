@@ -45,5 +45,9 @@ func _format_time(seconds: float) -> String:
 	var s: int = ceili(seconds)
 	return "%d:%02d" % [floori(s / 60.0), s % 60]
 
-func _on_time_added(_seconds: float) -> void:
-	Utility.floating_text(self, "+", clock.position + Vector2(clock.size.x + 20, 0), Color(0.4, 1, 0.4))
+func _on_time_added(seconds: float) -> void:
+	var pos: Vector2 = clock.position + Vector2(clock.size.x + 20, 0)
+	if seconds < 0.0:
+		Utility.floating_text(self, "-%ds" % roundi(-seconds), pos, Color(1, 0.35, 0.3))
+	else:
+		Utility.floating_text(self, "+", pos, Color(0.4, 1, 0.4))

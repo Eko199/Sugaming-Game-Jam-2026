@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ddyr3a0jetguo"]
 
-[ext_resource type="Texture2D" uid="uid://cy74tuvulch2m" path="res://textures/knight3.png" id="1_j81x4"]
+[ext_resource type="Texture2D" uid="uid://dct7ybd5u1dnk" path="res://textures/dragon.png" id="1_v6yxn"]
 [ext_resource type="Script" uid="uid://bfjgopvcextfi" path="res://potion_making/customer.gd" id="2_4sc2f"]
 [ext_resource type="Texture2D" uid="uid://bgnei6phos8uo" path="res://textures/speach.png" id="3_j81x4"]
 [ext_resource type="Texture2D" uid="uid://c2fyo501lghsy" path="res://textures/bottom_bar.png" id="3_v6yxn"]
@@ -9,19 +9,22 @@
 
 [node name="Customer" type="TextureRect" unique_id=637699539]
 custom_minimum_size = Vector2(0, 350)
-offset_right = 286.0
-offset_bottom = 348.1369
+offset_right = 630.14703
+offset_bottom = 350.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("1_j81x4")
+texture = ExtResource("1_v6yxn")
 expand_mode = 3
 stretch_mode = 4
 script = ExtResource("2_4sc2f")
 
+[node name="Timer" type="Timer" parent="." unique_id=1589425296]
+one_shot = true
+
 [node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1909323367]
 layout_mode = 0
-offset_left = -27.0
+offset_left = 225.0
 offset_top = -65.0
-offset_right = 296.0
+offset_right = 548.0
 offset_bottom = -10.0
 step = 0.01
 nine_patch_stretch = true
@@ -29,14 +32,11 @@ texture_under = ExtResource("3_v6yxn")
 texture_over = ExtResource("4_ooj5e")
 texture_progress = ExtResource("5_mt023")
 
-[node name="Timer" type="Timer" parent="." unique_id=1589425296]
-one_shot = true
-
 [node name="Bubble" type="TextureRect" parent="." unique_id=89133980]
 layout_mode = 0
-offset_left = -472.0
+offset_left = -310.0
 offset_top = -169.0
-offset_right = 113.0
+offset_right = 275.0
 offset_bottom = 306.0
 texture = ExtResource("3_j81x4")
 expand_mode = 3
@@ -55,8 +55,7 @@ offset_right = 114.5
 offset_bottom = 19.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "FIRE_RESISTANCE"
 horizontal_alignment = 1

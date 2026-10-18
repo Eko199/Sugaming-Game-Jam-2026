@@ -6,6 +6,7 @@ class_name MainScene
 @onready var spoon: TextureRect = $Spoon
 @onready var almanac: MarginContainer = $UI/ColorRect/AlmanacControl
 @onready var back_background: TextureRect = $BackBackground
+@onready var dragon_breath: GPUParticles2D = $BackBackground/GPUParticles2D
 @onready var shelf: Node2D = $Shelf
 @onready var color_blind: ColorBlindFilter = $ColorBlind
 
@@ -42,15 +43,20 @@ func _process(delta: float) -> void:
 
 func add_time(seconds: float) -> void:
 	if is_over: return
-	round_timer.start(clampf(round_timer.time_left + seconds, 0.0, Cons.ROUND_TIME))
+	var new_time: float = clampf(round_timer.time_left + seconds, 0.0, Cons.ROUND_TIME)
 	Event.time_added.emit(seconds)
+	if new_time <= 0.0:
+		round_timer.stop()
+		_end_game()
+		return
+	round_timer.start(new_time)
 
 func _end_game() -> void:
 	if is_over: return
 	is_over = true
+	get_viewport().gui_cancel_drag()
 	almanac.close()
-	
-	color_blind.fade_out(0)
+	color_blind.fade_out(1.0)
 	get_tree().paused = true
 	Event.game_over.emit()
 
@@ -61,8 +67,15 @@ func _spawn_customer() -> void:
 	var progress: float = round_progress()
 	var recipe: Cons.RECIPE = 0 as Cons.RECIPE if customers_spawned == 0 else _pick_recipe(progress)
 	var patience: float = Cons.PATIENCE_MAX - ease(progress, -5) * (Cons.PATIENCE_MAX - Cons.PATIENCE_MIN) # in seconds
+	var dragon: bool = customers_spawned > 0 and rng.randf() < Cons.DRAGON_CHANCE
 	customers_spawned += 1
-	customer.arrive(recipe, patience)
+	_set_dragon_background(dragon)
+	customer.arrive(recipe, patience, dragon)
+	if dragon: Audio.play("dragon_roar")
+
+func _set_dragon_background(dragon_at_window: bool) -> void:
+	back_background.texture = load(Cons.BACKGROUND_NO_DRAGON if dragon_at_window else Cons.BACKGROUND_WITH_DRAGON)
+	dragon_breath.visible = not dragon_at_window
 
 func _pick_recipe(progress: float) -> Cons.RECIPE:
 	var target: float = lerpf(0.5, float(Cons.RECIPE.size() - 1), progress)
@@ -139,12 +152,14 @@ func _on_customer_left(_customer: Customer, served: bool) -> void:
 	
 ## Final coins for a sale: base price x quality multiplier x spoon multiplier.
 func payout(amount: int, quality: Cons.QUALITY) -> int:
-	return roundi(amount * Cons.QUALITY_MULT[quality] * Cons.SPOON_LEVEL_MULT[spoon.level - 1])
+	var dragon_mult: float = Cons.DRAGON_MONEY_MULT if customer.is_dragon else 1.0
+	return roundi(amount * Cons.QUALITY_MULT[quality] * Cons.SPOON_LEVEL_MULT[spoon.level - 1] * dragon_mult)
 
 func _on_customer_paid(amount: int, quality: Cons.QUALITY, ingredient_count: int) -> void:
 	money += payout(amount, quality)
 	potions_served += 1
 	Event.money_changed.emit(money)
+	if customer.is_dragon: add_time(-Cons.DRAGON_TIME_PENALTY)
 	if quality == Cons.QUALITY.EXCELLENT: 
 		perfect_potions += 1
 		add_time(Cons.PERFECT_TIME_BONUS_BASE + Cons.PERFECT_TIME_BONUS_PER_INGREDIENT * ingredient_count)

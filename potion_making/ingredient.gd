@@ -12,6 +12,7 @@ enum TYPE {
 		reload()
 @onready var outline: TextureRect = $Outline
 @onready var particles: GPUParticles2D = $GPUParticles2D
+@onready var label: CurvedLabel = $TextureRect/Label
 
 var saved_texture: Texture2D
 var is_currently_used: bool = false
@@ -35,6 +36,7 @@ func reload() -> void:
 	texture = load(Cons.INGRIDIENT_TEXTURE[type])
 	if outline != null: outline.texture = texture
 	saved_texture = texture
+	if label != null: label.text = Utility.get_keyname(type, TYPE) # CurvedLabel bends + fits it to the tag
 	if particles != null:
 		particles.process_material = PARTICLE_MATERIALS[type]
 		particles.show()
@@ -52,6 +54,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	item_holder.add_child(item)
 	var held_particles: GPUParticles2D = item.get_node("GPUParticles2D")
 	held_particles.local_coords = true # travel with the mouse instead of trailing behind
+	item.get_node("TextureRect").hide() # the name tag stays on the shelf
 
 	item.position = -0.5 * size
 	item.rotation = randf_range(-0.1, 0.1) * PI
