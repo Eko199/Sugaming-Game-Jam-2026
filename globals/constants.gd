@@ -18,6 +18,23 @@ enum DEBUFF {
 	SENSORY_DEPRIVATION, SOUND_IMPAIRMENT, ITEM_SHUFFLE
 }
 
+const SPOON_UPGRADES_PRICE: PackedInt32Array = [
+	100,
+	200
+]
+
+const SPOON_LEVEL_MULT: PackedFloat32Array = [
+	1.0,
+	1.5,
+	2.0
+]
+
+const SPOONS_TEXTURE: PackedStringArray = [
+	"res://textures/spoon.png",
+	"res://textures/silver_spoon.png",
+	"res://textures/golden_spoon.png"
+]
+
 # General information
 const INGRIDIENT_TEXTURE: PackedStringArray = [
 	'res://textures/gnome_hair.png',

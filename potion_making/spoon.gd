@@ -2,19 +2,28 @@ extends TextureRect
 class_name Spoon
 
 @onready var outline: TextureRect = $Outline
+@onready var upgrade: Button = $"../Spoon Upgrade"
 
 const drag_preview = preload("res://potion_making/drag_preview.gd")
 
-var saved_texture: Texture2D
 var is_dragging: bool = false
 var has_ingredients: bool = false
+var level: int = 1
 
 func _ready() -> void:
-	saved_texture = texture
 	outline.texture = texture
 	Event.ingredient_added.connect(_on_ingredient_added)
 	Event.potion_served.connect(_on_cauldron_cleared)
 	Event.cauldron_emptied.connect(_on_cauldron_cleared)
+	Event.money_changed.connect(_update_spoon_upgrade)
+	
+	#Unfade upgrade button while disabled
+	upgrade.add_theme_stylebox_override("disabled", upgrade.get_theme_stylebox("normal"))
+	upgrade.add_theme_color_override("icon_disabled_color", upgrade.get_theme_color("icon_normal_color"))
+	upgrade.add_theme_color_override("font_disabled_color", upgrade.get_theme_color("font_color"))
+	
+	_update_spoon_upgrade()
+	_update_spoon_sprite()
 	_update_cursor()
 
 func _on_ingredient_added(_ing = null) -> void:
@@ -31,10 +40,25 @@ func _on_cauldron_cleared(_result = null) -> void:
 
 func _update_cursor() -> void:
 	mouse_default_cursor_shape = CURSOR_POINTING_HAND if has_ingredients else CURSOR_FORBIDDEN
+	
+func _update_spoon_upgrade(_money = null) -> void:
+	if level > len(Cons.SPOON_UPGRADES_PRICE):
+		return
+	var price: int = Cons.SPOON_UPGRADES_PRICE[level - 1]
+	upgrade.disabled = Utility.scene.money < price
+	upgrade.mouse_default_cursor_shape = CURSOR_POINTING_HAND if not upgrade.disabled else CURSOR_FORBIDDEN
+
+func _update_spoon_sprite() -> void:
+	texture = load(Cons.SPOONS_TEXTURE[level - 1])
+	
+	if level < len(Cons.SPOONS_TEXTURE):
+		upgrade.get_child(0).text = "%s" % Cons.SPOON_UPGRADES_PRICE[level - 1]
+		upgrade.icon = load(Cons.SPOONS_TEXTURE[level])
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if not has_ingredients: return null
 	var item: TextureRect = duplicate()
+	item.set_script(null)
 	var item_holder: Control = drag_preview.new()
 	item_holder.add_child(item)
 	item.position = -0.5 * size
@@ -48,7 +72,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 
 func _return_to_shelf(_result = null) -> void:
 	if is_dragging: return
-	texture = saved_texture
+	texture = load(Cons.SPOONS_TEXTURE[level - 1])
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END and is_dragging:
@@ -61,3 +85,17 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	outline.hide()
+
+func _on_spoon_upgrade_pressed() -> void:
+	var price: int = Cons.SPOON_UPGRADES_PRICE[level - 1]
+	if Utility.scene.money < price:
+		return
+	
+	level += 1
+	Utility.scene.money -= price
+	Event.money_changed.emit(Utility.scene.money)
+
+	if level > len(Cons.SPOON_UPGRADES_PRICE):
+		upgrade.visible = false
+
+	_update_spoon_sprite()

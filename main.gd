@@ -131,7 +131,7 @@ func _on_customer_left(_customer: Customer, _served: bool) -> void:
 	_spawn_customer()
 	
 func _on_customer_paid(amount: int, quality: Cons.QUALITY, ingredient_count: int) -> void:
-	money += roundi(amount * Cons.QUALITY_MULT[quality])
+	money += roundi(amount * Cons.QUALITY_MULT[quality] * Cons.SPOON_LEVEL_MULT[spoon.level - 1])
 	potions_served += 1
 	Event.money_changed.emit(money)
 	if quality == Cons.QUALITY.EXCELLENT: 
