@@ -134,6 +134,9 @@ layout_mode = 2
 [node name="Recipe7" parent="Recipes/Control/VFlowContainer2" unique_id=648447641 instance=ExtResource("3_kyb6q")]
 layout_mode = 2
 
+[node name="Recipe8" parent="Recipes/Control/VFlowContainer2" unique_id=1704537896 instance=ExtResource("3_kyb6q")]
+layout_mode = 2
+
 [node name="Title" type="Control" parent="Recipes" unique_id=2136623018]
 layout_mode = 2
 

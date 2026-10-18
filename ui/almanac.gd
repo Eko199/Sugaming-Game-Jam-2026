@@ -108,6 +108,7 @@ func _on_almanac_pressed() -> void:
 	open()
 
 func _on_exit_pressed() -> void:
+	get_tree().paused = false
 	close()
 
 func _on_cooking_btn_pressed() -> void:

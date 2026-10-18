@@ -11,7 +11,7 @@ enum QUALITY {
 
 enum RECIPE {
 	SHRINKING, ENLARGEMENT, HEALING, FIRE_RESISTANCE,
-	WATER_CONTROL, JUMPING_POWER, CLONING
+	WATER_CONTROL, JUMPING_POWER, CLONING, RAGE
 }
 
 enum DEBUFF {
@@ -49,6 +49,20 @@ const STIRRING_TEXTURES: PackedStringArray = [
 	"res://textures/rotation_cw.png",
 	"res://textures/rotation_ccw.png",
 	"res://textures/rotations_both.png"
+]
+
+## Indexed by DEBUFF.
+const DEBUFF_TEXTURES: PackedStringArray = [
+	"res://textures/blindness.png",
+	"res://textures/gibberish.png",
+	"res://textures/shuffle.png",
+]
+
+## Indexed by DEBUFF. Shown when the debuff hits and as the badge tooltip.
+const DEBUFF_NAMES: PackedStringArray = [
+	"Senses dulled!",
+	"Gibberish!",
+	"Shelf shuffled!",
 ]
 
 const DESCRIPTIONS: PackedStringArray = [
@@ -89,8 +103,8 @@ const STIR_OUTER_LIMIT: float = 1.2
 const STIR_MAX_STEP: float = PI / 2
 const MAX_INGREDIENTS: int = 3
 const ROUND_TIME: int = 180
-const PATIENCE_MIN: int = 5
-const PATIENCE_MAX: int = 30
+const PATIENCE_MIN: int = 8
+const PATIENCE_MAX: int = 27
 const CUSTOMER_GAP: float = 2.0
 const RECIPE_DIFFICULTY_FALLOFF: float = 2.0
 const EASY_RECIPE_MIN_WEIGHT: float = 0.35

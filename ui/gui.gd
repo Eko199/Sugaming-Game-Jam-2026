@@ -15,6 +15,9 @@ func _ready() -> void:
 	Event.money_changed.connect(_on_money_changed)
 	Event.time_added.connect(_on_time_added)
 	add_child(ResultFx.new())
+	var debuff_hud: DebuffHud = DebuffHud.new()
+	add_child(debuff_hud)
+	move_child(debuff_hud, money_label.get_index() + 1) ## Below the almanac / end screen overlays.
 	_on_money_changed(0)
 
 func _on_money_changed(amount: int) -> void:

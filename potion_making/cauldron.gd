@@ -146,7 +146,7 @@ func _add_ripple(global_pos: Vector2, strength: float) -> void:
 	next_ripple = (next_ripple + 1) % MAX_RIPPLES
 
 func can_accept() -> bool:
-	return current_items.size() < Cons.MAX_INGREDIENTS
+	return customer_present and current_items.size() < Cons.MAX_INGREDIENTS
 
 func add_ingredient(ing: Ingredient.TYPE) -> void:
 	if not can_accept(): return

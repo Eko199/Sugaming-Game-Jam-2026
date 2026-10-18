@@ -29,6 +29,7 @@ func _ready() -> void:
 	Event.potion_served.connect(_on_potion_served)
 	round_timer.timeout.connect(_end_game)
 	round_timer.start(Cons.ROUND_TIME)
+	_show_tutorial()
 	_spawn_customer()
 
 func _process(delta: float) -> void:
@@ -94,8 +95,8 @@ func _get_debuff() -> void:
 	var debuff: Cons.DEBUFF = debuffs.pick_random()
 	current_debuffs.append(debuff)
 	_apply_debuff(debuff)
+	Event.debuff_started.emit(debuff, Cons.DEBUFF_TIME if debuff in TIMED_DEBUFFS else 0)
 	if debuff in TIMED_DEBUFFS:
-		Event.debuff_started.emit(debuff, Cons.DEBUFF_TIME)
 		await get_tree().create_timer(Cons.DEBUFF_TIME).timeout
 		_remove_debuff(debuff)
 
@@ -151,3 +152,8 @@ func _input(event: InputEvent) -> void:
 		almanac.close()
 	elif event.is_action_pressed("open_book") and almanac.get_parent().visible == false:
 		almanac.open()
+
+func _show_tutorial() -> void:
+	get_tree().paused = true
+	almanac.open()
+	almanac._on_tutorial_btn_pressed()

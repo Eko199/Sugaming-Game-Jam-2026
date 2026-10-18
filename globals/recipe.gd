@@ -34,6 +34,11 @@ var RECIPE: Dictionary[Array, Array] = {
 	 Ingredient.TYPE.EXPANDING_BEANS] : [
 		Cons.RECIPE.CLONING, Vector2i(0, 20),
 		Cons.STIR_PATTERN.ANY, 45
+	],
+	[Ingredient.TYPE.FIRE_WORM, Ingredient.TYPE.EXPANDING_BEANS,
+	 Ingredient.TYPE.STAR_FLOWER] : [
+		Cons.RECIPE.RAGE, Vector2i(75, 90),
+		Cons.STIR_PATTERN.COUNTERCLOCKWISE, 50
 	]
 }
 
