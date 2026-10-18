@@ -22,13 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://ct0th50y6133g" path="res://textures/unicorn_tears.png" id="10_cegan"]
 [ext_resource type="Texture2D" uid="uid://kje8aykg3aw8" path="res://textures/expanding_beans.png" id="11_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsfj8yk3r7us2" path="res://textures/star_flower.png" id="12_getpj"]
-[ext_resource type="Shader" uid="uid://bi3mjspidxgua" path="res://shaders/outline.gdshader" id="22_d13ii"]
-[ext_resource type="Material" uid="uid://dfb8bhaighxkb" path="res://shaders/outline_almanac.tres" id="17_074og"]
 [ext_resource type="Texture2D" uid="uid://dn2jnda54knet" path="res://textures/silver_spoon.png" id="20_82xsv"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
-font_size = 32
-font_color = Color(1.1949118, 0, 0, 1)
+[ext_resource type="Shader" uid="uid://bi3mjspidxgua" path="res://shaders/outline.gdshader" id="22_d13ii"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 32
@@ -42,7 +37,7 @@ shader_parameter/shadow_tint = Color(0.3, 0.22, 0.55, 1)
 shader_parameter/highlight_tint = Color(1, 0.82, 0.55, 1)
 shader_parameter/grade_strength = 0.35
 shader_parameter/saturation = 0.9530000452675
-shader_parameter/contrast = 0.9920000233699999
+shader_parameter/contrast = 0.99200002337
 shader_parameter/bloom_strength = 0.5
 shader_parameter/bloom_threshold = 0.6
 shader_parameter/flicker_strength = 0.05
@@ -103,6 +98,7 @@ shader = ExtResource("22_d13ii")
 shader_parameter/outline_color = Color(0.8, 0.6, 0.4, 1)
 shader_parameter/outline_width = 4.00000019
 shader_parameter/alpha_threshold = 0.1
+
 [sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
 font_size = 30
 
