@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://di1if4q4s2snp" path="res://textures/question.png" id="2_d3ljq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
-font_size = 40
+font_size = 46
 font_color = Color(0, 0, 0, 1)
 
 [node name="Recipe" type="HBoxContainer" unique_id=771960630]
