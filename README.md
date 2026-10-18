@@ -70,3 +70,24 @@ git clone [https://github.com/Eko199/Sugaming-Game-Jam-2026.git](https://github.
 
 # Navigate into the project directory
 cd Sugaming-Game-Jam-2026
+```
+*(Open the project folder in your game engine editor to run or build from source.)*
+
+---
+
+## 👥 The Team
+
+Built with passion and caffeine during **SUGAMING JAM 2026**:
+
+| Collaborator | Role | Links |
+| :--- | :--- | :--- |
+| **Gavril Hristov** | Developer | [GitHub](https://github.com/MasterGar1) |
+| **Viktor Pazhev** | Developer | [GitHub](https://github.com/Eko199) |
+| **Mihaela Koleva** | Art Design | [GitHub](https://github.com/MihK20) |
+| **Georgi Tonchev** | Game Design & QA | [GitHub](https://github.com/georgisttt) |
+
+---
+
+## 🏆 Acknowledgements
+
+* Hosted by the **SUGAMING Club** at the **Faculty of Mathematics and Informatics (FMI), Sofia University "St. Kliment Ohridski"**.
