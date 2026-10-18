@@ -1,0 +1,29 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://ecs8js17wbh7"]
+
+[ext_resource type="Curve" uid="uid://baggnaidot3qv" path="res://particles/curves/star_flower_scale.tres" id="1_iiqkb"]
+
+[sub_resource type="Gradient" id="Gradient_4uod8"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.9490196, 0.6, 1, 1, 0.81960785, 0.14901961, 1, 1, 0.7019608, 0.2, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_spdtf"]
+gradient = SubResource("Gradient_4uod8")
+
+[sub_resource type="CurveTexture" id="CurveTexture_kd87q"]
+curve = ExtResource("1_iiqkb")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 70.0
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 14.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+gravity = Vector3(0, -10, 0)
+scale_min = 3.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_kd87q")
+color_ramp = SubResource("GradientTexture1D_spdtf")

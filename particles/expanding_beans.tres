@@ -1,0 +1,31 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://cw02n1mlq24ok"]
+
+[ext_resource type="Curve" uid="uid://brs6ytfjtqb6t" path="res://particles/curves/expanding_beans_scale.tres" id="1_nt0x8"]
+
+[sub_resource type="Gradient" id="Gradient_51tuj"]
+offsets = PackedFloat32Array(0, 0.3, 1)
+colors = PackedColorArray(0.54901963, 0.9019608, 0.2, 0, 0.4, 0.78039217, 0.14901961, 0.9019608, 0.3019608, 0.6, 0.12156863, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vst2n"]
+gradient = SubResource("Gradient_51tuj")
+
+[sub_resource type="CurveTexture" id="CurveTexture_8xlfd"]
+curve = ExtResource("1_nt0x8")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 25.0
+initial_velocity_max = 55.0
+angular_velocity_min = -120.0
+angular_velocity_max = 120.0
+gravity = Vector3(0, -12, 0)
+damping_min = 20.0
+damping_max = 35.0
+scale_min = 4.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_8xlfd")
+color_ramp = SubResource("GradientTexture1D_vst2n")

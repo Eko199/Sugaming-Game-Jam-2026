@@ -1,0 +1,29 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://dtymcc6xd57vr"]
+
+[ext_resource type="Curve" uid="uid://867sub6jl01g" path="res://particles/curves/fire_worm_scale.tres" id="1_qeo7h"]
+
+[sub_resource type="Gradient" id="Gradient_f4t6u"]
+offsets = PackedFloat32Array(0, 0.25, 0.65, 1)
+colors = PackedColorArray(1, 0.9490196, 0.4509804, 1, 1, 0.5019608, 0.101960786, 1, 0.8, 0.12156863, 0.050980393, 0.8, 0.2, 0.14901961, 0.14901961, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bkvvw"]
+gradient = SubResource("Gradient_f4t6u")
+
+[sub_resource type="CurveTexture" id="CurveTexture_np63g"]
+curve = ExtResource("1_qeo7h")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(55, 35, 0)
+direction = Vector3(0, -1, 0)
+spread = 35.0
+initial_velocity_min = 30.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, -90, 0)
+damping_min = 15.0
+damping_max = 30.0
+scale_min = 3.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_np63g")
+color_ramp = SubResource("GradientTexture1D_bkvvw")
