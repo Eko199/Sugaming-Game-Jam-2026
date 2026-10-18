@@ -77,7 +77,7 @@ func floating_text(parent: Node, text: String, pos: Vector2, color: Color = Colo
 
 func shuffle(text: String) -> String:
 	var n: int = text.length()
-	var k: int = ceili(n / 3.0)
+	var k: int = 4
 	if n <= 1 or k <= 1:
 		return text
 	k = clampi(k, 2, n)

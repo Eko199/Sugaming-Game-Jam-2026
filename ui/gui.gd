@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var timer: Timer = $Timer
 @onready var clock: TextureProgressBar = $Clock
 @onready var hand: TextureRect = $Clock/Hand
-@onready var money_label: Label = $MoneyLabel
+@onready var money_label: Label = $Money/HBox/Label
 
 var shown_money: int = 0
 var money_tween: Tween
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func _on_money_changed(amount: int) -> void:
 	if amount == shown_money:
-		money_label.text = "%d coins" % amount
+		money_label.text = str(amount)
 		return
 	if money_tween: money_tween.kill()
 	money_label.pivot_offset = money_label.size / 2.0
@@ -34,7 +34,7 @@ func _on_money_changed(amount: int) -> void:
 
 func _show_money(value: float) -> void:
 	shown_money = roundi(value)
-	money_label.text = "%d coins" % shown_money
+	money_label.text = str(shown_money)
 
 func _process(_delta: float) -> void:
 	var progress: float = Cons.ROUND_TIME - timer.time_left

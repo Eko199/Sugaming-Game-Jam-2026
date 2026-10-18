@@ -49,7 +49,7 @@ func _end_game() -> void:
 	if is_over: return
 	is_over = true
 	almanac.close()
-	color_blind.fade_out(1.0)
+	color_blind.fade_out(0)
 	get_tree().paused = true
 	Event.game_over.emit()
 
@@ -136,8 +136,12 @@ func _on_customer_left(_customer: Customer, served: bool) -> void:
 	if is_over or round_timer.is_stopped(): return
 	_spawn_customer()
 	
+## Final coins for a sale: base price x quality multiplier x spoon multiplier.
+func payout(amount: int, quality: Cons.QUALITY) -> int:
+	return roundi(amount * Cons.QUALITY_MULT[quality] * Cons.SPOON_LEVEL_MULT[spoon.level - 1])
+
 func _on_customer_paid(amount: int, quality: Cons.QUALITY, ingredient_count: int) -> void:
-	money += roundi(amount * Cons.QUALITY_MULT[quality] * Cons.SPOON_LEVEL_MULT[spoon.level - 1])
+	money += payout(amount, quality)
 	potions_served += 1
 	Event.money_changed.emit(money)
 	if quality == Cons.QUALITY.EXCELLENT: 

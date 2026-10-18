@@ -172,7 +172,7 @@ func _on_customer_paid(amount: int, quality: Cons.QUALITY, _ingredient_count: in
 	var scene: MainScene = Utility.scene
 	if not scene: return
 	var customer: Customer = scene.customer
-	var gained: int = roundi(amount * Cons.QUALITY_MULT[quality])
+	var gained: int = scene.payout(amount, quality)
 	var pos: Vector2 = customer.global_position + Vector2(customer.size.x * 0.5, customer.size.y * 0.3)
 	_popup_coins("+%d" % gained, pos, quality)
 	var coins: CPUParticles2D = _make_burst(10 + 6 * quality, 0.8)

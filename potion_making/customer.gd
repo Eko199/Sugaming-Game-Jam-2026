@@ -7,11 +7,22 @@ class_name Customer
 @onready var timer: Timer = $Timer
 @onready var request_label: Label = $Bubble/RequestLabel
 @onready var bubble: TextureRect = $Bubble
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var progress_bar: TextureProgressBar = $ProgressBar
 
 const WALK_TIME: float = 0.7
 const SPEECH_SHOW: float = 0.2
+const PATIENCE_COLORS: Dictionary[float, Color] = {
+	0.0: Color(1.0, 0.2, 0.2),
+	0.35: Color(1.0, 0.55, 0.15),
+	0.6: Color(1.0, 0.85, 0.25),
+	1.0: Color(0.45, 0.9, 0.35),
+}
+const SHAKE_START: float = 0.35
+const SHAKE_MAX_PX: float = 7.0
+const SHAKE_MAX_ROT: float = 0.05
 
+var _bar_rest: Vector2 = Vector2.INF
+var _patience_gradient: Gradient
 var rest_x: float
 var rest_y: float
 var active: bool = false
@@ -23,6 +34,7 @@ func _ready() -> void:
 	rest_x = position.x
 	rest_y = position.y
 	bubble.modulate.a = 0
+	progress_bar.modulate.a = 0
 	hide()
 
 func _offscreen_x() -> float:
@@ -35,12 +47,16 @@ func _walk_to(x: float, speech_to: float, delay: float = WALK_TIME) -> Tween:
 	walk_tween.parallel().tween_property(
 		bubble, "modulate:a", speech_to, SPEECH_SHOW
 	).from(abs(speech_to - 1.0)).set_delay(delay)
+	walk_tween.parallel().tween_property(
+		progress_bar, "modulate:a", speech_to, SPEECH_SHOW
+	).from(abs(speech_to - 1.0)).set_delay(delay)
 	return walk_tween
 
 func arrive(recipe: Cons.RECIPE, patience_time: float) -> void:
 	wanted = recipe
 	patience = patience_time
 	texture = load(Cons.CHARACTER_TEXTURES.pick_random())
+	progress_bar.tint_progress = PATIENCE_COLORS[1.0]
 	request_label.text = Utility.get_keyname(wanted, Cons.RECIPE).to_upper()
 	if Utility.speech_impairment_active:
 		request_label.text = Utility.shuffle(request_label.text)
@@ -103,8 +119,32 @@ func leave(served: bool, quality: Cons.QUALITY = Cons.QUALITY.FAIL) -> void:
 		if not active: hide())
 
 func _process(_delta: float) -> void:
+	if _bar_rest == Vector2.INF:
+		_bar_rest = progress_bar.position
 	if active and not timer.is_stopped():
 		progress_bar.value = timer.time_left
+		_update_patience_fx(timer.time_left / maxf(patience, 0.001))
+	else:
+		progress_bar.position = _bar_rest
+		progress_bar.rotation = 0.0
+
+func _update_patience_fx(ratio: float) -> void:
+	if not _patience_gradient:
+		_patience_gradient = Gradient.new()
+		_patience_gradient.offsets = PackedFloat32Array(PATIENCE_COLORS.keys())
+		_patience_gradient.colors = PackedColorArray(PATIENCE_COLORS.values())
+	var tint: Color = _patience_gradient.sample(ratio)
+
+	var urgency: float = clampf(1.0 - ratio / SHAKE_START, 0.0, 1.0)
+	if urgency > 0.0:
+		var strength: float = urgency * urgency
+		progress_bar.pivot_offset = progress_bar.size / 2.0
+		progress_bar.position = _bar_rest + Vector2(randf_range(-1, 1), randf_range(-1, 1)) * SHAKE_MAX_PX * strength
+		progress_bar.rotation = randf_range(-1, 1) * SHAKE_MAX_ROT * strength
+	else:
+		progress_bar.position = _bar_rest
+		progress_bar.rotation = 0.0
+	progress_bar.tint_progress = tint
 
 func _on_potion_served(result: Dictionary) -> void:
 	if not active: return

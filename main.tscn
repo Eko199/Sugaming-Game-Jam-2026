@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bx83flvm6hjyr" path="res://textures/clock_hand.png" id="5_ryguw"]
 [ext_resource type="Texture2D" uid="uid://c44y8o6fmokw4" path="res://textures/backgroundx2dragon.png" id="5_yaehf"]
 [ext_resource type="PackedScene" uid="uid://ddyr3a0jetguo" path="res://potion_making/customer.tscn" id="6_7mycd"]
+[ext_resource type="FontFile" uid="uid://cf6mj3nacyu8n" path="res://fonts/CaveatBrush-Regular.ttf" id="6_a6jrf"]
+[ext_resource type="Texture2D" uid="uid://d36ottu18m3wd" path="res://textures/coin.png" id="6_lswn8"]
 [ext_resource type="Texture2D" uid="uid://cryb0mo88h5oc" path="res://textures/gnome_hair.png" id="7_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://d33d5rnlivlhp" path="res://potion_making/spoon.tscn" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://dxo2xb5fkkraa" path="res://textures/almanach.png" id="8_kek77"]
@@ -26,7 +28,24 @@
 [ext_resource type="Shader" uid="uid://bi3mjspidxgua" path="res://shaders/outline.gdshader" id="22_d13ii"]
 [ext_resource type="Texture2D" uid="uid://c0n0xcuycsire" path="res://textures/spoon.png" id="25_0odxb"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lswn8"]
+bg_color = Color(0.38039216, 0.21568628, 0.047058824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.019607844, 0.019607844, 0.019607844, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 4
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 5
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font = ExtResource("6_a6jrf")
 font_size = 32
 font_color = Color(1, 0.8235294, 0.24705882, 1)
 outline_size = 6
@@ -133,16 +152,37 @@ scale = Vector2(0.4, 0.4)
 pivot_offset_ratio = Vector2(0.5, 0.8)
 texture = ExtResource("5_ryguw")
 
-[node name="MoneyLabel" type="Label" parent="UI" unique_id=141992439]
-offset_left = 1720.0
-offset_top = 431.0
-offset_right = 1827.0
-offset_bottom = 476.0
-text = "0 coins"
+[node name="Money" type="PanelContainer" parent="UI" unique_id=1835211639]
+offset_left = 1673.0
+offset_top = 420.0
+offset_right = 1874.0
+offset_bottom = 465.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lswn8")
+
+[node name="HBox" type="HBoxContainer" parent="UI/Money" unique_id=919267168]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="UI/Money/HBox" unique_id=141992439]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10000000"
 label_settings = SubResource("LabelSettings_7mycd")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Money/HBox" unique_id=1102049249]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("6_lswn8")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="EndScreen" parent="UI" unique_id=1532378341 instance=ExtResource("3_5vw27")]
 visible = false
+grow_horizontal = 1
+grow_vertical = 1
+color = Color(0, 0, 0, 0.75)
 
 [node name="ColorRect" type="ColorRect" parent="UI" unique_id=91601122]
 process_mode = 3
