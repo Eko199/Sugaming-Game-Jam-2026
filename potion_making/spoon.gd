@@ -3,6 +3,7 @@ class_name Spoon
 
 @onready var outline: TextureRect = $Outline
 @onready var upgrade: Button = $"../Spoon Upgrade"
+@onready var upgrade_outline: TextureRect = $"../Spoon Upgrade/Outline"
 
 const drag_preview = preload("res://potion_making/drag_preview.gd")
 
@@ -54,6 +55,7 @@ func _update_spoon_sprite() -> void:
 	if level < len(Cons.SPOONS_TEXTURE):
 		upgrade.get_child(0).text = "%s" % Cons.SPOON_UPGRADES_PRICE[level - 1]
 		upgrade.icon = load(Cons.SPOONS_TEXTURE[level])
+		upgrade_outline.texture = upgrade.icon
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if not has_ingredients: return null
@@ -99,3 +101,13 @@ func _on_spoon_upgrade_pressed() -> void:
 		upgrade.visible = false
 
 	_update_spoon_sprite()
+	if Utility.scene.money < price:
+		upgrade_outline.hide()
+
+
+func _on_spoon_upgrade_mouse_entered() -> void:
+	if upgrade.disabled: return
+	upgrade_outline.show()
+
+func _on_spoon_upgrade_mouse_exited() -> void:
+	upgrade_outline.hide()

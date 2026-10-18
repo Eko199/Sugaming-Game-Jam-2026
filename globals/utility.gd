@@ -32,6 +32,8 @@ var scene: MainScene:
 	get: return get_tree().current_scene if is_inside_tree() else null
 var speech_impairment_active: bool = false
 
+var high_score: int = 0
+
 ## Give an enum and key to get the name of the key
 func get_keyname(key: int, enu: Dictionary) -> String:
 	return (enu.find_key(key) as String).replace('_', ' ').capitalize()
@@ -89,3 +91,21 @@ func shuffle(text: String) -> String:
 	chars[chosen[k - 1]] = first_char
 	
 	return "".join(chars)
+	
+	
+func check_and_save_high_score(current_score: int) -> bool:
+	if current_score <= high_score:
+		return false
+		
+	high_score = current_score
+	var config := ConfigFile.new()
+	
+	config.load(Cons.SAVE_PATH) 
+	config.set_value("stats", "high_score", high_score)
+	config.save(Cons.SAVE_PATH)
+	return true
+
+func load_high_score() -> void:
+	var config := ConfigFile.new()
+	if config.load(Cons.SAVE_PATH) == OK:
+		high_score = config.get_value("stats", "high_score", 0)

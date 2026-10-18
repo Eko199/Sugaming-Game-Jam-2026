@@ -15,6 +15,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var customers_spawned: int = 0
 var money: int = 0
 var potions_served: int = 0
+var perfect_potions: int = 0
 var fails: int = 0
 var current_debuffs: Array[Cons.DEBUFF] = []
 var is_spoon_held: bool = false
@@ -137,6 +138,7 @@ func _on_customer_paid(amount: int, quality: Cons.QUALITY, ingredient_count: int
 	potions_served += 1
 	Event.money_changed.emit(money)
 	if quality == Cons.QUALITY.EXCELLENT: 
+		perfect_potions += 1
 		add_time(Cons.PERFECT_TIME_BONUS_BASE + Cons.PERFECT_TIME_BONUS_PER_INGREDIENT * ingredient_count)
 
 func _on_potion_served(pot: Dictionary) -> void:

@@ -120,3 +120,5 @@ const DEBUFF_FAILS: int = 1
 const DEBUFF_TIME: int = 20
 const REQUEST_REPEAT_PENALTY_RECENT: float = 0.5
 const REQUEST_REPEAT_PENALTY_OLDER: float = 0.8
+
+const SAVE_PATH: String = "user://save_data.cfg"
