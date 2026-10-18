@@ -88,7 +88,7 @@ const STIR_DEAD_ZONE: float = 0.2
 const STIR_OUTER_LIMIT: float = 1.2
 const STIR_MAX_STEP: float = PI / 2
 const MAX_INGREDIENTS: int = 3
-const ROUND_TIME: int = 180
+const ROUND_TIME: int = 30
 const PATIENCE_MIN: int = 5
 const PATIENCE_MAX: int = 30
 const CUSTOMER_GAP: float = 2.0
@@ -101,3 +101,5 @@ const DEBUFF_FAILS: int = 1
 const DEBUFF_TIME: int = 20
 const REQUEST_REPEAT_PENALTY_RECENT: float = 0.5
 const REQUEST_REPEAT_PENALTY_OLDER: float = 0.8
+
+const SAVE_PATH: String = "user://save_data.cfg"
