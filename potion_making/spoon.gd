@@ -106,7 +106,6 @@ func _on_spoon_upgrade_pressed() -> void:
 	if Utility.scene.money < price:
 		upgrade_outline.hide()
 
-
 func _on_spoon_upgrade_mouse_entered() -> void:
 	if upgrade.disabled: return
 	upgrade_outline.show()

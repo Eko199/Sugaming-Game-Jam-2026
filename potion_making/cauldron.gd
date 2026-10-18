@@ -153,7 +153,6 @@ func add_ingredient(ing: Ingredient.TYPE) -> void:
 	_update_water_color()
 	Event.ingredient_added.emit(ing)
 
-## Ripple on the water plus a burst of droplets where an ingredient lands.
 func splash(global_pos: Vector2) -> void:
 	_add_ripple(global_pos, 1.0)
 	_spawn_droplets(global_pos)

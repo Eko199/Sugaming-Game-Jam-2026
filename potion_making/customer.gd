@@ -17,9 +17,9 @@ const PATIENCE_COLORS: Dictionary[float, Color] = {
 	0.6: Color(1.0, 0.85, 0.25),
 	1.0: Color(0.45, 0.9, 0.35),
 }
-const SHAKE_START: float = 0.35
-const SHAKE_MAX_PX: float = 7.0
-const SHAKE_MAX_ROT: float = 0.05
+const SHAKE_START: float = 0.45
+const SHAKE_MAX_PX: float = 6.0
+const SHAKE_MAX_ROT: float = 0.04
 
 var _bar_rest: Vector2 = Vector2.INF
 var _patience_gradient: Gradient
@@ -137,7 +137,7 @@ func _update_patience_fx(ratio: float) -> void:
 
 	var urgency: float = clampf(1.0 - ratio / SHAKE_START, 0.0, 1.0)
 	if urgency > 0.0:
-		var strength: float = urgency * urgency
+		var strength: float = urgency ** 2
 		progress_bar.pivot_offset = progress_bar.size / 2.0
 		progress_bar.position = _bar_rest + Vector2(randf_range(-1, 1), randf_range(-1, 1)) * SHAKE_MAX_PX * strength
 		progress_bar.rotation = randf_range(-1, 1) * SHAKE_MAX_ROT * strength
