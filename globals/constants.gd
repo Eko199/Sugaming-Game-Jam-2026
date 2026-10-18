@@ -24,8 +24,8 @@ enum DEBUFF {
 }
 
 const SPOON_UPGRADES_PRICE: PackedInt32Array = [
-	100,
-	200
+	150,
+	300
 ]
 
 const SPOON_LEVEL_MULT: PackedFloat32Array = [
@@ -38,6 +38,11 @@ const SPOONS_TEXTURE: PackedStringArray = [
 	"res://textures/spoon.png",
 	"res://textures/silver_spoon.png",
 	"res://textures/golden_spoon.png"
+]
+
+const PRICE_TAGS: PackedStringArray = [
+	"res://textures/price_tag_silver_spoon.png",
+	"res://textures/price_tag_gold_spoon.png"
 ]
 
 # General information

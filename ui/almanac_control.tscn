@@ -46,47 +46,99 @@ mouse_filter = 2
 texture = ExtResource("2_8llnm")
 
 [node name="Tutorial" type="MarginContainer" parent="." unique_id=1424209766]
-visible = false
 z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 180
-theme_override_constants/margin_right = 150
-theme_override_constants/margin_bottom = 70
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
 
-[node name="Title" type="Control" parent="Tutorial" unique_id=1506117244]
+[node name="Title" type="Control" parent="Tutorial" unique_id=2072175699]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Tutorial/Title" unique_id=2065353815]
+[node name="Label" type="Label" parent="Tutorial/Title" unique_id=194005915]
 layout_mode = 0
 offset_left = -9.0
-offset_top = -87.5
-offset_right = 250.0
-offset_bottom = 4.5
-text = "TUTORIAL"
+offset_top = -110.5
+offset_right = 360.0
+offset_bottom = -10.5
+text = " Tutorial"
 label_settings = SubResource("LabelSettings_3ftik")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial" unique_id=1560965130]
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial" unique_id=457963937]
 layout_mode = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 110
 
-[node name="Label" type="RichTextLabel" parent="Tutorial/HBoxContainer" unique_id=444120143]
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial/HBoxContainer" unique_id=542533965]
+custom_maximum_size = Vector2(740, -1)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="RichTextLabel" parent="Tutorial/HBoxContainer/VBoxContainer" unique_id=150240324]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]LOREM IPSUM"
+text = "[font_size=48]THE GOAL:[/font_size] Brew potions for the heroes and earn as much froins as possible in 3 minutes before their patience runs out!"
 fit_content = true
+vertical_alignment = 1
 
-[node name="Label2" type="RichTextLabel" parent="Tutorial/HBoxContainer" unique_id=1797187841]
-custom_minimum_size = Vector2(650, 0)
+[node name="Label2" type="RichTextLabel" parent="Tutorial/HBoxContainer/VBoxContainer" unique_id=147852454]
+custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]LOREM IPSUM"
+text = "[font_size=48]Toss Ingredients[/font_size]
+Grab 1 to 3 items from the shelf and drop them into the cauldron. Since the book is ruined, you'll have to guess and write down the recipe."
 fit_content = true
+vertical_alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="Tutorial/HBoxContainer/VBoxContainer" unique_id=1916306746]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[font_size=48]Set the Heat (0° – 100°C)[/font_size]
+Turn the temperature dial using \"A\" and \"D\". Every recipe prefers a specific heat range to cook properly."
+fit_content = true
+vertical_alignment = 1
+
+[node name="Label4" type="RichTextLabel" parent="Tutorial/HBoxContainer/VBoxContainer" unique_id=1449094560]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[font_size=48]Stir the Spoon (↻ or ↺)[/font_size]
+Spin the spoon Clockwise or Counter-Clockwise. Some potions prefer one strict direction, while others work fine with both!"
+fit_content = true
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Tutorial/HBoxContainer" unique_id=2110823098]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Label" type="RichTextLabel" parent="Tutorial/HBoxContainer/VBoxContainer2" unique_id=354029680]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[font_size=48]Serve[/font_size]
+Right ingredients + Right heat + Right stir = Magnificent potion & maximum gold!
+
+Right ingredients, wrong heat/stir = Good or Poor potion (less gold).
+
+Wrong ingredients = BOOM! The cauldron explodes with toxic fumes and hits you with a random Debuff:
+[img width=80 height=80]res://textures/shuffle.png[/img]Shelf Shuffle: Your ingredients randomly swap places on the shelf!
+[img width=80 height=80]res://textures/blindness.png[/img]Color Blindness: The whole room and the heroes turn black and white!
+[img width=80 height=80]res://textures/gibberish.png[/img]Gibberish: Customer orders get their letters scrambled!"
+fit_content = true
+vertical_alignment = 1
 
 [node name="Recipes" type="MarginContainer" parent="." unique_id=1057927573]
 visible = false
@@ -303,58 +355,140 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[font_size=48]Star Flower[/font_size]
-A glowing celestial blossom that only blooms at midnight. Hums with pure energy."
+A glowing celestial blossom that only blooms at midnight. Hums with pure astral energy."
 fit_content = true
 vertical_alignment = 1
 
-[node name="Cooking" type="MarginContainer" parent="." unique_id=307865024]
+[node name="Diary" type="MarginContainer" parent="." unique_id=307865024]
 visible = false
 z_index = 2
 layout_mode = 2
-theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 180
-theme_override_constants/margin_right = 150
-theme_override_constants/margin_bottom = 70
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
 
-[node name="Title" type="Control" parent="Cooking" unique_id=1270523838]
+[node name="Title" type="Control" parent="Diary" unique_id=1739264594]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Cooking/Title" unique_id=922027037]
+[node name="Label" type="Label" parent="Diary/Title" unique_id=707393386]
 layout_mode = 0
 offset_left = -9.0
-offset_top = -87.5
-offset_right = 250.0
-offset_bottom = 4.5
-text = "COOKING TIPS"
+offset_top = -110.5
+offset_right = 360.0
+offset_bottom = -10.5
+text = " Diary of an Alchemist"
 label_settings = SubResource("LabelSettings_3ftik")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Cooking" unique_id=1804323738]
+[node name="HBoxContainer" type="HBoxContainer" parent="Diary" unique_id=1251366470]
 layout_mode = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 110
 
-[node name="Label" type="RichTextLabel" parent="Cooking/HBoxContainer" unique_id=1765519050]
+[node name="VBoxContainer" type="VBoxContainer" parent="Diary/HBoxContainer" unique_id=1168163610]
+custom_maximum_size = Vector2(740, -1)
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="RichTextLabel" parent="Diary/HBoxContainer/VBoxContainer" unique_id=1006230260]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]LOREM IPSUM"
+text = "[font_size=48]06.07.1467[/font_size]
+Found some strange glowing ingredients at the local shop today. Nobody knew what they were, so I bought the whole stock for cheap."
 fit_content = true
+vertical_alignment = 1
 
-[node name="Label2" type="RichTextLabel" parent="Cooking/HBoxContainer" unique_id=2000134478]
-custom_minimum_size = Vector2(650, 0)
+[node name="Label2" type="RichTextLabel" parent="Diary/HBoxContainer/VBoxContainer" unique_id=1634769338]
+custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "
-[color=black]LOREM IPSUM"
+text = "[font_size=48]08.07.1467[/font_size]
+When I combine and cook them at the right temperature, they actually grant magical powers!"
 fit_content = true
+vertical_alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="Diary/HBoxContainer/VBoxContainer" unique_id=1976119079]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[font_size=48]10.07.1467[/font_size]
+I will use these potions for good to heal the sick and cure the townsfolk's wounds."
+fit_content = true
+vertical_alignment = 1
+
+[node name="Label4" type="RichTextLabel" parent="Diary/HBoxContainer/VBoxContainer" unique_id=1098488519]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[font_size=48]11.08.1467[/font_size]
+Word is spreading fast. People are starting to call me a real Alchemist, and everyone in the village keeps lining up for my potions."
+fit_content = true
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Diary/HBoxContainer" unique_id=1748837919]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="Label" type="RichTextLabel" parent="Diary/HBoxContainer/VBoxContainer2" unique_id=766119260]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[table=2]
+[cell][font_size=48]20.09.1467[/font_size]
+A very interesting man stopped by my window today. I made a quick sketch of him.[/cell]
+[cell padding=0,30,0,0][img width=120 height=120 color=#ffffffbb]res://icon.svg[/img][/cell]"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="Diary/HBoxContainer/VBoxContainer2" unique_id=396551323]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[font_size=48]16.10.1467[/font_size]
+Hard times have come. A massive Dragon suddenly appeared from the mountain and attacked the village!"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="Diary/HBoxContainer/VBoxContainer2" unique_id=597667779]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[font_size=48]17.10.1467[/font_size]
+Moved my shop right next to the Dragon's lair to overcharge the troops preparing to fight the beast. Made an absolute fortune today! Going to the tavern tonight to celebrate."
+fit_content = true
+vertical_alignment = 1
+
+[node name="Label4" type="RichTextLabel" parent="Diary/HBoxContainer/VBoxContainer2" unique_id=706069300]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[font_size=48]18.10.1467[/font_size]
+Dear Diary, sorry about last night. I accidentally spilled mead all over you (??). The heroes are already waiting outside — I will try to restore the missing recipes as I go..."
+fit_content = true
+vertical_alignment = 1
 
 [node name="Bookmarks" type="Control" parent="." unique_id=722244083]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="CookingBtn" type="Button" parent="Bookmarks" unique_id=702234793]
+[node name="DiaryBtn" type="Button" parent="Bookmarks" unique_id=702234793]
 layout_mode = 0
 offset_left = 1696.0
 offset_top = -40.0
@@ -416,7 +550,7 @@ icon = ExtResource("8_boy4e")
 flat = true
 expand_icon = true
 
-[connection signal="pressed" from="Bookmarks/CookingBtn" to="." method="_on_cooking_btn_pressed"]
+[connection signal="pressed" from="Bookmarks/DiaryBtn" to="." method="_on_cooking_btn_pressed"]
 [connection signal="pressed" from="Bookmarks/IngredientsBtn" to="." method="_on_ingredients_btn_pressed"]
 [connection signal="pressed" from="Bookmarks/RecipesBtn" to="." method="_on_recipes_btn_pressed"]
 [connection signal="pressed" from="Bookmarks/TutorialBtn" to="." method="_on_tutorial_btn_pressed"]

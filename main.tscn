@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dn2jnda54knet" path="res://textures/silver_spoon.png" id="20_82xsv"]
 [ext_resource type="Shader" uid="uid://bi3mjspidxgua" path="res://shaders/outline.gdshader" id="22_d13ii"]
 [ext_resource type="Texture2D" uid="uid://c0n0xcuycsire" path="res://textures/spoon.png" id="25_0odxb"]
+[ext_resource type="Texture2D" uid="uid://bfhe2qfkmxy0u" path="res://textures/price_tag_silver_spoon.png" id="25_lswn8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lswn8"]
 bg_color = Color(0.38039216, 0.21568628, 0.047058824, 1)
@@ -107,9 +108,6 @@ shader = ExtResource("22_d13ii")
 shader_parameter/outline_color = Color(0.8, 0.6, 0.4, 1)
 shader_parameter/outline_width = 4.00000019
 shader_parameter/alpha_threshold = 0.1
-
-[sub_resource type="LabelSettings" id="LabelSettings_7upsp"]
-font_size = 30
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
 shader = ExtResource("22_d13ii")
@@ -340,14 +338,14 @@ icon = ExtResource("20_82xsv")
 flat = true
 expand_icon = true
 
-[node name="Price" type="Label" parent="Spoon Upgrade" unique_id=1098402380]
+[node name="Price" type="TextureRect" parent="Spoon Upgrade" unique_id=2016030815]
 layout_mode = 0
-offset_left = 99.16648
-offset_top = 115.86501
-offset_right = 150.16647
-offset_bottom = 157.86502
-text = "100"
-label_settings = SubResource("LabelSettings_7upsp")
+offset_left = 50.001984
+offset_top = 101.291756
+offset_right = 183.81766
+offset_bottom = 166.13635
+texture = ExtResource("25_lswn8")
+expand_mode = 2
 
 [node name="Outline" type="TextureRect" parent="Spoon Upgrade" unique_id=1187735444]
 visible = false

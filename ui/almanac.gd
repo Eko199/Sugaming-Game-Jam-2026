@@ -3,23 +3,46 @@ extends Control
 @onready var tutorial: Control = $Tutorial
 @onready var recipes: Control = $Recipes
 @onready var ingredients: Control = $Ingredients
-@onready var cooking: Control = $Cooking
+@onready var diary: MarginContainer = $Diary
 
 @onready var tutorial_btn: Button = $Bookmarks/TutorialBtn
 @onready var recipes_btn: Button = $Bookmarks/RecipesBtn
 @onready var ingredients_btn: Button = $Bookmarks/IngredientsBtn
-@onready var cooking_btn: Button = $Bookmarks/CookingBtn
+@onready var diary_btn: Button = $Bookmarks/DiaryBtn
 
 @onready var page_to_btn: Dictionary = {
 	tutorial : tutorial_btn,
 	recipes : recipes_btn,
 	ingredients : ingredients_btn,
-	cooking : cooking_btn,
+	diary : diary_btn,
 }
 
 var current_page: Control
 var unlocked_recipes: Dictionary = {}
 var recipes_dict: Dictionary = {}
+
+
+func _ready() -> void:
+	for rcp_ingredients: Array in Recipe.RECIPE:
+		var ingredients_count = len(rcp_ingredients)
+		var knowledge: RecipeKnowledge = RecipeKnowledge.new(ingredients_count)
+		var potion = Recipe.RECIPE[rcp_ingredients][0]
+		unlocked_recipes[potion] = knowledge
+		
+		var recipe_row: HBoxContainer = get_recipe_row(potion)
+		var ingredients_container = recipe_row.get_node("Ingredients")
+		for i in range(ingredients_container.get_child_count() - 1, ingredients_count - 1, -1):
+			var child = ingredients_container.get_child(i)
+			ingredients_container.remove_child(child)
+			child.queue_free()
+		
+		recipes_dict[potion] = [rcp_ingredients, Recipe.RECIPE[rcp_ingredients][1], Recipe.RECIPE[rcp_ingredients][2]]
+		recipe_row.setup()
+	
+	Event.potion_served.connect(process_potion_result)
+	
+	#for i in 8:
+		#unlock_knowledge(i, true, true)
 
 func open() -> void:
 	if not get_parent().visible: Audio.play("almanac_open")
@@ -84,25 +107,6 @@ func process_potion_result(result: Dictionary) -> void:
 		return
 		
 	unlock_knowledge(result["recipe_id"], result["correct_temperature"], result["correct_stir"])
-
-func _ready() -> void:
-	for rcp_ingredients: Array in Recipe.RECIPE:
-		var ingredients_count = len(rcp_ingredients)
-		var knowledge: RecipeKnowledge = RecipeKnowledge.new(ingredients_count)
-		var potion = Recipe.RECIPE[rcp_ingredients][0]
-		unlocked_recipes[potion] = knowledge
-		
-		var recipe_row: HBoxContainer = get_recipe_row(potion)
-		var ingredients_container = recipe_row.get_node("Ingredients")
-		for i in range(ingredients_container.get_child_count() - 1, ingredients_count - 1, -1):
-			var child = ingredients_container.get_child(i)
-			ingredients_container.remove_child(child)
-			child.queue_free()
-		
-		recipes_dict[potion] = [rcp_ingredients, Recipe.RECIPE[rcp_ingredients][1], Recipe.RECIPE[rcp_ingredients][2]]
-		recipe_row.setup()
-	
-	Event.potion_served.connect(process_potion_result)
 		
 func _on_almanac_pressed() -> void:
 	open()
@@ -111,8 +115,9 @@ func _on_exit_pressed() -> void:
 	get_tree().paused = false
 	close()
 
+# now diary button, won't bother to fix
 func _on_cooking_btn_pressed() -> void:
-	switch_page(cooking)
+	switch_page(diary)
 
 func _on_ingredients_btn_pressed() -> void:
 	switch_page(ingredients)
