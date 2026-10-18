@@ -340,10 +340,10 @@ expand_icon = true
 
 [node name="Price" type="TextureRect" parent="Spoon Upgrade" unique_id=2016030815]
 layout_mode = 0
-offset_left = 50.001984
-offset_top = 101.291756
-offset_right = 183.81766
-offset_bottom = 166.13635
+offset_left = 37.02517
+offset_top = 102.557556
+offset_right = 170.84085
+offset_bottom = 167.40216
 texture = ExtResource("25_lswn8")
 expand_mode = 2
 
