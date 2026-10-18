@@ -72,7 +72,7 @@ theme_override_constants/separation = 110
 [node name="VBoxContainer" type="VBoxContainer" parent="Tutorial/HBoxContainer" unique_id=542533965]
 custom_maximum_size = Vector2(740, -1)
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 40
 
 [node name="Label" type="RichTextLabel" parent="Tutorial/HBoxContainer/VBoxContainer" unique_id=150240324]
 custom_minimum_size = Vector2(650, 100)
@@ -80,7 +80,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[font_size=48]THE GOAL:[/font_size] Brew potions for the heroes and earn as much froins as possible in 3 minutes before their patience runs out!"
+text = "[font_size=48][color=#c4102d]THE GOAL:[/color][/font_size] Brew potions for the heroes and earn as much froins as possible in 3 minutes before their patience runs out!"
 fit_content = true
 vertical_alignment = 1
 
@@ -90,8 +90,8 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[font_size=48]Toss Ingredients[/font_size]
-Grab 1 to 3 items from the shelf and drop them into the cauldron. Since the book is ruined, you'll have to guess and write down the recipe."
+text = "[font_size=48][color=#c4102d]Toss Ingredients[/color][/font_size]
+Grab 1 to 3 items and drop them into the cauldron. You'll have to guess and write down the recipe."
 fit_content = true
 vertical_alignment = 1
 
@@ -101,8 +101,8 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[font_size=48]Set the Heat (0° – 100°C)[/font_size]
-Turn the temperature dial using \"A\" and \"D\". Every recipe prefers a specific heat range to cook properly."
+text = "[font_size=48][color=#c4102d]Set the Heat: 0° – 100°C[/color][/font_size]
+Turn the temperature dial using \"A\" and \"D\". Every recipe prefers a specific heat range."
 fit_content = true
 vertical_alignment = 1
 
@@ -112,8 +112,8 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[font_size=48]Stir the Spoon (↻ or ↺)[/font_size]
-Spin the spoon Clockwise or Counter-Clockwise. Some potions prefer one strict direction, while others work fine with both!"
+text = "[font_size=48][color=#c4102d]Stir the Spoon: ↻ or ↺[/color][/font_size]
+Spin the spoon Clockwise or Counter-Clockwise. Some potions prefer one direction, while others work with both!"
 fit_content = true
 vertical_alignment = 1
 
@@ -128,14 +128,18 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[font_size=48]Serve[/font_size]
-Right ingredients + Right heat + Right stir = Magnificent potion & maximum gold!
+text = "[font_size=48][color=#c4102d]Serve[/color][/font_size]
 
-Right ingredients, wrong heat/stir = Good or Poor potion (less gold).
+Right ingredients + Right heat + Right stir = Maximum gold!
 
-Wrong ingredients = BOOM! The cauldron explodes with toxic fumes and hits you with a random Debuff:
-[img width=80 height=80]res://textures/shuffle.png[/img]Shelf Shuffle: Your ingredients randomly swap places on the shelf!
-[img width=80 height=80]res://textures/blindness.png[/img]Color Blindness: The whole room and the heroes turn black and white!
+Right ingredients + Wrong heat or stir = Less gold.
+
+Wrong ingredients = BOOM! The cauldron hits you with a Debuff:
+
+[img width=80 height=80]res://textures/shuffle.png[/img]Shelf Shuffle: Your ingredients randomly swap places!
+
+[img width=80 height=80]res://textures/blindness.png[/img]Color Blindness: The whole room turns black and white!
+
 [img width=80 height=80]res://textures/gibberish.png[/img]Gibberish: Customer orders get their letters scrambled!"
 fit_content = true
 vertical_alignment = 1
@@ -201,7 +205,7 @@ offset_left = -9.0
 offset_top = -87.5
 offset_right = 250.0
 offset_bottom = 4.5
-text = "RECIPES"
+text = "Recipes"
 label_settings = SubResource("LabelSettings_3ftik")
 
 [node name="Ingredients" type="MarginContainer" parent="." unique_id=1353418424]
@@ -222,7 +226,7 @@ offset_left = -9.0
 offset_top = -110.5
 offset_right = 360.0
 offset_bottom = -10.5
-text = "  INGREDIENTS"
+text = "  Ingredients"
 label_settings = SubResource("LabelSettings_3ftik")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Ingredients" unique_id=1240819687]
