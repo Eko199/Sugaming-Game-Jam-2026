@@ -14,10 +14,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="potion-chaos"
+config/name="Blind Brew"
 run/main_scene="uid://bf8qh44ari6rc"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://co8hmmixhk2k2"
 
 [autoload]
 
